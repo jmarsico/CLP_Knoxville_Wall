@@ -41,6 +41,14 @@ public:
     
     void setupGui();
     void setupFluid();
+    
+    
+    void updateAnimation();
+    void updateFluid();
+    
+    void drawAnimationFbo();
+    
+    void drawModeSetName(int &_value);
 
     
     void getSlider(ofx::JSONRPC::MethodArgs& args);
@@ -106,8 +114,11 @@ public:
     ftPressureField		pressureField;
     ftVTField			velocityTemperatureField;
     
+    ftVelocitySpheres	velocityDots;
+    
     int					numDrawForces;
     ftDrawForce*		flexDrawForces;
+    int deltaTime, lastTime;
     
     
     //GUI
@@ -118,8 +129,8 @@ public:
     ofParameter<bool>	toggleGuiDraw;
     ofParameter<bool>   toggleFluidDraw;
     ofParameter<bool>   sendOut;
-    ofParameter<int>	visualisationMode;
-    ofParameter<string> visualisationName;
+    ofParameter<int>	drawMode;
+    ofParameter<string> drawName;
     ofParameter<bool>	showScalar;
     ofParameter<bool>	showField;
     ofParameter<float>	displayScalarScale;
@@ -130,12 +141,22 @@ public:
     
 
 
+    
+
+
     void setDisplayScalarScale(float& _value) { displayScalar.setScale(_value); }
     void setVelocityFieldScale(float& _value) { velocityField.setVelocityScale(_value); velocityTemperatureField.setVelocityScale(_value); }
     void setTemperatureFieldScale(float& _value) { temperatureField.setTemperatureScale(_value); velocityTemperatureField.setTemperatureScale(_value); }
     void setPressureFieldScale(float& _value) { pressureField.setPressureScale(_value); }
     void setVelocityLineSmooth(bool& _value) { velocityField.setLineSmooth(_value); velocityTemperatureField.setLineSmooth(_value);  }
 
+    
+    
+    
+    
+    
+    ///////////////////// ANIMATION //////////////////////////////
+    ofFbo animationFbo;
 
 private:
 
