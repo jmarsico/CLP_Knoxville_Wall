@@ -1,26 +1,8 @@
 // =============================================================================
 //
-// Copyright (c) 2014-2015 Christopher Baker <http://christopherbaker.net>
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-//
-// =============================================================================
+// Copyright (C) 2016 Jakob Marsico <http://ultralowres.com>
+// based on example code from Christopher Baker <http://christopherbaker.net>
+
 
 
 #include "ofApp.h"
@@ -28,134 +10,132 @@
 
 void ofApp::setup()
 {
-    ofSetFrameRate(30);
-
+    ofSetFrameRate(60);
     ofSetLogLevel(OF_LOG_VERBOSE);
 
-    // Load test text.
-    ipsum = ofBufferFromFile("media/ipsum.txt").getText();
-
-    // Load test media.
-    pingPlayer.load("media/ping.wav");
-    pongPlayer.load("media/pong.wav");
-
-    ofx::HTTP::JSONRPCServerSettings settings;
-    settings.setPort(8197);
-
-    // Initialize the server.
-    server.setup(settings);
-
-
-    // Register RPC methods.
-    server.registerMethod("get-text",
-                          "Returns a random chunk of text to the client.",
-                          this,
-                          &ofApp::getText);
-
-    server.registerMethod("set-text",
-                          "Sets text from the user.",
-                          this,
-                          &ofApp::setText);
-
-    server.registerMethod("ping",
-                          "Send a JSONRPC Ping Notification",
-                          this,
-                          &ofApp::ping);
-
-    server.registerMethod("pong",
-                          "Send a JSONRPC Pong Notification",
-                          this,
-                          &ofApp::pong);
+    //setup the JSONRPC server
+    setupServer();
     
-    server.registerMethod("test-slider",
-                          "Send a JSONRPC slider",
-                          this,
-                          &ofApp::getSlider);
+    drawWidth = ofGetWidth();
+    drawHeight = ofGetHeight();
+    
+    setupFluid();
 
-    // Start the server.
-    server.start();
-
-    // Launch a browser with the address of the server.
-    ofLaunchBrowser(server.getURL());
+    
+    
 }
 
-
-void ofApp::draw()
-{
-    ofBackground(255);
-    ofDrawBitmapStringHighlight(userText, ofPoint(14, 18));
+//------------------------------------------------------
+void ofApp::update(){
+    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
 }
 
+//------------------------------------------------------
+void ofApp::draw(){
+    
+    ofBackground(0);
+    cam.begin();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofDisableBlendMode();
+    cam.end();
+    
+ }
 
-void ofApp::exit()
-{
+//------------------------------------------------------
+void ofApp::setupGui(){
+    
+    
+    int guiColorSwitch = 0;
+    ofColor guiHeaderColor[2];
+    guiHeaderColor[0].set(160, 160, 80, 200);
+    guiHeaderColor[1].set(80, 160, 160, 200);
+    ofColor guiFillColor[2];
+    guiFillColor[0].set(160, 160, 80, 200);
+    guiFillColor[1].set(80, 160, 160, 200);
+    
+    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+    guiColorSwitch = 1 - guiColorSwitch;
+    gui.add(opticalFlow.parameters);
+    
+    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+    guiColorSwitch = 1 - guiColorSwitch;
+    gui.add(velocityMask.parameters);
+    
+    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+    guiColorSwitch = 1 - guiColorSwitch;
+    gui.add(fluidSimulation.parameters);
+    
+    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+    guiColorSwitch = 1 - guiColorSwitch;
+    gui.add(particleFlow.parameters);
+    
+
+}
+
+//------------------------------------------------------
+void ofApp::setupFluid(){
+    // process all but the density on 16th resolution
+    flowWidth = drawWidth / 4;
+    flowHeight = drawHeight / 4;
+    
+    // FLOW & MASK
+    opticalFlow.setup(flowWidth, flowHeight);
+    velocityMask.setup(drawWidth, drawHeight);
+    
+    // FLUID & PARTICLES
+    fluidSimulation.setup(flowWidth, flowHeight, drawWidth, drawHeight);
+    particleFlow.setup(flowWidth, flowHeight, drawWidth, drawHeight);
+    
+    flowToolsLogoImage.load("flowtools.png");
+    fluidSimulation.addObstacle(flowToolsLogoImage.getTexture());
+    showLogo = true;
+    
+    velocityDots.setup(flowWidth / 4, flowHeight / 4);
+    
+    // VISUALIZATION
+    displayScalar.setup(flowWidth, flowHeight);
+    velocityField.setup(flowWidth / 4, flowHeight / 4);
+    temperatureField.setup(flowWidth / 4, flowHeight / 4);
+    pressureField.setup(flowWidth / 4, flowHeight / 4);
+    velocityTemperatureField.setup(flowWidth / 4, flowHeight / 4);
+    
+    // MOUSE DRAW
+    mouseForces.setup(flowWidth, flowHeight, drawWidth, drawHeight);
+}
+
+//------------------------------------------------------
+void ofApp::exit(){
+    
     // Set the logger back to the default to make sure any
     // remaining messages are logged correctly.
     ofLogToConsole();
 }
 
+//------------------------------------------------------
+void ofApp::setupServer(){
+    ofx::HTTP::JSONRPCServerSettings settings;
+    settings.setPort(8197);
+    
+    // Initialize the server.
+    server.setup(settings);
+    server.registerMethod("test-slider",
+                          "Send a JSONRPC slider",
+                          this,
+                          &ofApp::getSlider);
+    
+    // Start the server.
+    server.start();
 
-void ofApp::ping()
-{
-    pingPlayer.play();
-    ofLogVerbose("ofApp::ping") << "Ping'd";
 }
 
 
-void ofApp::pong()
-{
-    pongPlayer.play();
-    ofLogVerbose("ofApp::pong") << "Pong'd";
-}
-
+//------------------------------------------------------
 void ofApp::getSlider(ofx::JSONRPC::MethodArgs& args){
+    std::unique_lock<std::mutex> lock(mutex);
     ofLog() << ofToFloat(args.params.asString());
-}
-
-
-void ofApp::getText(ofx::JSONRPC::MethodArgs& args)
-{
-    // Set the result equal to the substring.
-    args.result = getRandomText();
-    ofLogVerbose("ofApp::getText") << args.result.asString();
-}
-
-
-void ofApp::setText(ofx::JSONRPC::MethodArgs& args)
-{
-    // Set the user text.
-    setUserText(args.params.asString());
-    ofLogVerbose("ofApp::setText") << args.params.asString();
-}
-
-
-std::string ofApp::getRandomText() const
-{
-    static const std::size_t LENGTH = 140;
-
-    std::unique_lock<std::mutex> lock(mutex);
-
-    // Generate a random start index.
-    std::size_t startIndex = (std::size_t)ofRandom(ipsum.length());
-
-    // Ensure that the length is valid.
-    std::size_t length = (startIndex + LENGTH) < ipsum.length() ? LENGTH : string::npos;
-
-    // return the result equal to the substring.
-    return ipsum.substr(startIndex, length);
-}
-
-
-std::string ofApp::getUserText() const
-{
-    std::unique_lock<std::mutex> lock(mutex);
-    return userText;
-}
-
-
-void ofApp::setUserText(const std::string& text)
-{
-    std::unique_lock<std::mutex> lock(mutex);
-    userText = text;
 }
 
