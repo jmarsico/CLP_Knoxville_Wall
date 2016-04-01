@@ -87,6 +87,8 @@
 		BA18A98D1CAC55DA007E76B8 /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9821CAC55DA007E76B8 /* ofxSlider.cpp */; };
 		BA18A98E1CAC55DA007E76B8 /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9841CAC55DA007E76B8 /* ofxSliderGroup.cpp */; };
 		BA18A98F1CAC55DA007E76B8 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9861CAC55DA007E76B8 /* ofxToggle.cpp */; };
+		BA18A9941CAC7C5D007E76B8 /* fluidManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */; };
+		BA18A9991CAC7D9D007E76B8 /* ofxFastFboReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9971CAC7D9D007E76B8 /* ofxFastFboReader.cpp */; };
 		BA22C5AB1C8E2F0F004B30A7 /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5841C8E2F0F004B30A7 /* ofxOscBundle.cpp */; };
 		BA22C5AC1C8E2F0F004B30A7 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5861C8E2F0F004B30A7 /* ofxOscMessage.cpp */; };
 		BA22C5AD1C8E2F0F004B30A7 /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5881C8E2F0F004B30A7 /* ofxOscParameterSync.cpp */; };
@@ -411,6 +413,10 @@
 		BA18A9851CAC55DA007E76B8 /* ofxSliderGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSliderGroup.h; sourceTree = "<group>"; };
 		BA18A9861CAC55DA007E76B8 /* ofxToggle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxToggle.cpp; sourceTree = "<group>"; };
 		BA18A9871CAC55DA007E76B8 /* ofxToggle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxToggle.h; sourceTree = "<group>"; };
+		BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fluidManager.cpp; sourceTree = "<group>"; };
+		BA18A9931CAC7C5D007E76B8 /* fluidManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fluidManager.h; sourceTree = "<group>"; };
+		BA18A9971CAC7D9D007E76B8 /* ofxFastFboReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFastFboReader.cpp; sourceTree = "<group>"; };
+		BA18A9981CAC7D9D007E76B8 /* ofxFastFboReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFastFboReader.h; sourceTree = "<group>"; };
 		BA22C5821C8E2F0F004B30A7 /* ofxOsc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOsc.h; sourceTree = "<group>"; };
 		BA22C5831C8E2F0F004B30A7 /* ofxOscArg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOscArg.h; sourceTree = "<group>"; };
 		BA22C5841C8E2F0F004B30A7 /* ofxOscBundle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscBundle.cpp; sourceTree = "<group>"; };
@@ -1239,6 +1245,24 @@
 			path = ../../../addons/ofxGui/src;
 			sourceTree = "<group>";
 		};
+		BA18A9951CAC7D9D007E76B8 /* ofxFastFboReader */ = {
+			isa = PBXGroup;
+			children = (
+				BA18A9961CAC7D9D007E76B8 /* src */,
+			);
+			name = ofxFastFboReader;
+			sourceTree = "<group>";
+		};
+		BA18A9961CAC7D9D007E76B8 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				BA18A9971CAC7D9D007E76B8 /* ofxFastFboReader.cpp */,
+				BA18A9981CAC7D9D007E76B8 /* ofxFastFboReader.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxFastFboReader/src;
+			sourceTree = "<group>";
+		};
 		BA22C5801C8E2F0F004B30A7 /* ofxOsc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1360,6 +1384,7 @@
 				BA22C5801C8E2F0F004B30A7 /* ofxOsc */,
 				BA18A9251CAC5545007E76B8 /* ofxFlowTools */,
 				BA18A9751CAC55DA007E76B8 /* ofxGui */,
+				BA18A9951CAC7D9D007E76B8 /* ofxFastFboReader */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -1550,6 +1575,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+				BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */,
+				BA18A9931CAC7C5D007E76B8 /* fluidManager.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1728,6 +1755,7 @@
 				BA22C5B41C8E2F0F004B30A7 /* OscPrintReceivedElements.cpp in Sources */,
 				BA18A96E1CAC5545007E76B8 /* ftDrawForce.cpp in Sources */,
 				A9CA54326603BFA5029E72EA /* PutRequest.cpp in Sources */,
+				BA18A9941CAC7C5D007E76B8 /* fluidManager.cpp in Sources */,
 				C79610B64C1FFA8A9309BA05 /* RequestHandlerAdapter.cpp in Sources */,
 				BA18A9721CAC5545007E76B8 /* ftOpticalFlow.cpp in Sources */,
 				BA18A98B1CAC55DA007E76B8 /* ofxLabel.cpp in Sources */,
@@ -1746,6 +1774,7 @@
 				A8AF031F8417316AFF0D746E /* WebSocketFrame.cpp in Sources */,
 				759634F9FC415ED965714767 /* WebSocketRoute.cpp in Sources */,
 				3BFC7CF50BEB0307821B90A6 /* lz4.c in Sources */,
+				BA18A9991CAC7D9D007E76B8 /* ofxFastFboReader.cpp in Sources */,
 				DFA0F30B1193D5DC1BB53E5E /* Base64Encoding.cpp in Sources */,
 				D932A5A24FCF08AE510A265D /* ByteBuffer.cpp in Sources */,
 				62509F39EA6197BEA0194276 /* ByteBufferReader.cpp in Sources */,
