@@ -32,6 +32,8 @@ void ofApp::setup()
     fluid.init(drawWidth, drawHeight);
     
     
+    
+    
 }
 
 //------------------------------------------------------
@@ -39,6 +41,9 @@ void ofApp::update(){
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
 //    deltaTime = ofGetElapsedTimef() - lastTime;
 //    lastTime = ofGetElapsedTimef();
+    
+    guiFPS = ofGetFrameRate();
+    numCPUParticles = particles.size();
     
     updateAnimation();
     drawAnimationFbo();
@@ -51,6 +56,18 @@ void ofApp::updateAnimation(){
     
     ofFill();
     
+    ofVec2f a(0, 0.1);
+    
+    for(size_t i = 0; i < particles.size(); i++){
+        particles[i].update(a);
+        if(particles[i].bTimeToDie){
+            particles.erase(particles.begin()+i);
+            
+        }
+    }
+    
+
+    
 }
 
 //------------------------------------------------------
@@ -60,8 +77,13 @@ void ofApp::drawAnimationFbo(){
     ofClear(0);
     ofBackground(0);
     ofFill();
-    ofSetColor(255);
-    ofDrawCircle(700, 200, 200 * ofNoise(ofGetElapsedTimef()));
+//    ofSetColor(255);
+//    ofDrawCircle(700, 200, 200 * ofNoise(ofGetElapsedTimef()));
+    
+    for(Particle p : particles){
+        p.draw();
+    }
+    
     animationFbo.end();
     
 }
@@ -91,6 +113,8 @@ void ofApp::draw(){
     fluid.draw(drawMode);
     gui.draw();
     
+    
+    
  }
 
 
@@ -103,6 +127,7 @@ void ofApp::setupGui(){
     gui.setDefaultBackgroundColor(ofColor(0, 0, 0, 127));
     gui.setDefaultFillColor(ofColor(160, 160, 160, 160));
     gui.add(guiFPS.set("average FPS", 0, 0, 60));
+    gui.add(numCPUParticles.set("num particles", 0, 0, 1000));
     gui.add(doFullScreen.set("fullscreen (F)", false));
     gui.add(toggleGuiDraw.set("show gui (G)", false));
     gui.add(drawMode.set("draw mode", DRAW_COMPOSITE, DRAW_COMPOSITE, DRAW_SOURCE));
@@ -181,5 +206,19 @@ void ofApp::setupServer(){
 void ofApp::getSlider(ofx::JSONRPC::MethodArgs& args){
     std::unique_lock<std::mutex> lock(mutex);
     ofLog() << ofToFloat(args.params.asString());
+}
+
+
+void ofApp::keyReleased(int key){
+    if(key == ' '){
+        for(size_t i = 0; i < 100; i++){
+            Particle p;
+            ofVec2f l(ofRandom(0, ofGetWidth()), ofRandom(0, ofGetHeight()));
+            ofVec2f v(ofRandom(-10, 10), ofRandom(-10, 10));
+                      
+            p.setup(l,v, 1);
+            particles.push_back(p);
+        }
+    }
 }
 

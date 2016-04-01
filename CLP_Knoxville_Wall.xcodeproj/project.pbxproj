@@ -89,6 +89,7 @@
 		BA18A98F1CAC55DA007E76B8 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9861CAC55DA007E76B8 /* ofxToggle.cpp */; };
 		BA18A9941CAC7C5D007E76B8 /* fluidManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */; };
 		BA18A9991CAC7D9D007E76B8 /* ofxFastFboReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9971CAC7D9D007E76B8 /* ofxFastFboReader.cpp */; };
+		BA18A99C1CAEFC93007E76B8 /* particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A99A1CAEFC93007E76B8 /* particle.cpp */; };
 		BA22C5AB1C8E2F0F004B30A7 /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5841C8E2F0F004B30A7 /* ofxOscBundle.cpp */; };
 		BA22C5AC1C8E2F0F004B30A7 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5861C8E2F0F004B30A7 /* ofxOscMessage.cpp */; };
 		BA22C5AD1C8E2F0F004B30A7 /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5881C8E2F0F004B30A7 /* ofxOscParameterSync.cpp */; };
@@ -417,6 +418,8 @@
 		BA18A9931CAC7C5D007E76B8 /* fluidManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fluidManager.h; sourceTree = "<group>"; };
 		BA18A9971CAC7D9D007E76B8 /* ofxFastFboReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFastFboReader.cpp; sourceTree = "<group>"; };
 		BA18A9981CAC7D9D007E76B8 /* ofxFastFboReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFastFboReader.h; sourceTree = "<group>"; };
+		BA18A99A1CAEFC93007E76B8 /* particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = particle.cpp; sourceTree = "<group>"; };
+		BA18A99B1CAEFC93007E76B8 /* particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle.h; sourceTree = "<group>"; };
 		BA22C5821C8E2F0F004B30A7 /* ofxOsc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOsc.h; sourceTree = "<group>"; };
 		BA22C5831C8E2F0F004B30A7 /* ofxOscArg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOscArg.h; sourceTree = "<group>"; };
 		BA22C5841C8E2F0F004B30A7 /* ofxOscBundle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscBundle.cpp; sourceTree = "<group>"; };
@@ -1577,6 +1580,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */,
 				BA18A9931CAC7C5D007E76B8 /* fluidManager.h */,
+				BA18A99A1CAEFC93007E76B8 /* particle.cpp */,
+				BA18A99B1CAEFC93007E76B8 /* particle.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1761,6 +1766,7 @@
 				BA18A98B1CAC55DA007E76B8 /* ofxLabel.cpp in Sources */,
 				99C0FF7E4280E1E4068363C4 /* Session.cpp in Sources */,
 				0E61212567C18B2B13DF5F1F /* SessionStore.cpp in Sources */,
+				BA18A99C1CAEFC93007E76B8 /* particle.cpp in Sources */,
 				CA2FDEC0D0E20E8650AC9352 /* SimpleFileServer.cpp in Sources */,
 				9D7E16851720B21348E79EA5 /* SimpleIPVideoServer.cpp in Sources */,
 				CED1C8E0D49B2622C92D5C3D /* SimplePostServer.cpp in Sources */,

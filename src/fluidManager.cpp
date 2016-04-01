@@ -9,7 +9,7 @@
 #include "fluidManager.h"
 
 
-void fluidManager::init(int w, int h){
+void FluidManager::init(int w, int h){
     
     drawWidth = w;
     drawHeight = h;
@@ -39,7 +39,7 @@ void fluidManager::init(int w, int h){
 }
 
 
-void fluidManager::update(const ofFbo &_inputFbo){
+void FluidManager::update(const ofFbo &_inputFbo){
     inputFbo = _inputFbo;
     opticalFlow.setSource(inputFbo.getTexture());
     opticalFlow.update();
@@ -67,7 +67,7 @@ void fluidManager::update(const ofFbo &_inputFbo){
 
 
 //--------------------------------------------------------------
-void fluidManager::draw(int _mode){
+void FluidManager::draw(int _mode){
     switch(_mode) {
         case DRAW_COMPOSITE: drawComposite(); break;
         case DRAW_PARTICLES: drawParticles(); break;
@@ -86,7 +86,7 @@ void fluidManager::draw(int _mode){
 
 
 //--------------------------------------------------------------
-void fluidManager::drawComposite(int _x, int _y, int _width, int _height) {
+void FluidManager::drawComposite(int _x, int _y, int _width, int _height) {
     ofPushStyle();
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -101,7 +101,7 @@ void fluidManager::drawComposite(int _x, int _y, int _width, int _height) {
 }
 
 //--------------------------------------------------------------
-void fluidManager::drawParticles(int _x, int _y, int _width, int _height) {
+void FluidManager::drawParticles(int _x, int _y, int _width, int _height) {
     ofPushStyle();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     if (particleFlow.isActive())
@@ -110,7 +110,7 @@ void fluidManager::drawParticles(int _x, int _y, int _width, int _height) {
 }
 
 //--------------------------------------------------------------
-void fluidManager::drawFluidFields(int _x, int _y, int _width, int _height) {
+void FluidManager::drawFluidFields(int _x, int _y, int _width, int _height) {
     ofPushStyle();
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
@@ -125,7 +125,7 @@ void fluidManager::drawFluidFields(int _x, int _y, int _width, int _height) {
 }
 
 //--------------------------------------------------------------
-void fluidManager::drawFluidDensity(int _x, int _y, int _width, int _height) {
+void FluidManager::drawFluidDensity(int _x, int _y, int _width, int _height) {
     ofPushStyle();
     
     fluidSimulation.draw(_x, _y, _width, _height);
@@ -134,7 +134,7 @@ void fluidManager::drawFluidDensity(int _x, int _y, int _width, int _height) {
 }
 
 ////--------------------------------------------------------------
-//void fluidManager::drawFluidVelocity(int _x, int _y, int _width, int _height) {
+//void FluidManager::drawFluidVelocity(int _x, int _y, int _width, int _height) {
 //    ofPushStyle();
 //    if (showScalar.get()) {
 //        ofClear(0,0);
@@ -152,7 +152,7 @@ void fluidManager::drawFluidDensity(int _x, int _y, int _width, int _height) {
 //}
 //
 ////--------------------------------------------------------------
-//void fluidManager::drawFluidPressure(int _x, int _y, int _width, int _height) {
+//void FluidManager::drawFluidPressure(int _x, int _y, int _width, int _height) {
 //    ofPushStyle();
 //    ofClear(128);
 //    if (showScalar.get()) {
@@ -169,7 +169,7 @@ void fluidManager::drawFluidDensity(int _x, int _y, int _width, int _height) {
 //}
 //
 ////--------------------------------------------------------------
-//void fluidManager::drawFluidTemperature(int _x, int _y, int _width, int _height) {
+//void FluidManager::drawFluidTemperature(int _x, int _y, int _width, int _height) {
 //    ofPushStyle();
 //    if (showScalar.get()) {
 //        ofEnableBlendMode(OF_BLENDMODE_DISABLED);
@@ -185,7 +185,7 @@ void fluidManager::drawFluidDensity(int _x, int _y, int _width, int _height) {
 //}
 //
 ////--------------------------------------------------------------
-//void fluidManager::drawFluidDivergence(int _x, int _y, int _width, int _height) {
+//void FluidManager::drawFluidDivergence(int _x, int _y, int _width, int _height) {
 //    ofPushStyle();
 //    if (showScalar.get()) {
 //        ofEnableBlendMode(OF_BLENDMODE_DISABLED);
@@ -201,7 +201,7 @@ void fluidManager::drawFluidDensity(int _x, int _y, int _width, int _height) {
 //}
 //
 ////--------------------------------------------------------------
-//void fluidManager::drawFluidVorticity(int _x, int _y, int _width, int _height) {
+//void FluidManager::drawFluidVorticity(int _x, int _y, int _width, int _height) {
 //    ofPushStyle();
 //    if (showScalar.get()) {
 //        ofEnableBlendMode(OF_BLENDMODE_DISABLED);
@@ -218,7 +218,7 @@ void fluidManager::drawFluidDensity(int _x, int _y, int _width, int _height) {
 //}
 //
 ////--------------------------------------------------------------
-//void fluidManager::drawFluidBuoyance(int _x, int _y, int _width, int _height) {
+//void FluidManager::drawFluidBuoyance(int _x, int _y, int _width, int _height) {
 //    ofPushStyle();
 //    if (showScalar.get()) {
 //        ofEnableBlendMode(OF_BLENDMODE_DISABLED);
@@ -234,7 +234,7 @@ void fluidManager::drawFluidDensity(int _x, int _y, int _width, int _height) {
 //}
 
 //--------------------------------------------------------------
-void fluidManager::drawFluidObstacle(int _x, int _y, int _width, int _height) {
+void FluidManager::drawFluidObstacle(int _x, int _y, int _width, int _height) {
     ofPushStyle();
     ofEnableBlendMode(OF_BLENDMODE_DISABLED);
     fluidSimulation.getObstacle().draw(_x, _y, _width, _height);
@@ -242,7 +242,7 @@ void fluidManager::drawFluidObstacle(int _x, int _y, int _width, int _height) {
 }
 
 //--------------------------------------------------------------
-void fluidManager::drawMask(int _x, int _y, int _width, int _height) {
+void FluidManager::drawMask(int _x, int _y, int _width, int _height) {
     ofPushStyle();
     ofEnableBlendMode(OF_BLENDMODE_DISABLED);
     velocityMask.draw(_x, _y, _width, _height);
@@ -250,7 +250,7 @@ void fluidManager::drawMask(int _x, int _y, int _width, int _height) {
 }
 
 ////--------------------------------------------------------------
-//void fluidManager::drawOpticalFlow(int _x, int _y, int _width, int _height) {
+//void FluidManager::drawOpticalFlow(int _x, int _y, int _width, int _height) {
 //    ofPushStyle();
 //    if (showScalar.get()) {
 //        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
@@ -266,7 +266,7 @@ void fluidManager::drawMask(int _x, int _y, int _width, int _height) {
 //}
 
 //--------------------------------------------------------------
-void fluidManager::drawSource(int _x, int _y, int _width, int _height) {
+void FluidManager::drawSource(int _x, int _y, int _width, int _height) {
     ofPushStyle();
     ofEnableBlendMode(OF_BLENDMODE_DISABLED);
     inputFbo.draw(_x, _y, _width, _height);
@@ -275,7 +275,7 @@ void fluidManager::drawSource(int _x, int _y, int _width, int _height) {
 
 
 //--------------------------------------------------------------
-void fluidManager::drawVelocityDots(int _x, int _y, int _width, int _height) {
+void FluidManager::drawVelocityDots(int _x, int _y, int _width, int _height) {
     ofPushStyle();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     velocityDots.setVelocity(fluidSimulation.getVelocity());

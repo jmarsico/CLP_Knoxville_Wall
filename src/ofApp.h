@@ -12,6 +12,7 @@
 #include "ofxJSONRPC.h"
 #include "fluidManager.h"
 #include "ofxGui.h"
+#include "particle.h"
 
 
 
@@ -22,18 +23,13 @@ public:
     void update();
     void draw();
     void exit();
+    void keyReleased(int key);
     
     void setupServer();
     
     void setupGui();
-//    void setupFluid();
-    
-    
     void updateAnimation();
-//    void updateFluid();
-    
     void drawAnimationFbo();
-    
     void drawModeSetName(int &_value);
 
     
@@ -48,6 +44,7 @@ public:
     //GUI
     ofxPanel			gui;
     ofParameter<float>	guiFPS;
+    ofParameter<int>    numCPUParticles;
     ofParameter<string> ipAddress;
     ofParameter<bool>	doFullScreen;
     ofParameter<bool>	toggleGuiDraw;
@@ -57,11 +54,13 @@ public:
     ofParameter<string> drawName;
 
     
-    fluidManager fluid;
+    FluidManager fluid;
     
     
     ///////////////////// ANIMATION //////////////////////////////
     ofFbo animationFbo;
+    vector<Particle> particles;
+    
 
 private:
 

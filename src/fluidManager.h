@@ -27,10 +27,10 @@ enum drawModeEnum{
     DRAW_SOURCE,
 };
 
-class fluidManager {
+class FluidManager {
     
 public:
-    fluidManager(){}
+    FluidManager(){}
     void init(int w, int h);
     void update(const ofFbo &inputFbo);
     void draw(int _mode);
