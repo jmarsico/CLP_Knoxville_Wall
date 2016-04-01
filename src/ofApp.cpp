@@ -88,20 +88,6 @@ void ofApp::drawModeSetName(int &_value) {
 void ofApp::draw(){
     
     ofBackground(0);
-//    switch(drawMode.get()) {
-//        case DRAW_COMPOSITE: drawComposite(); break;
-//        case DRAW_PARTICLES: drawParticles(); break;
-//        case DRAW_FLUID_FIELDS: drawFluidFields(); break;
-//        case DRAW_FLUID_DENSITY: drawFluidDensity(); break;
-//        case DRAW_FLUID_TEMPERATURE: drawFluidTemperature(); break;
-//        case DRAW_FLUID_DIVERGENCE: drawFluidDivergence(); break;
-//        case DRAW_FLUID_VORTICITY: drawFluidVorticity(); break;
-//        case DRAW_FLUID_BUOYANCY: drawFluidBuoyance(); break;
-//        case DRAW_FLUID_OBSTACLE: drawFluidObstacle(); break;
-//        case DRAW_OPTICAL_FLOW: drawOpticalFlow(); break;
-//        case DRAW_SOURCE: drawSource(); break;
-//    }
-
     fluid.draw(drawMode);
     gui.draw();
     
@@ -118,7 +104,6 @@ void ofApp::setupGui(){
     gui.setDefaultFillColor(ofColor(160, 160, 160, 160));
     gui.add(guiFPS.set("average FPS", 0, 0, 60));
     gui.add(doFullScreen.set("fullscreen (F)", false));
-//    doFullScreen.addListener(this, &ofAppBaseGLWindow::setFullscreen);
     gui.add(toggleGuiDraw.set("show gui (G)", false));
     gui.add(drawMode.set("draw mode", DRAW_COMPOSITE, DRAW_COMPOSITE, DRAW_SOURCE));
     drawMode.addListener(this, &ofApp::drawModeSetName);
@@ -165,31 +150,6 @@ void ofApp::setupGui(){
     gui.minimizeAll();
 }
 
-////------------------------------------------------------
-//void ofApp::setupFluid(){
-//    // process all but the density on 16th resolution
-//    flowWidth = drawWidth / 4;
-//    flowHeight = drawHeight / 4;
-//    
-//    // FLOW & MASK
-//    opticalFlow.setup(flowWidth, flowHeight);
-//    velocityMask.setup(drawWidth, drawHeight);
-//    
-//    // FLUID & PARTICLES
-//    fluidSimulation.setup(flowWidth, flowHeight, drawWidth, drawHeight);
-//    particleFlow.setup(flowWidth, flowHeight, drawWidth, drawHeight);
-//
-//    velocityDots.setup(flowWidth / 4, flowHeight / 4);
-//    
-//    // VISUALIZATION
-//    displayScalar.setup(flowWidth, flowHeight);
-//    velocityField.setup(flowWidth / 4, flowHeight / 4);
-//    temperatureField.setup(flowWidth / 4, flowHeight / 4);
-//    pressureField.setup(flowWidth / 4, flowHeight / 4);
-//    velocityTemperatureField.setup(flowWidth / 4, flowHeight / 4);
-//    
-//    // MOUSE DRAW
-//}
 
 //------------------------------------------------------
 void ofApp::exit(){
