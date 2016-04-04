@@ -27,7 +27,7 @@ enum drawModeEnum{
     DRAW_SOURCE,
 };
 
-class FluidManager {
+class FluidManager  {
     
 public:
     FluidManager(){}

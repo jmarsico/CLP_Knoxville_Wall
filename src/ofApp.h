@@ -10,9 +10,10 @@
 
 #include "ofMain.h"
 #include "ofxJSONRPC.h"
-#include "fluidManager.h"
 #include "ofxGui.h"
-#include "particle.h"
+#include "stateManager.h"
+#include "sceneBuilder.h"
+#include "debugGui.h"
 
 
 
@@ -54,12 +55,11 @@ public:
     ofParameter<string> drawName;
 
     
-    FluidManager fluid;
     
     
     ///////////////////// ANIMATION //////////////////////////////
     ofFbo animationFbo;
-    vector<Particle> particles;
+    
     
 
 private:

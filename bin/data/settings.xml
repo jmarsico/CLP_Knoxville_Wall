@@ -1,12 +1,12 @@
 <settings>
-	<average_FPS>0</average_FPS>
+	<average_FPS>58.4245</average_FPS>
 	<fullscreen__F_>0</fullscreen__F_>
 	<show_gui__G_>0</show_gui__G_>
 	<draw_mode>0</draw_mode>
-	<MODE>draw name</MODE>
+	<MODE>Composite</MODE>
 	<optical_flow>
-		<strength>10</strength>
-		<offset>3</offset>
+		<strength>77.551</strength>
+		<offset>1</offset>
 		<lambda>0.01</lambda>
 		<threshold>0.02</threshold>
 		<inverse_x>0</inverse_x>
@@ -24,22 +24,22 @@
 	</velocity_mask>
 	<fluid_solver>
 		<reset>0</reset>
-		<speed>20</speed>
-		<cell_size>1.25</cell_size>
+		<speed>1.02041</speed>
+		<cell_size>2</cell_size>
 		<iterations>40</iterations>
 		<viscosity>0.1</viscosity>
 		<vorticity>0.6</vorticity>
-		<dissipation>0.002</dissipation>
+		<dissipation>0.01</dissipation>
 		<advanced_dissipation>
 			<velocity_offset>-0.001</velocity_offset>
 			<density_offset>0</density_offset>
 			<temperature_offset>0.005</temperature_offset>
 		</advanced_dissipation>
 		<smoke_buoyancy>
-			<sigma>0.05</sigma>
-			<weight>0.05</weight>
-			<ambient_temperature>0</ambient_temperature>
-			<gravity>0.01, 0</gravity>
+			<sigma>1</sigma>
+			<weight>0.250312</weight>
+			<ambient_temperature>0.260725</ambient_temperature>
+			<gravity>0.01, 7.35183e-05</gravity>
 		</smoke_buoyancy>
 		<maximum>
 			<clampForce>0.05</clampForce>
@@ -51,10 +51,10 @@
 		<density_from_vorticity>-0.1</density_from_vorticity>
 	</fluid_solver>
 	<particle_flow>
-		<active>1</active>
-		<speed>20</speed>
-		<cell_size>1.25</cell_size>
-		<birth_chance>0.5</birth_chance>
+		<active>0</active>
+		<speed>1.02041</speed>
+		<cell_size>2</cell_size>
+		<birth_chance>0.72449</birth_chance>
 		<birth_velocity_chance>0.5</birth_velocity_chance>
 		<lifespan>5</lifespan>
 		<lifespan_spread>0.25</lifespan_spread>
@@ -62,6 +62,8 @@
 		<mass_spread>0.2</mass_spread>
 		<size>2</size>
 		<size_spread>0.75</size_spread>
-		<twinkle_speed>11</twinkle_speed>
+		<twinkle_speed>0</twinkle_speed>
 	</particle_flow>
+<settings/>
+	<num_particles>267</num_particles>
 </settings>

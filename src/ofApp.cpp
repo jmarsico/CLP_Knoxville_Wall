@@ -29,7 +29,7 @@ void ofApp::setup()
     
     setupGui();
 
-    fluid.init(drawWidth, drawHeight);
+//    fluid.init(drawWidth, drawHeight);
     
     
     
@@ -47,7 +47,7 @@ void ofApp::update(){
     
     updateAnimation();
     drawAnimationFbo();
-    fluid.update(animationFbo);
+//    fluid.update(animationFbo);
 
 }
 
@@ -58,15 +58,10 @@ void ofApp::updateAnimation(){
     
     ofVec2f a(0, 0.1);
     
-    for(size_t i = 0; i < particles.size(); i++){
-        particles[i].update(a);
-        if(particles[i].bTimeToDie){
-            particles.erase(particles.begin()+i);
-            
-        }
-    }
     
-
+    
+    
+    
     
 }
 
@@ -80,10 +75,7 @@ void ofApp::drawAnimationFbo(){
 //    ofSetColor(255);
 //    ofDrawCircle(700, 200, 200 * ofNoise(ofGetElapsedTimef()));
     
-    for(Particle p : particles){
-        p.draw();
-    }
-    
+     
     animationFbo.end();
     
 }
@@ -214,7 +206,7 @@ void ofApp::keyReleased(int key){
         for(size_t i = 0; i < 100; i++){
             Particle p;
             ofVec2f l(ofRandom(0, ofGetWidth()), ofRandom(0, ofGetHeight()));
-            ofVec2f v(ofRandom(-10, 10), ofRandom(-10, 10));
+            ofVec2f v(ofRandom(-1, 1), ofRandom(-1, 1));
                       
             p.setup(l,v, 1);
             particles.push_back(p);

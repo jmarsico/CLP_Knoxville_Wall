@@ -90,6 +90,13 @@
 		BA18A9941CAC7C5D007E76B8 /* fluidManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */; };
 		BA18A9991CAC7D9D007E76B8 /* ofxFastFboReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9971CAC7D9D007E76B8 /* ofxFastFboReader.cpp */; };
 		BA18A99C1CAEFC93007E76B8 /* particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A99A1CAEFC93007E76B8 /* particle.cpp */; };
+		BA18A9A61CB2AD22007E76B8 /* stateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9A41CB2AD22007E76B8 /* stateManager.cpp */; };
+		BA18A9AA1CB2B597007E76B8 /* baseAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9A81CB2B597007E76B8 /* baseAnimation.cpp */; };
+		BA18A9AD1CB2B7B6007E76B8 /* sweepAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9AB1CB2B7B6007E76B8 /* sweepAnimation.cpp */; };
+		BA18A9B11CB2B82F007E76B8 /* particleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9AF1CB2B82F007E76B8 /* particleManager.cpp */; };
+		BA18A9B41CB2B966007E76B8 /* sceneBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9B21CB2B966007E76B8 /* sceneBuilder.cpp */; };
+		BA18A9B71CB2C3D7007E76B8 /* debugGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9B51CB2C3D7007E76B8 /* debugGui.cpp */; };
+		BA18A9BD1CB2D489007E76B8 /* popAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9BB1CB2D489007E76B8 /* popAnimation.cpp */; };
 		BA22C5AB1C8E2F0F004B30A7 /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5841C8E2F0F004B30A7 /* ofxOscBundle.cpp */; };
 		BA22C5AC1C8E2F0F004B30A7 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5861C8E2F0F004B30A7 /* ofxOscMessage.cpp */; };
 		BA22C5AD1C8E2F0F004B30A7 /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5881C8E2F0F004B30A7 /* ofxOscParameterSync.cpp */; };
@@ -420,6 +427,21 @@
 		BA18A9981CAC7D9D007E76B8 /* ofxFastFboReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFastFboReader.h; sourceTree = "<group>"; };
 		BA18A99A1CAEFC93007E76B8 /* particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = particle.cpp; sourceTree = "<group>"; };
 		BA18A99B1CAEFC93007E76B8 /* particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle.h; sourceTree = "<group>"; };
+		BA18A9A41CB2AD22007E76B8 /* stateManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stateManager.cpp; sourceTree = "<group>"; };
+		BA18A9A51CB2AD22007E76B8 /* stateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stateManager.h; sourceTree = "<group>"; };
+		BA18A9A81CB2B597007E76B8 /* baseAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = baseAnimation.cpp; sourceTree = "<group>"; };
+		BA18A9A91CB2B597007E76B8 /* baseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseAnimation.h; sourceTree = "<group>"; };
+		BA18A9AB1CB2B7B6007E76B8 /* sweepAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sweepAnimation.cpp; sourceTree = "<group>"; };
+		BA18A9AC1CB2B7B6007E76B8 /* sweepAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweepAnimation.h; sourceTree = "<group>"; };
+		BA18A9AF1CB2B82F007E76B8 /* particleManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = particleManager.cpp; sourceTree = "<group>"; };
+		BA18A9B01CB2B82F007E76B8 /* particleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particleManager.h; sourceTree = "<group>"; };
+		BA18A9B21CB2B966007E76B8 /* sceneBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceneBuilder.cpp; sourceTree = "<group>"; };
+		BA18A9B31CB2B966007E76B8 /* sceneBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sceneBuilder.h; sourceTree = "<group>"; };
+		BA18A9B51CB2C3D7007E76B8 /* debugGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = debugGui.cpp; sourceTree = "<group>"; };
+		BA18A9B61CB2C3D7007E76B8 /* debugGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debugGui.h; sourceTree = "<group>"; };
+		BA18A9B81CB2CC74007E76B8 /* guiElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiElement.h; sourceTree = "<group>"; };
+		BA18A9BB1CB2D489007E76B8 /* popAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = popAnimation.cpp; sourceTree = "<group>"; };
+		BA18A9BC1CB2D489007E76B8 /* popAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popAnimation.h; sourceTree = "<group>"; };
 		BA22C5821C8E2F0F004B30A7 /* ofxOsc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOsc.h; sourceTree = "<group>"; };
 		BA22C5831C8E2F0F004B30A7 /* ofxOscArg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOscArg.h; sourceTree = "<group>"; };
 		BA22C5841C8E2F0F004B30A7 /* ofxOscBundle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscBundle.cpp; sourceTree = "<group>"; };
@@ -1266,6 +1288,32 @@
 			path = ../../../addons/ofxFastFboReader/src;
 			sourceTree = "<group>";
 		};
+		BA18A9A71CB2B57C007E76B8 /* animations */ = {
+			isa = PBXGroup;
+			children = (
+				BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */,
+				BA18A9931CAC7C5D007E76B8 /* fluidManager.h */,
+				BA18A9A81CB2B597007E76B8 /* baseAnimation.cpp */,
+				BA18A9A91CB2B597007E76B8 /* baseAnimation.h */,
+				BA18A9AB1CB2B7B6007E76B8 /* sweepAnimation.cpp */,
+				BA18A9AC1CB2B7B6007E76B8 /* sweepAnimation.h */,
+				BA18A9BB1CB2D489007E76B8 /* popAnimation.cpp */,
+				BA18A9BC1CB2D489007E76B8 /* popAnimation.h */,
+			);
+			name = animations;
+			sourceTree = "<group>";
+		};
+		BA18A9AE1CB2B815007E76B8 /* particles */ = {
+			isa = PBXGroup;
+			children = (
+				BA18A99A1CAEFC93007E76B8 /* particle.cpp */,
+				BA18A99B1CAEFC93007E76B8 /* particle.h */,
+				BA18A9AF1CB2B82F007E76B8 /* particleManager.cpp */,
+				BA18A9B01CB2B82F007E76B8 /* particleManager.h */,
+			);
+			name = particles;
+			sourceTree = "<group>";
+		};
 		BA22C5801C8E2F0F004B30A7 /* ofxOsc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1575,13 +1623,18 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				BA18A9B21CB2B966007E76B8 /* sceneBuilder.cpp */,
+				BA18A9B31CB2B966007E76B8 /* sceneBuilder.h */,
+				BA18A9B81CB2CC74007E76B8 /* guiElement.h */,
+				BA18A9B51CB2C3D7007E76B8 /* debugGui.cpp */,
+				BA18A9B61CB2C3D7007E76B8 /* debugGui.h */,
+				BA18A9AE1CB2B815007E76B8 /* particles */,
+				BA18A9A71CB2B57C007E76B8 /* animations */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
-				BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */,
-				BA18A9931CAC7C5D007E76B8 /* fluidManager.h */,
-				BA18A99A1CAEFC93007E76B8 /* particle.cpp */,
-				BA18A99B1CAEFC93007E76B8 /* particle.h */,
+				BA18A9A41CB2AD22007E76B8 /* stateManager.cpp */,
+				BA18A9A51CB2AD22007E76B8 /* stateManager.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1717,6 +1770,7 @@
 				EE785EF526C01DF6EFE00FFE /* BaseRequest.cpp in Sources */,
 				272951916F9204E4960463E3 /* BaseResponse.cpp in Sources */,
 				BA22C5B51C8E2F0F004B30A7 /* OscReceivedElements.cpp in Sources */,
+				BA18A9BD1CB2D489007E76B8 /* popAnimation.cpp in Sources */,
 				A98439CA25D32DDA6D0289BF /* BaseRoute.cpp in Sources */,
 				1C499EA2AD1749FB7569E701 /* BaseServer.cpp in Sources */,
 				CB5F8611AA8E77C8C2BC2290 /* ClientEvents.cpp in Sources */,
@@ -1754,6 +1808,7 @@
 				BA18A96F1CAC5545007E76B8 /* ftDrawMouseForces.cpp in Sources */,
 				712A36E53BD5232A5078D74A /* OAuth20Credentials.cpp in Sources */,
 				111E97FD4195A8FD3F8F5E61 /* PostRequest.cpp in Sources */,
+				BA18A9B11CB2B82F007E76B8 /* particleManager.cpp in Sources */,
 				78ABB3E512AD6D31C71210DE /* PostRoute.cpp in Sources */,
 				10B158B194807374A26775AC /* ProgressMonitor.cpp in Sources */,
 				8F6DCF982CF06434EF9E4654 /* ProxySettings.cpp in Sources */,
@@ -1775,11 +1830,14 @@
 				BA18A98C1CAC55DA007E76B8 /* ofxPanel.cpp in Sources */,
 				AFD807EADDB21467AAC72D19 /* URIBuilder.cpp in Sources */,
 				BA18A9891CAC55DA007E76B8 /* ofxButton.cpp in Sources */,
+				BA18A9B71CB2C3D7007E76B8 /* debugGui.cpp in Sources */,
 				5DF1C13343DD10285CBEC8E1 /* WebSocketConnection.cpp in Sources */,
 				24BE0715BB2776CC9CC258B0 /* WebSocketExtensions.cpp in Sources */,
 				A8AF031F8417316AFF0D746E /* WebSocketFrame.cpp in Sources */,
+				BA18A9B41CB2B966007E76B8 /* sceneBuilder.cpp in Sources */,
 				759634F9FC415ED965714767 /* WebSocketRoute.cpp in Sources */,
 				3BFC7CF50BEB0307821B90A6 /* lz4.c in Sources */,
+				BA18A9AD1CB2B7B6007E76B8 /* sweepAnimation.cpp in Sources */,
 				BA18A9991CAC7D9D007E76B8 /* ofxFastFboReader.cpp in Sources */,
 				DFA0F30B1193D5DC1BB53E5E /* Base64Encoding.cpp in Sources */,
 				D932A5A24FCF08AE510A265D /* ByteBuffer.cpp in Sources */,
@@ -1788,6 +1846,7 @@
 				66A80FD312926DEB8C9FE7F6 /* ByteBufferUtils.cpp in Sources */,
 				494950167FFB212CEB9ECD0A /* ByteBufferWriter.cpp in Sources */,
 				FE9170FE54D704DF97B0E5BD /* COBSEncoding.cpp in Sources */,
+				BA18A9AA1CB2B597007E76B8 /* baseAnimation.cpp in Sources */,
 				93640C223A2F5BEAD6DA2E35 /* Compression.cpp in Sources */,
 				CDB5B1D2D12F42502906F30F /* DeviceFilter.cpp in Sources */,
 				BA18A9701CAC5545007E76B8 /* ftFluidSimulation.cpp in Sources */,
@@ -1824,6 +1883,7 @@
 				E2972264CA09FC97DE6368B3 /* JSONRPCUtils.cpp in Sources */,
 				65D2A55CFEC9DE747CF1E94E /* MethodArgs.cpp in Sources */,
 				7FC21E7A1A5F55F52854C237 /* MethodRegistry.cpp in Sources */,
+				BA18A9A61CB2AD22007E76B8 /* stateManager.cpp in Sources */,
 				BA22C5B31C8E2F0F004B30A7 /* OscOutboundPacketStream.cpp in Sources */,
 				CC17CD77BE0BB13D04BEC097 /* Request.cpp in Sources */,
 				06675465B824889B515911EF /* Response.cpp in Sources */,
