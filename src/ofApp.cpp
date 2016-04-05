@@ -13,6 +13,8 @@ void ofApp::setup()
     ofSetFrameRate(60);
     ofSetLogLevel(OF_LOG_VERBOSE);
 
+    scene.setup(&state);
+    
     //setup the JSONRPC server
     setupServer();
     setupGui();
@@ -24,9 +26,8 @@ void ofApp::setup()
     // Animation
 
     
-    scene.setup(&state);
     
-    fluid.init(drawWidth, drawHeight);
+    
     
 }
 
@@ -36,7 +37,7 @@ void ofApp::update(){
 
     scene.update();
     
-    fluid.update(scene.animationFbo);
+//    fluid.update(scene.animationFbo);
 
 }
 
@@ -46,22 +47,16 @@ void ofApp::draw(){
     
     ofBackground(0);
     
-    fluid.draw(5);
     
-//    scene.update();
     scene.generateFinalComposite();
     scene.draw();
-//    scene.compositeFbo.draw(0,0);
-//    scene.fluid.draw(4);
-    
-//    ofImage img;
-//    img.setFromPixels(scene.getPixels());
-//    img.draw(0,0);
     
     systemGui.draw();
     animGui.draw();
     fluidGui.draw();
-    
+//    scene.gui.draw();
+//    scene.animGui.draw();
+//    
  }
 
 
@@ -82,19 +77,18 @@ void ofApp::setupGui(){
     systemGui.setup("system");
     systemGui.add(FPS.set("framerate", 0, 0, 100));
     systemGui.setPosition(ofPoint(10,10));
-    
+//    
     fluidGui.setup("fluid", "fluidSettings.xml");
     fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
     fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
     guiColorSwitch = 1 - guiColorSwitch;
-    fluidGui.add(scene.fluidParams);
-    fluidGui.setPosition(systemGui.getWidth() + 20, 10);
-    
-    
-    
+    fluidGui.add(scene.getFluidParams());
+//
+//    
+//    
+//    
     animGui.setup("animation", "animSettings.xml");
-    animGui.add(scene.parameters);
-    animGui.setPosition(systemGui.getWidth() + 30 + fluidGui.getWidth(), 10);
+    animGui.add(scene.getAnimationParams());
     
     // if the settings file is not present the parameters will not be set during this setup
 

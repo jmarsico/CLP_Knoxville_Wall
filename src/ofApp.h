@@ -49,7 +49,7 @@ public:
     StateManager state;
     SceneBuilder scene;
     
-    FluidManager fluid;
+//    FluidManager fluid;
 
 private:
 

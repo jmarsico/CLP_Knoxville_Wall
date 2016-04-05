@@ -18,6 +18,7 @@
 #include "guiElement.h"
 #include "fluidManager.h"
 #include "ofxFastFboReader.h"
+#include "ofxGui.h"
 
 
 //extern ofEvent<int> onSceneChange;
@@ -39,10 +40,11 @@ public:
     ofPixels getPixels();
     void draw();
     
-    ofParameterGroup parameters;
-    ofParameter<int>drawMode;
-    ofParameter<string>drawName;
-    ofParameterGroup fluidParams;
+    ofParameterGroup getFluidParams();
+    ofParameterGroup getAnimationParams();
+    
+    
+
     
     ofFbo animationFbo;
     ofFbo compositeFbo;
@@ -51,7 +53,11 @@ public:
     
 protected:
     
-
+    ofParameterGroup animParams;
+    ofParameter<int>drawMode;
+    ofParameter<string>drawName;
+    
+    ofParameterGroup fluidParams;
     
     StateManager *state;
     ParticleManager particles;

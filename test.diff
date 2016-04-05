@@ -1,0 +1,1306 @@
+diff --git a/CLP_Knoxville_Wall.xcodeproj/project.pbxproj b/CLP_Knoxville_Wall.xcodeproj/project.pbxproj
+index ec3b40b..7fb5a98 100644
+--- a/CLP_Knoxville_Wall.xcodeproj/project.pbxproj
++++ b/CLP_Knoxville_Wall.xcodeproj/project.pbxproj
+@@ -90,6 +90,12 @@
+ 		BA18A9941CAC7C5D007E76B8 /* fluidManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */; };
+ 		BA18A9991CAC7D9D007E76B8 /* ofxFastFboReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9971CAC7D9D007E76B8 /* ofxFastFboReader.cpp */; };
+ 		BA18A99C1CAEFC93007E76B8 /* particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A99A1CAEFC93007E76B8 /* particle.cpp */; };
++		BA18A9A61CB2AD22007E76B8 /* stateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9A41CB2AD22007E76B8 /* stateManager.cpp */; };
++		BA18A9AA1CB2B597007E76B8 /* baseAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9A81CB2B597007E76B8 /* baseAnimation.cpp */; };
++		BA18A9AD1CB2B7B6007E76B8 /* sweepAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9AB1CB2B7B6007E76B8 /* sweepAnimation.cpp */; };
++		BA18A9B11CB2B82F007E76B8 /* particleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9AF1CB2B82F007E76B8 /* particleManager.cpp */; };
++		BA18A9B41CB2B966007E76B8 /* sceneBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9B21CB2B966007E76B8 /* sceneBuilder.cpp */; };
++		BA18A9BD1CB2D489007E76B8 /* popAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9BB1CB2D489007E76B8 /* popAnimation.cpp */; };
+ 		BA22C5AB1C8E2F0F004B30A7 /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5841C8E2F0F004B30A7 /* ofxOscBundle.cpp */; };
+ 		BA22C5AC1C8E2F0F004B30A7 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5861C8E2F0F004B30A7 /* ofxOscMessage.cpp */; };
+ 		BA22C5AD1C8E2F0F004B30A7 /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5881C8E2F0F004B30A7 /* ofxOscParameterSync.cpp */; };
+@@ -420,6 +426,18 @@
+ 		BA18A9981CAC7D9D007E76B8 /* ofxFastFboReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFastFboReader.h; sourceTree = "<group>"; };
+ 		BA18A99A1CAEFC93007E76B8 /* particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = particle.cpp; sourceTree = "<group>"; };
+ 		BA18A99B1CAEFC93007E76B8 /* particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle.h; sourceTree = "<group>"; };
++		BA18A9A41CB2AD22007E76B8 /* stateManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stateManager.cpp; sourceTree = "<group>"; };
++		BA18A9A51CB2AD22007E76B8 /* stateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stateManager.h; sourceTree = "<group>"; };
++		BA18A9A81CB2B597007E76B8 /* baseAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = baseAnimation.cpp; sourceTree = "<group>"; };
++		BA18A9A91CB2B597007E76B8 /* baseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseAnimation.h; sourceTree = "<group>"; };
++		BA18A9AB1CB2B7B6007E76B8 /* sweepAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sweepAnimation.cpp; sourceTree = "<group>"; };
++		BA18A9AC1CB2B7B6007E76B8 /* sweepAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweepAnimation.h; sourceTree = "<group>"; };
++		BA18A9AF1CB2B82F007E76B8 /* particleManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = particleManager.cpp; sourceTree = "<group>"; };
++		BA18A9B01CB2B82F007E76B8 /* particleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particleManager.h; sourceTree = "<group>"; };
++		BA18A9B21CB2B966007E76B8 /* sceneBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceneBuilder.cpp; sourceTree = "<group>"; };
++		BA18A9B31CB2B966007E76B8 /* sceneBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sceneBuilder.h; sourceTree = "<group>"; };
++		BA18A9BB1CB2D489007E76B8 /* popAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = popAnimation.cpp; sourceTree = "<group>"; };
++		BA18A9BC1CB2D489007E76B8 /* popAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popAnimation.h; sourceTree = "<group>"; };
+ 		BA22C5821C8E2F0F004B30A7 /* ofxOsc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOsc.h; sourceTree = "<group>"; };
+ 		BA22C5831C8E2F0F004B30A7 /* ofxOscArg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOscArg.h; sourceTree = "<group>"; };
+ 		BA22C5841C8E2F0F004B30A7 /* ofxOscBundle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscBundle.cpp; sourceTree = "<group>"; };
+@@ -1266,6 +1284,32 @@
+ 			path = ../../../addons/ofxFastFboReader/src;
+ 			sourceTree = "<group>";
+ 		};
++		BA18A9A71CB2B57C007E76B8 /* animations */ = {
++			isa = PBXGroup;
++			children = (
++				BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */,
++				BA18A9931CAC7C5D007E76B8 /* fluidManager.h */,
++				BA18A9A81CB2B597007E76B8 /* baseAnimation.cpp */,
++				BA18A9A91CB2B597007E76B8 /* baseAnimation.h */,
++				BA18A9AB1CB2B7B6007E76B8 /* sweepAnimation.cpp */,
++				BA18A9AC1CB2B7B6007E76B8 /* sweepAnimation.h */,
++				BA18A9BB1CB2D489007E76B8 /* popAnimation.cpp */,
++				BA18A9BC1CB2D489007E76B8 /* popAnimation.h */,
++			);
++			name = animations;
++			sourceTree = "<group>";
++		};
++		BA18A9AE1CB2B815007E76B8 /* particles */ = {
++			isa = PBXGroup;
++			children = (
++				BA18A99A1CAEFC93007E76B8 /* particle.cpp */,
++				BA18A99B1CAEFC93007E76B8 /* particle.h */,
++				BA18A9AF1CB2B82F007E76B8 /* particleManager.cpp */,
++				BA18A9B01CB2B82F007E76B8 /* particleManager.h */,
++			);
++			name = particles;
++			sourceTree = "<group>";
++		};
+ 		BA22C5801C8E2F0F004B30A7 /* ofxOsc */ = {
+ 			isa = PBXGroup;
+ 			children = (
+@@ -1575,13 +1619,15 @@
+ 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
+ 			isa = PBXGroup;
+ 			children = (
++				BA18A9AE1CB2B815007E76B8 /* particles */,
++				BA18A9A71CB2B57C007E76B8 /* animations */,
+ 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+ 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
+ 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+-				BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */,
+-				BA18A9931CAC7C5D007E76B8 /* fluidManager.h */,
+-				BA18A99A1CAEFC93007E76B8 /* particle.cpp */,
+-				BA18A99B1CAEFC93007E76B8 /* particle.h */,
++				BA18A9B21CB2B966007E76B8 /* sceneBuilder.cpp */,
++				BA18A9B31CB2B966007E76B8 /* sceneBuilder.h */,
++				BA18A9A41CB2AD22007E76B8 /* stateManager.cpp */,
++				BA18A9A51CB2AD22007E76B8 /* stateManager.h */,
+ 			);
+ 			path = src;
+ 			sourceTree = SOURCE_ROOT;
+@@ -1717,6 +1763,7 @@
+ 				EE785EF526C01DF6EFE00FFE /* BaseRequest.cpp in Sources */,
+ 				272951916F9204E4960463E3 /* BaseResponse.cpp in Sources */,
+ 				BA22C5B51C8E2F0F004B30A7 /* OscReceivedElements.cpp in Sources */,
++				BA18A9BD1CB2D489007E76B8 /* popAnimation.cpp in Sources */,
+ 				A98439CA25D32DDA6D0289BF /* BaseRoute.cpp in Sources */,
+ 				1C499EA2AD1749FB7569E701 /* BaseServer.cpp in Sources */,
+ 				CB5F8611AA8E77C8C2BC2290 /* ClientEvents.cpp in Sources */,
+@@ -1754,6 +1801,7 @@
+ 				BA18A96F1CAC5545007E76B8 /* ftDrawMouseForces.cpp in Sources */,
+ 				712A36E53BD5232A5078D74A /* OAuth20Credentials.cpp in Sources */,
+ 				111E97FD4195A8FD3F8F5E61 /* PostRequest.cpp in Sources */,
++				BA18A9B11CB2B82F007E76B8 /* particleManager.cpp in Sources */,
+ 				78ABB3E512AD6D31C71210DE /* PostRoute.cpp in Sources */,
+ 				10B158B194807374A26775AC /* ProgressMonitor.cpp in Sources */,
+ 				8F6DCF982CF06434EF9E4654 /* ProxySettings.cpp in Sources */,
+@@ -1778,8 +1826,10 @@
+ 				5DF1C13343DD10285CBEC8E1 /* WebSocketConnection.cpp in Sources */,
+ 				24BE0715BB2776CC9CC258B0 /* WebSocketExtensions.cpp in Sources */,
+ 				A8AF031F8417316AFF0D746E /* WebSocketFrame.cpp in Sources */,
++				BA18A9B41CB2B966007E76B8 /* sceneBuilder.cpp in Sources */,
+ 				759634F9FC415ED965714767 /* WebSocketRoute.cpp in Sources */,
+ 				3BFC7CF50BEB0307821B90A6 /* lz4.c in Sources */,
++				BA18A9AD1CB2B7B6007E76B8 /* sweepAnimation.cpp in Sources */,
+ 				BA18A9991CAC7D9D007E76B8 /* ofxFastFboReader.cpp in Sources */,
+ 				DFA0F30B1193D5DC1BB53E5E /* Base64Encoding.cpp in Sources */,
+ 				D932A5A24FCF08AE510A265D /* ByteBuffer.cpp in Sources */,
+@@ -1788,6 +1838,7 @@
+ 				66A80FD312926DEB8C9FE7F6 /* ByteBufferUtils.cpp in Sources */,
+ 				494950167FFB212CEB9ECD0A /* ByteBufferWriter.cpp in Sources */,
+ 				FE9170FE54D704DF97B0E5BD /* COBSEncoding.cpp in Sources */,
++				BA18A9AA1CB2B597007E76B8 /* baseAnimation.cpp in Sources */,
+ 				93640C223A2F5BEAD6DA2E35 /* Compression.cpp in Sources */,
+ 				CDB5B1D2D12F42502906F30F /* DeviceFilter.cpp in Sources */,
+ 				BA18A9701CAC5545007E76B8 /* ftFluidSimulation.cpp in Sources */,
+@@ -1824,6 +1875,7 @@
+ 				E2972264CA09FC97DE6368B3 /* JSONRPCUtils.cpp in Sources */,
+ 				65D2A55CFEC9DE747CF1E94E /* MethodArgs.cpp in Sources */,
+ 				7FC21E7A1A5F55F52854C237 /* MethodRegistry.cpp in Sources */,
++				BA18A9A61CB2AD22007E76B8 /* stateManager.cpp in Sources */,
+ 				BA22C5B31C8E2F0F004B30A7 /* OscOutboundPacketStream.cpp in Sources */,
+ 				CC17CD77BE0BB13D04BEC097 /* Request.cpp in Sources */,
+ 				06675465B824889B515911EF /* Response.cpp in Sources */,
+diff --git a/bin/data/fluidSettings.xml b/bin/data/fluidSettings.xml
+new file mode 100644
+index 0000000..5a06dce
+--- /dev/null
++++ b/bin/data/fluidSettings.xml
+@@ -0,0 +1,64 @@
++<fluid>
++	<group>
++		<optical_flow>
++			<strength>10</strength>
++			<offset>3</offset>
++			<lambda>0.01</lambda>
++			<threshold>0.02</threshold>
++			<inverse_x>0</inverse_x>
++			<inverse_y>0</inverse_y>
++			<time_decay_blur>
++				<decay>3</decay>
++				<blur_radius>3</blur_radius>
++			</time_decay_blur>
++		</optical_flow>
++		<fluid_solver>
++			<reset>0</reset>
++			<speed>20</speed>
++			<cell_size>1.25</cell_size>
++			<iterations>40</iterations>
++			<viscosity>0.1</viscosity>
++			<vorticity>0.6</vorticity>
++			<dissipation>0.002</dissipation>
++			<advanced_dissipation>
++				<velocity_offset>-0.001</velocity_offset>
++				<density_offset>0</density_offset>
++				<temperature_offset>0.005</temperature_offset>
++			</advanced_dissipation>
++			<smoke_buoyancy>
++				<sigma>0.05</sigma>
++				<weight>0.05</weight>
++				<ambient_temperature>0</ambient_temperature>
++				<gravity>0.01, 0</gravity>
++			</smoke_buoyancy>
++			<maximum>
++				<clampForce>0.05</clampForce>
++				<density>2</density>
++				<velocity>4</velocity>
++				<temperature>2</temperature>
++			</maximum>
++			<density_from_pressure>0</density_from_pressure>
++			<density_from_vorticity>-0.1</density_from_vorticity>
++		</fluid_solver>
++		<particle_flow>
++			<active>1</active>
++			<speed>20</speed>
++			<cell_size>1.25</cell_size>
++			<birth_chance>0.5</birth_chance>
++			<birth_velocity_chance>0.5</birth_velocity_chance>
++			<lifespan>5</lifespan>
++			<lifespan_spread>0.25</lifespan_spread>
++			<mass>1.3</mass>
++			<mass_spread>0.2</mass_spread>
++			<size>2</size>
++			<size_spread>0.75</size_spread>
++			<twinkle_speed>11</twinkle_speed>
++		</particle_flow>
++		<velocity_mask>
++			<strength>2.5</strength>
++			<saturation>3</saturation>
++			<blur_passes>3</blur_passes>
++			<blur_radius>5</blur_radius>
++		</velocity_mask>
++	</group>
++</fluid>
+diff --git a/bin/data/settings.xml b/bin/data/settings.xml
+index 154c561..7b37b2f 100644
+--- a/bin/data/settings.xml
++++ b/bin/data/settings.xml
+@@ -1,12 +1,12 @@
+ <settings>
+-	<average_FPS>0</average_FPS>
++	<average_FPS>58.4245</average_FPS>
+ 	<fullscreen__F_>0</fullscreen__F_>
+ 	<show_gui__G_>0</show_gui__G_>
+ 	<draw_mode>0</draw_mode>
+-	<MODE>draw name</MODE>
++	<MODE>Composite</MODE>
+ 	<optical_flow>
+-		<strength>10</strength>
+-		<offset>3</offset>
++		<strength>77.551</strength>
++		<offset>1</offset>
+ 		<lambda>0.01</lambda>
+ 		<threshold>0.02</threshold>
+ 		<inverse_x>0</inverse_x>
+@@ -24,22 +24,22 @@
+ 	</velocity_mask>
+ 	<fluid_solver>
+ 		<reset>0</reset>
+-		<speed>20</speed>
+-		<cell_size>1.25</cell_size>
++		<speed>1.02041</speed>
++		<cell_size>2</cell_size>
+ 		<iterations>40</iterations>
+ 		<viscosity>0.1</viscosity>
+ 		<vorticity>0.6</vorticity>
+-		<dissipation>0.002</dissipation>
++		<dissipation>0.01</dissipation>
+ 		<advanced_dissipation>
+ 			<velocity_offset>-0.001</velocity_offset>
+ 			<density_offset>0</density_offset>
+ 			<temperature_offset>0.005</temperature_offset>
+ 		</advanced_dissipation>
+ 		<smoke_buoyancy>
+-			<sigma>0.05</sigma>
+-			<weight>0.05</weight>
+-			<ambient_temperature>0</ambient_temperature>
+-			<gravity>0.01, 0</gravity>
++			<sigma>1</sigma>
++			<weight>0.250312</weight>
++			<ambient_temperature>0.260725</ambient_temperature>
++			<gravity>0.01, 7.35183e-05</gravity>
+ 		</smoke_buoyancy>
+ 		<maximum>
+ 			<clampForce>0.05</clampForce>
+@@ -51,10 +51,10 @@
+ 		<density_from_vorticity>-0.1</density_from_vorticity>
+ 	</fluid_solver>
+ 	<particle_flow>
+-		<active>1</active>
+-		<speed>20</speed>
+-		<cell_size>1.25</cell_size>
+-		<birth_chance>0.5</birth_chance>
++		<active>0</active>
++		<speed>1.02041</speed>
++		<cell_size>2</cell_size>
++		<birth_chance>0.72449</birth_chance>
+ 		<birth_velocity_chance>0.5</birth_velocity_chance>
+ 		<lifespan>5</lifespan>
+ 		<lifespan_spread>0.25</lifespan_spread>
+@@ -62,6 +62,8 @@
+ 		<mass_spread>0.2</mass_spread>
+ 		<size>2</size>
+ 		<size_spread>0.75</size_spread>
+-		<twinkle_speed>11</twinkle_speed>
++		<twinkle_speed>0</twinkle_speed>
+ 	</particle_flow>
++<settings/>
++	<num_particles>267</num_particles>
+ </settings>
+diff --git a/src/baseAnimation.cpp b/src/baseAnimation.cpp
+new file mode 100644
+index 0000000..4be71f4
+--- /dev/null
++++ b/src/baseAnimation.cpp
+@@ -0,0 +1,14 @@
++//
++//  baseAnimation.cpp
++//  CLP_Knoxville_Wall
++//
++//  Created by Jakob Marsico on 4/4/16.
++//
++//
++
++#include "baseAnimation.h"
++
++void BaseAnimation::setup(){}
++void BaseAnimation::update(){}
++void BaseAnimation::draw(){}
++
+diff --git a/src/baseAnimation.h b/src/baseAnimation.h
+new file mode 100644
+index 0000000..dad28d1
+--- /dev/null
++++ b/src/baseAnimation.h
+@@ -0,0 +1,25 @@
++//
++//  baseAnimation.h
++//  CLP_Knoxville_Wall
++//
++//  Created by Jakob Marsico on 4/4/16.
++//
++//
++
++#ifndef __CLP_Knoxville_Wall__baseAnimation__
++#define __CLP_Knoxville_Wall__baseAnimation__
++
++#include <stdio.h>
++#include "ofMain.h"
++
++class BaseAnimation {
++public:
++    virtual void setup();
++    virtual void update();
++    virtual void draw();
++    
++    ofParameterGroup parameters;
++    
++};
++
++#endif /* defined(__CLP_Knoxville_Wall__baseAnimation__) */
+diff --git a/src/debugGui.cpp b/src/debugGui.cpp
+new file mode 100644
+index 0000000..19ce08c
+--- /dev/null
++++ b/src/debugGui.cpp
+@@ -0,0 +1,58 @@
++#include "DebugGui.h"
++
++//---------------------------------------------------------------
++DebugGui::DebugGui() {
++  showDebug = false;
++  showMouse.addListener(this, &DebugGui::setCursorState);
++  ofAddListener(onGuiRefresh, this, &DebugGui::redrawGui);
++}
++
++//---------------------------------------------------------------
++void DebugGui::setup(StateManager *_state){
++  state = _state;
++
++}
++
++//---------------------------------------------------------------
++void DebugGui::update(){
++  fps = ofToString(ofGetFrameRate());
++}
++
++//---------------------------------------------------------------
++void DebugGui::draw(){
++  if (!showDebug) return;
++  gui.draw();
++  ofSetColor(200);
++  }
++
++//---------------------------------------------------------------
++void DebugGui::addParam(GuiElement *p) {
++  groups.push_back(p);
++  redrawGui();
++}
++
++//---------------------------------------------------------------
++void DebugGui::toggleVisibility() {
++  showDebug = !showDebug;
++  if (showDebug) redrawGui();
++}
++
++//---------------------------------------------------------------
++void DebugGui::redrawGui() {
++  ofVec2f pos = gui.getPosition();
++  showMouse.setName("Show Mouse");
++  gui.clear();
++  parameters = ofParameterGroup();
++  parameters.setName("Settings");
++
++  parameters.add(fps.set("FPS","0"));
++  parameters.add(showMouse);
++
++  for(groupIterator = groups.begin(); groupIterator != groups.end(); ++groupIterator) {
++    GuiElement *g = *groupIterator;
++    g->redrawGui();
++    parameters.add(g->parameters);
++  }
++  gui.setup(parameters);
++  gui.setPosition(pos);
++  }
+diff --git a/src/debugGui.h b/src/debugGui.h
+new file mode 100644
+index 0000000..a9e05d4
+--- /dev/null
++++ b/src/debugGui.h
+@@ -0,0 +1,50 @@
++#pragma once
++
++#include "ofMain.h"
++#include "ofxGui.h"
++#include "stateManager.h"
++#include "guiElement.h"
++
++//This handles the debug gui—setting run-time controllable information. 
++// Objects that inherit from GuiElement and are added to this 
++// will present their parameters in the main debug gui.
++
++extern ofEvent<void> onGuiRefresh;
++
++class DebugGui : public GuiElement{
++public:
++  DebugGui();
++  void setup(StateManager *state);
++  void update();
++  void draw();
++  void addParam(GuiElement *p); 
++  void toggleVisibility();
++
++
++  ofParameter<bool> showMouse;
++protected:
++
++  bool showDebug;
++  void setCursorState(bool &show) {show ? ofShowCursor() : ofHideCursor();};
++  void redrawGui();
++  StateManager *state;
++
++  // GUI Elements
++  ofxPanel gui;
++  ofParameter<string> fps;
++  vector<GuiElement *> groups;
++  vector<GuiElement *>::iterator groupIterator;
++    
++    ofxPanel			gui;
++    ofParameter<float>	guiFPS;
++    ofParameter<int>    numCPUParticles;
++    ofParameter<string> ipAddress;
++    ofParameter<bool>	doFullScreen;
++    ofParameter<bool>	toggleGuiDraw;
++    ofParameter<bool>   toggleFluidDraw;
++    ofParameter<bool>   sendOut;
++    ofParameter<int>	drawMode;
++    ofParameter<string> drawName;
++    
++    
++ };
+\ No newline at end of file
+diff --git a/src/fluidManager.cpp b/src/fluidManager.cpp
+index 0b1e8dc..4c2e069 100644
+--- a/src/fluidManager.cpp
++++ b/src/fluidManager.cpp
+@@ -68,6 +68,7 @@ void FluidManager::update(const ofFbo &_inputFbo){
+ 
+ //--------------------------------------------------------------
+ void FluidManager::draw(int _mode){
++    
+     switch(_mode) {
+         case DRAW_COMPOSITE: drawComposite(); break;
+         case DRAW_PARTICLES: drawParticles(); break;
+@@ -89,6 +90,7 @@ void FluidManager::draw(int _mode){
+ void FluidManager::drawComposite(int _x, int _y, int _width, int _height) {
+     ofPushStyle();
+     
++    
+     ofEnableBlendMode(OF_BLENDMODE_ADD);
+     fluidSimulation.draw(_x, _y, _width, _height);
+     
+diff --git a/src/fluidManager.h b/src/fluidManager.h
+index df5e397..84cfb90 100644
+--- a/src/fluidManager.h
++++ b/src/fluidManager.h
+@@ -12,7 +12,6 @@
+ #include <stdio.h>
+ #include "ofMain.h"
+ #include "ofxFlowTools.h"
+-#include "ofxFastFboReader.h"
+ 
+ 
+ using namespace flowTools;
+@@ -27,7 +26,7 @@ enum drawModeEnum{
+     DRAW_SOURCE,
+ };
+ 
+-class FluidManager {
++class FluidManager  {
+     
+ public:
+     FluidManager(){}
+diff --git a/src/guiElement.h b/src/guiElement.h
+new file mode 100644
+index 0000000..0e240c1
+--- /dev/null
++++ b/src/guiElement.h
+@@ -0,0 +1,13 @@
++#pragma once
++
++#include "ofxOsc.h"
++#include "ofMain.h"
++
++// This is an interface for being included 
++// in the auto-updates of the DebugGui.
++
++class GuiElement {
++public:
++  ofParameterGroup parameters;
++  virtual void redrawGui(){};
++};
+\ No newline at end of file
+diff --git a/src/ofApp.cpp b/src/ofApp.cpp
+index 8607b07..53fa3b0 100644
+--- a/src/ofApp.cpp
++++ b/src/ofApp.cpp
+@@ -15,105 +15,42 @@ void ofApp::setup()
+ 
+     //setup the JSONRPC server
+     setupServer();
++    setupGui();
+     
+     drawWidth = ofGetWidth();
+     drawHeight = ofGetHeight();
+     
+     
+     // Animation
+-    animationFbo.allocate(drawWidth, drawHeight);
+-    animationFbo.begin();
+-    ofClear(0);
+-    animationFbo.end();
+-    
+-    
+-    setupGui();
+ 
+-    fluid.init(drawWidth, drawHeight);
+-    
+-    
+     
++    scene.setup(&state);
+     
+ }
+ 
+ //------------------------------------------------------
+ void ofApp::update(){
+     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+-//    deltaTime = ofGetElapsedTimef() - lastTime;
+-//    lastTime = ofGetElapsedTimef();
+-    
+-    guiFPS = ofGetFrameRate();
+-    numCPUParticles = particles.size();
+-    
+-    updateAnimation();
+-    drawAnimationFbo();
+-    fluid.update(animationFbo);
+ 
+-}
+ 
+-//------------------------------------------------------
+-void ofApp::updateAnimation(){
+-    
+-    ofFill();
+-    
+-    ofVec2f a(0, 0.1);
+-    
+-    for(size_t i = 0; i < particles.size(); i++){
+-        particles[i].update(a);
+-        if(particles[i].bTimeToDie){
+-            particles.erase(particles.begin()+i);
+-            
+-        }
+-    }
+-    
+ 
+-    
+ }
+ 
+-//------------------------------------------------------
+-void ofApp::drawAnimationFbo(){
+-    
+-    animationFbo.begin();
+-    ofClear(0);
+-    ofBackground(0);
+-    ofFill();
+-//    ofSetColor(255);
+-//    ofDrawCircle(700, 200, 200 * ofNoise(ofGetElapsedTimef()));
+-    
+-    for(Particle p : particles){
+-        p.draw();
+-    }
+-    
+-    animationFbo.end();
+-    
+-}
+-
+-
+-
+-
+-//--------------------------------------------------------------
+-void ofApp::drawModeSetName(int &_value) {
+-    switch(_value) {
+-        case DRAW_COMPOSITE:		drawName.set("Composite"); break;
+-        case DRAW_PARTICLES:		drawName.set("Particles"); break;
+-        case DRAW_FLUID_FIELDS:		drawName.set("Fluid Fields"); break;
+-        case DRAW_FLUID_DENSITY:    drawName.set("Fluid Density"); break;
+-        case DRAW_FLUID_OBSTACLE:	drawName.set("Fluid Obstacle"); break;
+-//        case DRAW_OPTICAL_FLOW:		drawName.set("Optical Flow"); break;
+-        case DRAW_SOURCE:			drawName.set("Source"); break;
+-    }
+-}
+-
+-
+ 
+ //------------------------------------------------------
+ void ofApp::draw(){
+     
+     ofBackground(0);
+-    fluid.draw(drawMode);
+-    gui.draw();
++    
++    scene.update();
++    scene.generateFinalComposite();
++    scene.draw();
++//    scene.fluid.draw(0);
+     
+     
++    systemGui.draw();
++    animGui.draw();
++    fluidGui.draw();
+     
+  }
+ 
+@@ -123,19 +60,6 @@ void ofApp::draw(){
+ void ofApp::setupGui(){
+     
+     
+-    gui.setup("settings");
+-    gui.setDefaultBackgroundColor(ofColor(0, 0, 0, 127));
+-    gui.setDefaultFillColor(ofColor(160, 160, 160, 160));
+-    gui.add(guiFPS.set("average FPS", 0, 0, 60));
+-    gui.add(numCPUParticles.set("num particles", 0, 0, 1000));
+-    gui.add(doFullScreen.set("fullscreen (F)", false));
+-    gui.add(toggleGuiDraw.set("show gui (G)", false));
+-    gui.add(drawMode.set("draw mode", DRAW_COMPOSITE, DRAW_COMPOSITE, DRAW_SOURCE));
+-    drawMode.addListener(this, &ofApp::drawModeSetName);
+-    gui.add(drawName.set("MODE", "draw name"));
+-    
+-    
+-    
+     int guiColorSwitch = 0;
+     ofColor guiHeaderColor[2];
+     guiHeaderColor[0].set(200, 150);
+@@ -144,35 +68,32 @@ void ofApp::setupGui(){
+     guiFillColor[0].set(200, 150);
+     guiFillColor[1].set(200, 150);
+     
+-
+     
+-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+-    guiColorSwitch = 1 - guiColorSwitch;
+-    gui.add(fluid.opticalFlow.parameters);
++    systemGui.setup("system");
++    systemGui.add(FPS.set("framerate", 0, 0, 100));
++    systemGui.setPosition(ofPoint(10,10));
+     
+-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
++    fluidGui.setup("fluid", "fluidSettings.xml");
++    fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
++    fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+     guiColorSwitch = 1 - guiColorSwitch;
+-    gui.add(fluid.velocityMask.parameters);
++    fluidGui.add(scene.fluidParams);
++    fluidGui.setPosition(systemGui.getWidth() + 10, 10);
+     
+-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+-    guiColorSwitch = 1 - guiColorSwitch;
+-    gui.add(fluid.fluidSimulation.parameters);
+     
+-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+-    guiColorSwitch = 1 - guiColorSwitch;
+-    gui.add(fluid.particleFlow.parameters);
++    
++    animGui.setup("animation", "animSettings.xml");
++    animGui.add(scene.parameters);
++    animGui.setPosition(systemGui.getWidth() + 20 + fluidGui.getWidth(), 10);
+     
+     // if the settings file is not present the parameters will not be set during this setup
+-    if (!ofFile("settings.xml"))
+-        gui.saveToFile("settings.xml");
++
+     
+-    gui.loadFromFile("settings.xml");
++    fluidGui.loadFromFile("settings.xml");
++    animGui.loadFromFile("animSettings.xml");
+     
+-    gui.minimizeAll();
++    fluidGui.minimizeAll();
++    animGui.minimizeAll();
+ }
+ 
+ 
+@@ -210,15 +131,5 @@ void ofApp::getSlider(ofx::JSONRPC::MethodArgs& args){
+ 
+ 
+ void ofApp::keyReleased(int key){
+-    if(key == ' '){
+-        for(size_t i = 0; i < 100; i++){
+-            Particle p;
+-            ofVec2f l(ofRandom(0, ofGetWidth()), ofRandom(0, ofGetHeight()));
+-            ofVec2f v(ofRandom(-10, 10), ofRandom(-10, 10));
+-                      
+-            p.setup(l,v, 1);
+-            particles.push_back(p);
+-        }
+-    }
+ }
+ 
+diff --git a/src/ofApp.h b/src/ofApp.h
+index cc8e83b..ba07588 100644
+--- a/src/ofApp.h
++++ b/src/ofApp.h
+@@ -10,10 +10,9 @@
+ 
+ #include "ofMain.h"
+ #include "ofxJSONRPC.h"
+-#include "fluidManager.h"
++#include "stateManager.h"
++#include "sceneBuilder.h"
+ #include "ofxGui.h"
+-#include "particle.h"
+-
+ 
+ 
+ class ofApp: public ofBaseApp
+@@ -28,9 +27,7 @@ public:
+     void setupServer();
+     
+     void setupGui();
+-    void updateAnimation();
+-    void drawAnimationFbo();
+-    void drawModeSetName(int &_value);
++
+ 
+     
+     void getSlider(ofx::JSONRPC::MethodArgs& args);
+@@ -42,25 +39,14 @@ public:
+     
+     
+     //GUI
+-    ofxPanel			gui;
+-    ofParameter<float>	guiFPS;
+-    ofParameter<int>    numCPUParticles;
+-    ofParameter<string> ipAddress;
+-    ofParameter<bool>	doFullScreen;
+-    ofParameter<bool>	toggleGuiDraw;
+-    ofParameter<bool>   toggleFluidDraw;
+-    ofParameter<bool>   sendOut;
+-    ofParameter<int>	drawMode;
+-    ofParameter<string> drawName;
+-
+-    
+-    FluidManager fluid;
+-    
++    ofxPanel fluidGui;
++    ofxPanel animGui;
++    ofxPanel systemGui;
++    ofParameter<int> FPS;
+     
+-    ///////////////////// ANIMATION //////////////////////////////
+-    ofFbo animationFbo;
+-    vector<Particle> particles;
+     
++    StateManager state;
++    SceneBuilder scene;
+ 
+ private:
+ 
+diff --git a/src/particleManager.cpp b/src/particleManager.cpp
+new file mode 100644
+index 0000000..b306ff4
+--- /dev/null
++++ b/src/particleManager.cpp
+@@ -0,0 +1,59 @@
++//
++//  particleManager.cpp
++//  CLP_Knoxville_Wall
++//
++//  Created by Jakob Marsico on 4/4/16.
++//
++//
++
++#include "particleManager.h"
++
++
++//----------------------------------------------------------
++ParticleManager::ParticleManager(){
++    
++}
++
++//----------------------------------------------------------
++void ParticleManager::setup(){
++    
++    parameters.add(drag.set("drag", 0.0, -1.0, 1.0));
++    parameters.add(ageSpeed.set("ageSpeed", 0.0, 0.5, 1.0));
++    
++}
++
++//----------------------------------------------------------
++void ParticleManager::update(ofVec2f _acc){
++    acc = _acc;
++    for(size_t i = 0; i < particles.size(); i++){
++        particles[i].update(acc);
++        if(particles[i].bTimeToDie) particles.erase(particles.begin() + i);
++    }
++    
++}
++
++//----------------------------------------------------------
++void ParticleManager::draw(){
++    for(size_t i = 0; i < particles.size(); i++){
++        particles[i].draw();
++    }
++}
++
++//----------------------------------------------------------
++void ParticleManager::explosion(ofVec2f _loc, int numParts){
++    
++    ofLogNotice("ParticleManager") << "explosion";
++    for(size_t i = 0; i < numParts; i++){
++        Particle p;
++        ofVec2f vel(ofRandom(-5, 5), ofRandom(-5,5));
++        p.setup(_loc, vel, 3);
++        
++        particles.push_back(p);
++        
++        
++    }
++    
++}
++
++
++
+diff --git a/src/particleManager.h b/src/particleManager.h
+new file mode 100644
+index 0000000..acab986
+--- /dev/null
++++ b/src/particleManager.h
+@@ -0,0 +1,44 @@
++//
++//  particleManager.h
++//  CLP_Knoxville_Wall
++//
++//  Created by Jakob Marsico on 4/4/16.
++//
++//
++
++#ifndef __CLP_Knoxville_Wall__particleManager__
++#define __CLP_Knoxville_Wall__particleManager__
++
++#include <stdio.h>
++#include "ofMain.h"
++#include "particle.h"
++
++class ParticleManager {
++public:
++    ParticleManager();
++    
++    //pointer to the statemanager
++    void setup();
++    
++    
++    void update(ofVec2f _acc);
++    
++    void explosion(ofVec2f _loc, int numParts);
++    
++    
++    void draw();
++    
++    
++    ofParameterGroup parameters;
++    ofParameter<float> drag;
++    ofParameter<int> ageSpeed;
++    ofVec2f acc;
++    
++    
++private:
++    
++    vector<Particle> particles;
++
++};
++
++#endif /* defined(__CLP_Knoxville_Wall__particleManager__) */
+diff --git a/src/popAnimation.cpp b/src/popAnimation.cpp
+new file mode 100644
+index 0000000..a12244a
+--- /dev/null
++++ b/src/popAnimation.cpp
+@@ -0,0 +1,17 @@
++//
++//  popAnimation.cpp
++//  CLP_Knoxville_Wall
++//
++//  Created by Jakob Marsico on 4/4/16.
++//
++//
++
++#include "popAnimation.h"
++
++void PopAnimation::setup(){
++    parameters.setName("Pop Anim");
++    parameters.add(velocity.set("velocity", 0.0, 0.0, 1.0));
++}
++
++
++
+diff --git a/src/popAnimation.h b/src/popAnimation.h
+new file mode 100644
+index 0000000..717e6bf
+--- /dev/null
++++ b/src/popAnimation.h
+@@ -0,0 +1,25 @@
++//
++//  popAnimation.h
++//  CLP_Knoxville_Wall
++//
++//  Created by Jakob Marsico on 4/4/16.
++//
++//
++
++#ifndef __CLP_Knoxville_Wall__popAnimation__
++#define __CLP_Knoxville_Wall__popAnimation__
++
++#include <stdio.h>
++#include "baseAnimation.h"
++
++class PopAnimation : public BaseAnimation {
++public:
++    void setup();
++//    void update();
++//    void draw();
++    
++    ofParameter<int> velocity;
++    ofParameter<float> spawnProb;
++};
++
++#endif /* defined(__CLP_Knoxville_Wall__popAnimation__) */
+diff --git a/src/sceneBuilder.cpp b/src/sceneBuilder.cpp
+new file mode 100644
+index 0000000..c0ab9f7
+--- /dev/null
++++ b/src/sceneBuilder.cpp
+@@ -0,0 +1,147 @@
++//
++//  sceneBuilder.cpp
++//  CLP_Knoxville_Wall
++//
++//  Created by Jakob Marsico on 4/4/16.
++//
++//
++
++#include "sceneBuilder.h"
++
++//--------------------------------------------------------------
++SceneBuilder::SceneBuilder(){
++
++    
++    drawWidth = ofGetWidth();
++    drawHeight = ofGetHeight();
++    
++    animationFbo.allocate(drawWidth, drawHeight);
++    animationFbo.begin();
++    ofClear(0);
++    animationFbo.end();
++    
++    compositeFbo.allocate(drawWidth, drawHeight);
++    compositeFbo.begin();
++    ofClear(0);
++    compositeFbo.end();
++    
++    particles.setup();
++    sweep.setup();
++    fluid.init(drawWidth, drawHeight);
++    
++    parameters.setName("Scene Settings");
++    parameters.add(drawMode.set("Draw Mode", DRAW_COMPOSITE, DRAW_COMPOSITE, DRAW_SOURCE));
++    
++//    ofAddListener(SceneBuilder::drawMode, this, &SceneBuilder::drawModeSetName);
++    parameters.add(drawName.set("", ""));
++    parameters.add(sweep.parameters);
++    parameters.add(pop.parameters);
++    parameters.add(particles.parameters);
++    
++    fluidParams.add(fluid.velocityMask.parameters);
++    fluidParams.add(fluid.opticalFlow.parameters);
++    fluidParams.add(fluid.fluidSimulation.parameters);
++    fluidParams.add(fluid.particleFlow.parameters);
++    
++
++//    ofAddListener(state->onSceneChange, this, &SceneBuilder::generateSceneSettings);
++
++}
++//--------------------------------------------------------------
++void SceneBuilder::setup(StateManager *_state){
++    state = _state;
++    
++}
++
++
++//--------------------------------------------------------------
++void SceneBuilder::update(){
++    
++    updateAnimation();
++    drawAnimation();
++    fluid.update(animationFbo);
++    drawModeSetName(drawMode.get());
++}
++
++//--------------------------------------------------------------
++void SceneBuilder::updateAnimation(){
++    
++    ofVec2f acc(0.0, 0.0);
++    
++    if(ofGetFrameNum() % 100 == 0){
++        particles.explosion(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 100);
++    }
++    particles.update(acc);
++}
++
++//--------------------------------------------------------------
++void SceneBuilder::drawAnimation(){
++    
++    animationFbo.begin();
++    ofClear(255);
++    //draw animations based on scene
++    particles.draw();
++    animationFbo.end();
++    
++    
++}
++
++void SceneBuilder::generateSceneSettings(int &newScene){
++    
++    //THIS IS WHERE GENERATIVE STUFF HAPPENS
++    
++    //change settings of different animations
++    /*eg: 
++    sweepAnimation on/off
++     sweepAnimation velocity = ofRandom(1.f);
++     popAnimation spawnProb = ofRandom(2.3);
++     fluid (random on/off)
++     
++    */
++}
++
++
++//--------------------------------------------------------------
++void SceneBuilder::generateFinalComposite(){
++    
++    compositeFbo.begin();
++    ofClear(255);
++    fluid.draw(drawMode);
++    compositeFbo.end();
++    reader.readToPixels(compositeFbo, compositePix);
++    
++}
++
++//--------------------------------------------------------------
++ofPixels SceneBuilder::getPixels(){
++    return compositePix;
++
++}
++
++
++//--------------------------------------------------------------
++void SceneBuilder::draw(){
++    compositeFbo.draw(0,0);
++//    animationFbo.draw(0,0);
++    
++}
++
++
++
++//--------------------------------------------------------------
++void SceneBuilder::drawModeSetName(const int &_value) {
++    switch(_value) {
++        case DRAW_COMPOSITE:		drawName.set("Composite"); break;
++        case DRAW_PARTICLES:		drawName.set("Particles"); break;
++        case DRAW_FLUID_FIELDS:		drawName.set("Fluid Fields"); break;
++        case DRAW_FLUID_DENSITY:    drawName.set("Fluid Density"); break;
++        case DRAW_FLUID_OBSTACLE:	drawName.set("Fluid Obstacle"); break;
++        case DRAW_SOURCE:			drawName.set("Source"); break;
++    }
++}
++
++
++SceneBuilder::~SceneBuilder(){
++//    ofRemoveListener(state->onSceneChange, this, &SceneBuilder::generateSceneSettings);
++}
++
+diff --git a/src/sceneBuilder.h b/src/sceneBuilder.h
+new file mode 100644
+index 0000000..1c7a4d1
+--- /dev/null
++++ b/src/sceneBuilder.h
+@@ -0,0 +1,68 @@
++//
++//  sceneBuilder.h
++//  CLP_Knoxville_Wall
++//
++//  Created by Jakob Marsico on 4/4/16.
++//
++//
++
++#ifndef __CLP_Knoxville_Wall__sceneBuilder__
++#define __CLP_Knoxville_Wall__sceneBuilder__
++
++#include <stdio.h>
++#include "ofMain.h"
++#include "stateManager.h"
++#include "sweepAnimation.h"
++#include "popAnimation.h"
++#include "particleManager.h"
++#include "guiElement.h"
++#include "fluidManager.h"
++#include "ofxFastFboReader.h"
++
++
++//extern ofEvent<int> onSceneChange;
++//extern ofEvent<bool> onUserInControl;
++//extern ofEvent<bool> onFullUserControl;
++
++
++class SceneBuilder {
++public:
++    SceneBuilder();
++    ~SceneBuilder();
++    void setup(StateManager *_state);
++    void updateAnimation();
++    void drawAnimation();
++    void generateSceneSettings(int &newScene);
++    void update();
++    void drawModeSetName(const int &_value);
++    void generateFinalComposite();
++    ofPixels getPixels();
++    void draw();
++    
++    ofParameterGroup parameters;
++    ofParameter<int>drawMode;
++    ofParameter<string>drawName;
++    ofParameterGroup fluidParams;
++    
++protected:
++    
++
++    
++    StateManager *state;
++    ParticleManager particles;
++    SweepAnimation sweep;
++    PopAnimation pop;
++
++    FluidManager fluid;
++    
++    int drawWidth, drawHeight;
++    
++    ofFbo animationFbo;
++    ofFbo compositeFbo;
++    
++    ofPixels compositePix;
++    ofxFastFboReader reader;
++    
++};
++
++#endif /* defined(__CLP_Knoxville_Wall__sceneBuilder__) */
+diff --git a/src/stateManager.cpp b/src/stateManager.cpp
+new file mode 100644
+index 0000000..ecd8120
+--- /dev/null
++++ b/src/stateManager.cpp
+@@ -0,0 +1,19 @@
++//
++//  stateManager.cpp
++//  CLP_Knoxville_Wall
++//
++//  Created by Jakob Marsico on 4/4/16.
++//
++//
++
++#include "stateManager.h"
++
++StateManager::StateManager(){
++    
++    
++    bUserInControl = false;
++    sceneTimer = (int)ofRandom(5000, 30000);
++    currentScene = (int)ofRandom(5);
++    
++    
++}
+\ No newline at end of file
+diff --git a/src/stateManager.h b/src/stateManager.h
+new file mode 100644
+index 0000000..514ffda
+--- /dev/null
++++ b/src/stateManager.h
+@@ -0,0 +1,42 @@
++//
++//  stateManager.h
++//  CLP_Knoxville_Wall
++//
++//  Created by Jakob Marsico on 4/4/16.
++//
++//
++
++#ifndef __CLP_Knoxville_Wall__stateManager__
++#define __CLP_Knoxville_Wall__stateManager__
++
++#include <stdio.h>
++#include "ofMain.h"
++
++class StateManager{
++public:
++    
++    StateManager();
++    void setUserInControl(bool bUserControl);
++    void setRunningState(bool onOff);
++    void setCurrentScene(int scene);
++    
++    ofEvent<int> onSceneChange;
++    ofEvent<bool> onUserInControl;
++    ofEvent<bool> onFullUserControl;
++    
++    
++    int getCurrentScene() { return currentScene; };
++    bool getRunningState() { return bIsRunning; };
++    bool getIsUserInControl() { return bUserInControl; };
++    int getSceneTimeRemaining() { return sceneTimer; };
++    
++private:
++    
++    bool bUserInControl;
++    bool bIsRunning;
++    int sceneTimer;
++    int currentScene;
++    
++};
++
++#endif /* defined(__CLP_Knoxville_Wall__stateManager__) */
+diff --git a/src/sweepAnimation.cpp b/src/sweepAnimation.cpp
+new file mode 100644
+index 0000000..63e9a50
+--- /dev/null
++++ b/src/sweepAnimation.cpp
+@@ -0,0 +1,15 @@
++//
++//  sweepAnimation.cpp
++//  CLP_Knoxville_Wall
++//
++//  Created by Jakob Marsico on 4/4/16.
++//
++//
++
++#include "sweepAnimation.h"
++
++void SweepAnimation::setup(){
++    parameters.setName("Sweep Anim");
++    parameters.add(velocity.set("velocity", 0.0, 0.0, 1.0));
++    parameters.add(spawnProb.set("spawn prob", 0.0, 0.0, 1.0));
++}
+\ No newline at end of file
+diff --git a/src/sweepAnimation.h b/src/sweepAnimation.h
+new file mode 100644
+index 0000000..ab4bccf
+--- /dev/null
++++ b/src/sweepAnimation.h
+@@ -0,0 +1,28 @@
++//
++//  sweepAnimation.h
++//  CLP_Knoxville_Wall
++//
++//  Created by Jakob Marsico on 4/4/16.
++//
++//
++
++#ifndef __CLP_Knoxville_Wall__sweepAnimation__
++#define __CLP_Knoxville_Wall__sweepAnimation__
++
++#include <stdio.h>
++#include "baseAnimation.h"
++
++class SweepAnimation : public BaseAnimation {
++public:
++    void setup();
++//    void update();
++//    void draw();
++    
++    ofParameter<int> velocity;
++    ofParameter<float> spawnProb;
++    
++    
++    
++};
++
++#endif /* defined(__CLP_Knoxville_Wall__sweepAnimation__) */
