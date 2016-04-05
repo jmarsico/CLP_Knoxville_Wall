@@ -13,6 +13,7 @@
 #include "stateManager.h"
 #include "sceneBuilder.h"
 #include "ofxGui.h"
+#include "FluidManager.h"
 
 
 class ofApp: public ofBaseApp
@@ -47,6 +48,8 @@ public:
     
     StateManager state;
     SceneBuilder scene;
+    
+    FluidManager fluid;
 
 private:
 

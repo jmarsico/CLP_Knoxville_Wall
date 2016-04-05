@@ -44,6 +44,11 @@ public:
     ofParameter<string>drawName;
     ofParameterGroup fluidParams;
     
+    ofFbo animationFbo;
+    ofFbo compositeFbo;
+    
+    FluidManager fluid;
+    
 protected:
     
 
@@ -53,12 +58,11 @@ protected:
     SweepAnimation sweep;
     PopAnimation pop;
 
-    FluidManager fluid;
+
     
     int drawWidth, drawHeight;
     
-    ofFbo animationFbo;
-    ofFbo compositeFbo;
+
     
     ofPixels compositePix;
     ofxFastFboReader reader;

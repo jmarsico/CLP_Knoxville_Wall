@@ -66,4 +66,7 @@
 	</particle_flow>
 <settings/>
 	<num_particles>267</num_particles>
+<system>
+		<framerate>0</framerate>
+	</system>
 </settings>

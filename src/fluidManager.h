@@ -77,7 +77,6 @@ public:
     
     
     
-    ofFbo               flowFbo;
     ofFbo               inputFbo;
     
     int					flowWidth;

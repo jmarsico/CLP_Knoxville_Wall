@@ -12,6 +12,19 @@
 SceneBuilder::SceneBuilder(){
 
     
+
+    
+
+//    ofAddListener(state->onSceneChange, this, &SceneBuilder::generateSceneSettings);
+
+}
+//--------------------------------------------------------------
+void SceneBuilder::setup(StateManager *_state){
+    state = _state;
+    
+    
+//    fluid.init(drawWidth, drawHeight);
+    
     drawWidth = ofGetWidth();
     drawHeight = ofGetHeight();
     
@@ -27,30 +40,21 @@ SceneBuilder::SceneBuilder(){
     
     particles.setup();
     sweep.setup();
-    fluid.init(drawWidth, drawHeight);
+    
     
     parameters.setName("Scene Settings");
     parameters.add(drawMode.set("Draw Mode", DRAW_COMPOSITE, DRAW_COMPOSITE, DRAW_SOURCE));
     
-//    ofAddListener(SceneBuilder::drawMode, this, &SceneBuilder::drawModeSetName);
+    //    ofAddListener(SceneBuilder::drawMode, this, &SceneBuilder::drawModeSetName);
     parameters.add(drawName.set("", ""));
     parameters.add(sweep.parameters);
     parameters.add(pop.parameters);
     parameters.add(particles.parameters);
     
-    fluidParams.add(fluid.velocityMask.parameters);
-    fluidParams.add(fluid.opticalFlow.parameters);
-    fluidParams.add(fluid.fluidSimulation.parameters);
-    fluidParams.add(fluid.particleFlow.parameters);
-    
-
-//    ofAddListener(state->onSceneChange, this, &SceneBuilder::generateSceneSettings);
-
-}
-//--------------------------------------------------------------
-void SceneBuilder::setup(StateManager *_state){
-    state = _state;
-    
+//    fluidParams.add(fluid.velocityMask.parameters);
+//    fluidParams.add(fluid.opticalFlow.parameters);
+//    fluidParams.add(fluid.fluidSimulation.parameters);
+//    fluidParams.add(fluid.particleFlow.parameters);
 }
 
 
@@ -59,7 +63,7 @@ void SceneBuilder::update(){
     
     updateAnimation();
     drawAnimation();
-    fluid.update(animationFbo);
+//    fluid.update(animationFbo);
     drawModeSetName(drawMode.get());
 }
 
@@ -105,10 +109,10 @@ void SceneBuilder::generateSceneSettings(int &newScene){
 void SceneBuilder::generateFinalComposite(){
     
     compositeFbo.begin();
-    ofClear(255);
-    fluid.draw(drawMode);
+//    ofClear(0);
+//    fluid.draw(drawMode);
     compositeFbo.end();
-    reader.readToPixels(compositeFbo, compositePix);
+//    reader.readToPixels(compositeFbo, compositePix);
     
 }
 
@@ -121,8 +125,10 @@ ofPixels SceneBuilder::getPixels(){
 
 //--------------------------------------------------------------
 void SceneBuilder::draw(){
-    compositeFbo.draw(0,0);
+//    compositeFbo.draw(0,0);
 //    animationFbo.draw(0,0);
+//    compositeFbo.draw(0, 0, ofGetWidth()/2, ofGetHeight()/2);
+    animationFbo.draw(0, ofGetHeight()/2, ofGetWidth()/2, ofGetHeight()/2);
     
 }
 

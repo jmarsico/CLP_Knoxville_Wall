@@ -26,13 +26,17 @@ void ofApp::setup()
     
     scene.setup(&state);
     
+    fluid.init(drawWidth, drawHeight);
+    
 }
 
 //------------------------------------------------------
 void ofApp::update(){
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
 
-
+    scene.update();
+    
+    fluid.update(scene.animationFbo);
 
 }
 
@@ -42,11 +46,17 @@ void ofApp::draw(){
     
     ofBackground(0);
     
-    scene.update();
+    fluid.draw(5);
+    
+//    scene.update();
     scene.generateFinalComposite();
     scene.draw();
-//    scene.fluid.draw(0);
+//    scene.compositeFbo.draw(0,0);
+//    scene.fluid.draw(4);
     
+//    ofImage img;
+//    img.setFromPixels(scene.getPixels());
+//    img.draw(0,0);
     
     systemGui.draw();
     animGui.draw();
@@ -78,13 +88,13 @@ void ofApp::setupGui(){
     fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
     guiColorSwitch = 1 - guiColorSwitch;
     fluidGui.add(scene.fluidParams);
-    fluidGui.setPosition(systemGui.getWidth() + 10, 10);
+    fluidGui.setPosition(systemGui.getWidth() + 20, 10);
     
     
     
     animGui.setup("animation", "animSettings.xml");
     animGui.add(scene.parameters);
-    animGui.setPosition(systemGui.getWidth() + 20 + fluidGui.getWidth(), 10);
+    animGui.setPosition(systemGui.getWidth() + 30 + fluidGui.getWidth(), 10);
     
     // if the settings file is not present the parameters will not be set during this setup
 
