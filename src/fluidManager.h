@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include "ofMain.h"
 #include "ofxFlowTools.h"
-#include "ofxFastFboReader.h"
 
 
 using namespace flowTools;

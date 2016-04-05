@@ -8,9 +8,10 @@
 
 #include "popAnimation.h"
 
-void PopAnination::setup(){
+void PopAnimation::setup(){
     parameters.setName("Pop Anim");
     parameters.add(velocity.set("velocity", 0.0, 0.0, 1.0));
 }
+
 
 

@@ -7,3 +7,8 @@
 //
 
 #include "baseAnimation.h"
+
+void BaseAnimation::setup(){}
+void BaseAnimation::update(){}
+void BaseAnimation::draw(){}
+

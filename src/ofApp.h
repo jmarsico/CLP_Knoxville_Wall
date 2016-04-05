@@ -10,11 +10,9 @@
 
 #include "ofMain.h"
 #include "ofxJSONRPC.h"
-#include "ofxGui.h"
 #include "stateManager.h"
 #include "sceneBuilder.h"
-#include "debugGui.h"
-
+#include "ofxGui.h"
 
 
 class ofApp: public ofBaseApp
@@ -29,9 +27,7 @@ public:
     void setupServer();
     
     void setupGui();
-    void updateAnimation();
-    void drawAnimationFbo();
-    void drawModeSetName(int &_value);
+
 
     
     void getSlider(ofx::JSONRPC::MethodArgs& args);
@@ -43,24 +39,14 @@ public:
     
     
     //GUI
-    ofxPanel			gui;
-    ofParameter<float>	guiFPS;
-    ofParameter<int>    numCPUParticles;
-    ofParameter<string> ipAddress;
-    ofParameter<bool>	doFullScreen;
-    ofParameter<bool>	toggleGuiDraw;
-    ofParameter<bool>   toggleFluidDraw;
-    ofParameter<bool>   sendOut;
-    ofParameter<int>	drawMode;
-    ofParameter<string> drawName;
+    ofxPanel fluidGui;
+    ofxPanel animGui;
+    ofxPanel systemGui;
+    ofParameter<int> FPS;
 
     
-    
-    
-    ///////////////////// ANIMATION //////////////////////////////
-    ofFbo animationFbo;
-    
-    
+    StateManager state;
+    SceneBuilder scene;
 
 private:
 

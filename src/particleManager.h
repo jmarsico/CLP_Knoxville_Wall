@@ -11,9 +11,9 @@
 
 #include <stdio.h>
 #include "ofMain.h"
-#include "guiElement.h"
+#include "particle.h"
 
-class ParticleManager : public GuiElement {
+class ParticleManager {
 public:
     ParticleManager();
     
@@ -21,15 +21,24 @@ public:
     void setup();
     
     
-    void update();
+    void update(ofVec2f _acc);
+    
+    void explosion(ofVec2f _loc);
     
     
     void draw();
     
     
-private:
-    vector<Particle> particles;
+    ofParameterGroup parameters;
+    ofParameter<float> drag;
+    ofParameter<int> ageSpeed;
+    ofVec2f acc;
     
+    
+private:
+    
+    vector<Particle> particles;
+
 };
 
 #endif /* defined(__CLP_Knoxville_Wall__particleManager__) */

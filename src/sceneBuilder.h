@@ -17,34 +17,51 @@
 #include "particleManager.h"
 #include "guiElement.h"
 #include "fluidManager.h"
+#include "ofxFastFboReader.h"
 
 
-extern ofEvent<int> onSceneChange;
+//extern ofEvent<int> onSceneChange;
+//extern ofEvent<bool> onUserInControl;
+//extern ofEvent<bool> onFullUserControl;
 
 
-class SceneBuilder : GuiElement{
+class SceneBuilder {
 public:
     SceneBuilder();
+    ~SceneBuilder();
     void setup(StateManager *_state);
-    
+    void updateAnimation();
     void drawAnimation();
-    
-    void generateScene();
-    
+    void generateSceneSettings(int &newScene);
     void update();
+    void drawModeSetName(int &_value);
+    ofPixels generateFinalComposite();
+    void draw();
     
+    ofParameterGroup parameters;
+    ofParameter<int>drawMode;
+    ofParameter<string>drawName;
     
-private:
+    ofParameterGroup fluidParams;
+    
+protected:
+    
+
+    
     StateManager *state;
     ParticleManager particles;
     SweepAnimation sweep;
     PopAnimation pop;
-    
+
     FluidManager fluid;
     
     int drawWidth, drawHeight;
     
     ofFbo animationFbo;
+    ofFbo compositeFbo;
+    
+    ofPixels compositePix;
+    ofxFastFboReader reader;
     
 };
 

@@ -21,91 +21,31 @@ void ofApp::setup()
     
     
     // Animation
-    animationFbo.allocate(drawWidth, drawHeight);
-    animationFbo.begin();
-    ofClear(0);
-    animationFbo.end();
-    
-    
-    setupGui();
 
-//    fluid.init(drawWidth, drawHeight);
     
-    
-    
+    scene.setup(&state);
     
 }
 
 //------------------------------------------------------
 void ofApp::update(){
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
-//    deltaTime = ofGetElapsedTimef() - lastTime;
-//    lastTime = ofGetElapsedTimef();
-    
-    guiFPS = ofGetFrameRate();
-    numCPUParticles = particles.size();
-    
-    updateAnimation();
-    drawAnimationFbo();
-//    fluid.update(animationFbo);
+
+    scene.update();
 
 }
-
-//------------------------------------------------------
-void ofApp::updateAnimation(){
-    
-    ofFill();
-    
-    ofVec2f a(0, 0.1);
-    
-    
-    
-    
-    
-    
-}
-
-//------------------------------------------------------
-void ofApp::drawAnimationFbo(){
-    
-    animationFbo.begin();
-    ofClear(0);
-    ofBackground(0);
-    ofFill();
-//    ofSetColor(255);
-//    ofDrawCircle(700, 200, 200 * ofNoise(ofGetElapsedTimef()));
-    
-     
-    animationFbo.end();
-    
-}
-
-
-
-
-//--------------------------------------------------------------
-void ofApp::drawModeSetName(int &_value) {
-    switch(_value) {
-        case DRAW_COMPOSITE:		drawName.set("Composite"); break;
-        case DRAW_PARTICLES:		drawName.set("Particles"); break;
-        case DRAW_FLUID_FIELDS:		drawName.set("Fluid Fields"); break;
-        case DRAW_FLUID_DENSITY:    drawName.set("Fluid Density"); break;
-        case DRAW_FLUID_OBSTACLE:	drawName.set("Fluid Obstacle"); break;
-//        case DRAW_OPTICAL_FLOW:		drawName.set("Optical Flow"); break;
-        case DRAW_SOURCE:			drawName.set("Source"); break;
-    }
-}
-
 
 
 //------------------------------------------------------
 void ofApp::draw(){
     
     ofBackground(0);
-    fluid.draw(drawMode);
-    gui.draw();
     
+    scene.draw();
     
+    systemGui.draw();
+    animGui.draw();
+    fluidGui.draw();
     
  }
 
@@ -113,19 +53,6 @@ void ofApp::draw(){
 
 //------------------------------------------------------
 void ofApp::setupGui(){
-    
-    
-    gui.setup("settings");
-    gui.setDefaultBackgroundColor(ofColor(0, 0, 0, 127));
-    gui.setDefaultFillColor(ofColor(160, 160, 160, 160));
-    gui.add(guiFPS.set("average FPS", 0, 0, 60));
-    gui.add(numCPUParticles.set("num particles", 0, 0, 1000));
-    gui.add(doFullScreen.set("fullscreen (F)", false));
-    gui.add(toggleGuiDraw.set("show gui (G)", false));
-    gui.add(drawMode.set("draw mode", DRAW_COMPOSITE, DRAW_COMPOSITE, DRAW_SOURCE));
-    drawMode.addListener(this, &ofApp::drawModeSetName);
-    gui.add(drawName.set("MODE", "draw name"));
-    
     
     
     int guiColorSwitch = 0;
@@ -136,35 +63,46 @@ void ofApp::setupGui(){
     guiFillColor[0].set(200, 150);
     guiFillColor[1].set(200, 150);
     
+    
+    systemGui.setup("system");
+    systemGui.add(FPS.set("framerate", 0, 0, 100));
+    
+    fluidGui.setup("fluid", "fluidSettings.xml");
+    
+    fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+    fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+    guiColorSwitch = 1 - guiColorSwitch;
+    fluidGui.add(scene.fluidParams);
+//    
+//    fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+//    fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+//    guiColorSwitch = 1 - guiColorSwitch;
+//    fluidGui.add(scene.fluid.velocityMask.parameters);
+//    
+//    fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+//    fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+//    guiColorSwitch = 1 - guiColorSwitch;
+//    fluidGui.add(scene.fluid.fluidSimulation.parameters);
+//    
+//    fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+//    fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+//    guiColorSwitch = 1 - guiColorSwitch;
+//    fluidGui.add(scene.fluid.particleFlow.parameters);
+    
+    
+    
+    animGui.setup("animation", "animSettings.xml");
+    animGui.add(scene.parameters);
 
     
-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    gui.add(fluid.opticalFlow.parameters);
-    
-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    gui.add(fluid.velocityMask.parameters);
-    
-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    gui.add(fluid.fluidSimulation.parameters);
-    
-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    gui.add(fluid.particleFlow.parameters);
-    
     // if the settings file is not present the parameters will not be set during this setup
-    if (!ofFile("settings.xml"))
-        gui.saveToFile("settings.xml");
+
     
-    gui.loadFromFile("settings.xml");
+    fluidGui.loadFromFile("fluidSettings.xml");
+    animGui.loadFromFile("animSettings.xml");
     
-    gui.minimizeAll();
+    fluidGui.minimizeAll();
+    animGui.minimizeAll();
 }
 
 
@@ -202,15 +140,5 @@ void ofApp::getSlider(ofx::JSONRPC::MethodArgs& args){
 
 
 void ofApp::keyReleased(int key){
-    if(key == ' '){
-        for(size_t i = 0; i < 100; i++){
-            Particle p;
-            ofVec2f l(ofRandom(0, ofGetWidth()), ofRandom(0, ofGetHeight()));
-            ofVec2f v(ofRandom(-1, 1), ofRandom(-1, 1));
-                      
-            p.setup(l,v, 1);
-            particles.push_back(p);
-        }
-    }
 }
 

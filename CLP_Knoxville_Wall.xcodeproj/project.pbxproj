@@ -95,7 +95,6 @@
 		BA18A9AD1CB2B7B6007E76B8 /* sweepAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9AB1CB2B7B6007E76B8 /* sweepAnimation.cpp */; };
 		BA18A9B11CB2B82F007E76B8 /* particleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9AF1CB2B82F007E76B8 /* particleManager.cpp */; };
 		BA18A9B41CB2B966007E76B8 /* sceneBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9B21CB2B966007E76B8 /* sceneBuilder.cpp */; };
-		BA18A9B71CB2C3D7007E76B8 /* debugGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9B51CB2C3D7007E76B8 /* debugGui.cpp */; };
 		BA18A9BD1CB2D489007E76B8 /* popAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA18A9BB1CB2D489007E76B8 /* popAnimation.cpp */; };
 		BA22C5AB1C8E2F0F004B30A7 /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5841C8E2F0F004B30A7 /* ofxOscBundle.cpp */; };
 		BA22C5AC1C8E2F0F004B30A7 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5861C8E2F0F004B30A7 /* ofxOscMessage.cpp */; };
@@ -437,9 +436,6 @@
 		BA18A9B01CB2B82F007E76B8 /* particleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particleManager.h; sourceTree = "<group>"; };
 		BA18A9B21CB2B966007E76B8 /* sceneBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceneBuilder.cpp; sourceTree = "<group>"; };
 		BA18A9B31CB2B966007E76B8 /* sceneBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sceneBuilder.h; sourceTree = "<group>"; };
-		BA18A9B51CB2C3D7007E76B8 /* debugGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = debugGui.cpp; sourceTree = "<group>"; };
-		BA18A9B61CB2C3D7007E76B8 /* debugGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debugGui.h; sourceTree = "<group>"; };
-		BA18A9B81CB2CC74007E76B8 /* guiElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiElement.h; sourceTree = "<group>"; };
 		BA18A9BB1CB2D489007E76B8 /* popAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = popAnimation.cpp; sourceTree = "<group>"; };
 		BA18A9BC1CB2D489007E76B8 /* popAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popAnimation.h; sourceTree = "<group>"; };
 		BA22C5821C8E2F0F004B30A7 /* ofxOsc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOsc.h; sourceTree = "<group>"; };
@@ -1623,16 +1619,13 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				BA18A9B21CB2B966007E76B8 /* sceneBuilder.cpp */,
-				BA18A9B31CB2B966007E76B8 /* sceneBuilder.h */,
-				BA18A9B81CB2CC74007E76B8 /* guiElement.h */,
-				BA18A9B51CB2C3D7007E76B8 /* debugGui.cpp */,
-				BA18A9B61CB2C3D7007E76B8 /* debugGui.h */,
 				BA18A9AE1CB2B815007E76B8 /* particles */,
 				BA18A9A71CB2B57C007E76B8 /* animations */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+				BA18A9B21CB2B966007E76B8 /* sceneBuilder.cpp */,
+				BA18A9B31CB2B966007E76B8 /* sceneBuilder.h */,
 				BA18A9A41CB2AD22007E76B8 /* stateManager.cpp */,
 				BA18A9A51CB2AD22007E76B8 /* stateManager.h */,
 			);
@@ -1830,7 +1823,6 @@
 				BA18A98C1CAC55DA007E76B8 /* ofxPanel.cpp in Sources */,
 				AFD807EADDB21467AAC72D19 /* URIBuilder.cpp in Sources */,
 				BA18A9891CAC55DA007E76B8 /* ofxButton.cpp in Sources */,
-				BA18A9B71CB2C3D7007E76B8 /* debugGui.cpp in Sources */,
 				5DF1C13343DD10285CBEC8E1 /* WebSocketConnection.cpp in Sources */,
 				24BE0715BB2776CC9CC258B0 /* WebSocketExtensions.cpp in Sources */,
 				A8AF031F8417316AFF0D746E /* WebSocketFrame.cpp in Sources */,

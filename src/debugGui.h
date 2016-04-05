@@ -34,4 +34,17 @@ protected:
   ofParameter<string> fps;
   vector<GuiElement *> groups;
   vector<GuiElement *>::iterator groupIterator;
+    
+    ofxPanel			gui;
+    ofParameter<float>	guiFPS;
+    ofParameter<int>    numCPUParticles;
+    ofParameter<string> ipAddress;
+    ofParameter<bool>	doFullScreen;
+    ofParameter<bool>	toggleGuiDraw;
+    ofParameter<bool>   toggleFluidDraw;
+    ofParameter<bool>   sendOut;
+    ofParameter<int>	drawMode;
+    ofParameter<string> drawName;
+    
+    
  };

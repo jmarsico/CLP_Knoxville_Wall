@@ -15,8 +15,8 @@
 class SweepAnimation : public BaseAnimation {
 public:
     void setup();
-    void update();
-    void draw();
+//    void update();
+//    void draw();
     
     ofParameter<int> velocity;
     ofParameter<float> spawnProb;
