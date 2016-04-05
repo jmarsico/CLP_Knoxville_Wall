@@ -23,7 +23,7 @@ public:
     
     void update(ofVec2f _acc);
     
-    void explosion(ofVec2f _loc);
+    void explosion(ofVec2f _loc, int numParts);
     
     
     void draw();

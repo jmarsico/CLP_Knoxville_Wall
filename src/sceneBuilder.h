@@ -34,14 +34,14 @@ public:
     void drawAnimation();
     void generateSceneSettings(int &newScene);
     void update();
-    void drawModeSetName(int &_value);
-    ofPixels generateFinalComposite();
+    void drawModeSetName(const int &_value);
+    void generateFinalComposite();
+    ofPixels getPixels();
     void draw();
     
     ofParameterGroup parameters;
     ofParameter<int>drawMode;
     ofParameter<string>drawName;
-    
     ofParameterGroup fluidParams;
     
 protected:

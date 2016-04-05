@@ -15,6 +15,7 @@ void ofApp::setup()
 
     //setup the JSONRPC server
     setupServer();
+    setupGui();
     
     drawWidth = ofGetWidth();
     drawHeight = ofGetHeight();
@@ -31,7 +32,7 @@ void ofApp::setup()
 void ofApp::update(){
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
 
-    scene.update();
+
 
 }
 
@@ -41,7 +42,11 @@ void ofApp::draw(){
     
     ofBackground(0);
     
+    scene.update();
+    scene.generateFinalComposite();
     scene.draw();
+//    scene.fluid.draw(0);
+    
     
     systemGui.draw();
     animGui.draw();
@@ -66,39 +71,25 @@ void ofApp::setupGui(){
     
     systemGui.setup("system");
     systemGui.add(FPS.set("framerate", 0, 0, 100));
+    systemGui.setPosition(ofPoint(10,10));
     
     fluidGui.setup("fluid", "fluidSettings.xml");
-    
     fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
     fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
     guiColorSwitch = 1 - guiColorSwitch;
     fluidGui.add(scene.fluidParams);
-//    
-//    fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-//    fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-//    guiColorSwitch = 1 - guiColorSwitch;
-//    fluidGui.add(scene.fluid.velocityMask.parameters);
-//    
-//    fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-//    fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-//    guiColorSwitch = 1 - guiColorSwitch;
-//    fluidGui.add(scene.fluid.fluidSimulation.parameters);
-//    
-//    fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-//    fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-//    guiColorSwitch = 1 - guiColorSwitch;
-//    fluidGui.add(scene.fluid.particleFlow.parameters);
+    fluidGui.setPosition(systemGui.getWidth() + 10, 10);
     
     
     
     animGui.setup("animation", "animSettings.xml");
     animGui.add(scene.parameters);
-
+    animGui.setPosition(systemGui.getWidth() + 20 + fluidGui.getWidth(), 10);
     
     // if the settings file is not present the parameters will not be set during this setup
 
     
-    fluidGui.loadFromFile("fluidSettings.xml");
+    fluidGui.loadFromFile("settings.xml");
     animGui.loadFromFile("animSettings.xml");
     
     fluidGui.minimizeAll();

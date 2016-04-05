@@ -31,15 +31,18 @@ SceneBuilder::SceneBuilder(){
     
     parameters.setName("Scene Settings");
     parameters.add(drawMode.set("Draw Mode", DRAW_COMPOSITE, DRAW_COMPOSITE, DRAW_SOURCE));
-//    ofAddListener(drawMode, this, &SceneBuilder::drawModeSetName);
+    
+//    ofAddListener(SceneBuilder::drawMode, this, &SceneBuilder::drawModeSetName);
+    parameters.add(drawName.set("", ""));
     parameters.add(sweep.parameters);
     parameters.add(pop.parameters);
     parameters.add(particles.parameters);
     
+    fluidParams.add(fluid.velocityMask.parameters);
     fluidParams.add(fluid.opticalFlow.parameters);
     fluidParams.add(fluid.fluidSimulation.parameters);
     fluidParams.add(fluid.particleFlow.parameters);
-    fluidParams.add(fluid.velocityMask.parameters);
+    
 
 //    ofAddListener(state->onSceneChange, this, &SceneBuilder::generateSceneSettings);
 
@@ -57,10 +60,18 @@ void SceneBuilder::update(){
     updateAnimation();
     drawAnimation();
     fluid.update(animationFbo);
+    drawModeSetName(drawMode.get());
 }
 
+//--------------------------------------------------------------
 void SceneBuilder::updateAnimation(){
     
+    ofVec2f acc(0.0, 0.0);
+    
+    if(ofGetFrameNum() % 100 == 0){
+        particles.explosion(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 100);
+    }
+    particles.update(acc);
 }
 
 //--------------------------------------------------------------
@@ -90,28 +101,35 @@ void SceneBuilder::generateSceneSettings(int &newScene){
 }
 
 
-
-ofPixels SceneBuilder::generateFinalComposite(){
+//--------------------------------------------------------------
+void SceneBuilder::generateFinalComposite(){
     
     compositeFbo.begin();
+    ofClear(255);
     fluid.draw(drawMode);
     compositeFbo.end();
-    
     reader.readToPixels(compositeFbo, compositePix);
-    
-    return compositePix;
-    
     
 }
 
+//--------------------------------------------------------------
+ofPixels SceneBuilder::getPixels(){
+    return compositePix;
+
+}
+
+
+//--------------------------------------------------------------
 void SceneBuilder::draw(){
     compositeFbo.draw(0,0);
+//    animationFbo.draw(0,0);
+    
 }
 
 
 
 //--------------------------------------------------------------
-void SceneBuilder::drawModeSetName(int &_value) {
+void SceneBuilder::drawModeSetName(const int &_value) {
     switch(_value) {
         case DRAW_COMPOSITE:		drawName.set("Composite"); break;
         case DRAW_PARTICLES:		drawName.set("Particles"); break;

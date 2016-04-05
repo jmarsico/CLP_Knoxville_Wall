@@ -68,6 +68,7 @@ void FluidManager::update(const ofFbo &_inputFbo){
 
 //--------------------------------------------------------------
 void FluidManager::draw(int _mode){
+    
     switch(_mode) {
         case DRAW_COMPOSITE: drawComposite(); break;
         case DRAW_PARTICLES: drawParticles(); break;
@@ -88,6 +89,7 @@ void FluidManager::draw(int _mode){
 //--------------------------------------------------------------
 void FluidManager::drawComposite(int _x, int _y, int _width, int _height) {
     ofPushStyle();
+    
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     fluidSimulation.draw(_x, _y, _width, _height);

@@ -43,7 +43,7 @@ public:
     ofxPanel animGui;
     ofxPanel systemGui;
     ofParameter<int> FPS;
-
+    
     
     StateManager state;
     SceneBuilder scene;
