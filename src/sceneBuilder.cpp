@@ -103,7 +103,7 @@ void SceneBuilder::drawAnimation(){
 
 void SceneBuilder::generateSceneSettings(int &newScene){
     
-    //THIS IS WHERE GENERATIVE STUFF HAPPENS
+    //THIS IS WHERE GENERATIVE changes HAPPEN
     
     //change settings of different animations
     /*eg: 
@@ -112,7 +112,26 @@ void SceneBuilder::generateSceneSettings(int &newScene){
      popAnimation spawnProb = ofRandom(2.3);
      fluid (random on/off)
      
+     - fluid-particle size
+     - fluid-particle twinkle
+     - fluid-particle birth chance
+     - fluid-particle on/off
+
+
+     - fluid-velocity strength
+     - fluid-optflow strength
+     - fluid-optflow offset
+     
+     - fluid.fluidSimulation.setDissipation(0.0);
+     
+       - myParticle size
+     
+     
     */
+    
+//
+    
+    
 }
 
 

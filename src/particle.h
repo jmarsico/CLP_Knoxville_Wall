@@ -20,6 +20,8 @@ public:
     void update(ofVec2f _force);
     void draw();
     
+    void turnOnNoise(bool _noise);
+    
     
     ofVec2f loc;
     ofVec2f vel;
@@ -28,6 +30,15 @@ public:
     float ageSpeed;
     bool bTimeToDie;
     ofPolyline shape;
+    
+    float counterInc;
+    float counterX;
+    float counterY;
+    
+
+    
+    bool bNoise;
+    
 };
 
 #endif /* defined(__CLP_Knoxville_Wall__particle__) */

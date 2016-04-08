@@ -47,6 +47,7 @@ void ParticleManager::explosion(ofVec2f _loc, int numParts){
         Particle p;
         ofVec2f vel(ofRandom(-5, 5), ofRandom(-5,5));
         p.setup(_loc, vel, 3);
+        p.turnOnNoise(true);
         
         particles.push_back(p);
         
