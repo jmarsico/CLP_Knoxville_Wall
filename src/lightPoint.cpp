@@ -16,6 +16,7 @@ void LightPoint::setup(ofVec2f _loc){
     uint8_t start;
     start = 0;
     samples.push_back(start);
+    currentVal = 0;
 }
 
 
@@ -24,11 +25,15 @@ void LightPoint::setAvgSamplingSize(int _numSamples){
 }
 
 
+
 void LightPoint::setCurrentVal(int _val){
     index ++;
     if(index >= numSamples) index = 0;
     
     samples[index] = _val;
+    
+    currentVal = _val;
+//    ofLog() << "set: " << currentVal;
     
 }
 
@@ -47,12 +52,13 @@ uint8_t LightPoint::getAvgVal(){
 
 void LightPoint::draw(){
     
-    ofSetColor(getAvgVal());
+//    ofLog() << "draw: " << currentVal;
     ofFill();
+    ofSetColor(currentVal);
     ofDrawCircle(loc, 2);
     
-    ofNoFill();
-    ofSetColor(255, 100);
-    ofDrawCircle(loc, 2);
+//    ofNoFill();
+//    ofSetColor(255, 100);
+//    ofDrawCircle(loc, 2);
 }
 

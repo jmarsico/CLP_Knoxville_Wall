@@ -143,7 +143,7 @@ void SceneBuilder::generateFinalComposite(){
     fluid.draw(drawMode);
     compositeFbo.end();
     
-//    reader.readToPixels(compositeFbo, compositePix);
+    reader.readToPixels(compositeFbo, compositePix);
     
 }
 

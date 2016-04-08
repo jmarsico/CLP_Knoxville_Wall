@@ -48,7 +48,18 @@ void ofApp::setup()
 void ofApp::update(){
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
 
+    ofSetColor(255);
     scene.update();
+    
+    scene.generateFinalComposite();
+    compPix = scene.getPixels();
+    
+    for(size_t i = 0; i < lights.size(); i++){
+        ofVec2f loc = lights[i].getLoc();
+//        ofLog() << compPix.getColor(loc.x, loc.y).getBrightness();
+        int val = compPix.getColor(loc.x, loc.y).getBrightness();
+        lights[i].setCurrentVal(val);
+    }
     
 //    fluid.update(scene.animationFbo);
 
@@ -59,19 +70,22 @@ void ofApp::update(){
 void ofApp::draw(){
     
     ofBackground(0);
+    ofSetColor(255);
     
     
-    scene.generateFinalComposite();
-    scene.draw();
+    if(bShowAnim) scene.draw();
+
     
     systemGui.draw();
     animGui.draw();
     fluidGui.draw();
     
     
-    for(LightPoint l : lights){
-        l.draw();
+    for(size_t i = 0; i < lights.size(); i ++){
+        lights[i].draw();
     }
+    
+    
 //    scene.gui.draw();
 //    scene.animGui.draw();
 //    
@@ -94,6 +108,7 @@ void ofApp::setupGui(){
     
     systemGui.setup("system");
     systemGui.add(FPS.set("framerate", 0, 0, 100));
+    systemGui.add(bShowAnim.set("show anim", true));
     systemGui.setPosition(ofPoint(10,10));
 //    
     fluidGui.setup("fluid", "fluidSettings.xml");
@@ -116,6 +131,10 @@ void ofApp::setupGui(){
     
     fluidGui.minimizeAll();
     animGui.minimizeAll();
+    
+    fluidGui.setPosition(10,10);
+    systemGui.setPosition(20 + fluidGui.getWidth(), 10);
+    animGui.setPosition(20 + fluidGui.getWidth(), 10 + systemGui.getHeight());
 }
 
 

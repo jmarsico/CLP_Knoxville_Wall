@@ -46,6 +46,7 @@ public:
     ofxPanel animGui;
     ofxPanel systemGui;
     ofParameter<int> FPS;
+    ofParameter<bool> bShowAnim;
     
     
     StateManager state;
@@ -53,6 +54,7 @@ public:
     CsvLoader csv;
     
     vector<LightPoint> lights;
+    ofPixels compPix;
     
 //    FluidManager fluid;
 

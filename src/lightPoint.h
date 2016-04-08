@@ -22,6 +22,7 @@ public:
     void setAvgSamplingSize(int _numSamples);
     void setCurrentVal(int _val);
     uint8_t getAvgVal();
+    ofVec2f getLoc() { return loc; }
     
     void draw();
     
@@ -35,6 +36,7 @@ protected:
     
     ofVec2f loc;
     uint8_t avgVal;
+    int currentVal;
 };
 
 #endif /* defined(__CLP_Knoxville_Wall__lightPoint__) */
