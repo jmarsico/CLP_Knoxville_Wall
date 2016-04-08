@@ -22,6 +22,19 @@ void ofApp::setup()
     drawWidth = ofGetWidth();
     drawHeight = ofGetHeight();
     
+    csv.loadLightPoints("allPoints.csv");
+    
+    for(size_t i = 0; i < csv.getNumLights(); i++){
+        LightPoint lp;
+        ofVec2f p = csv.getLightLoc(i);
+        ofVec2f trans(50, 300);
+        p += trans;
+        
+        p *= 1.5;
+        lp.setup(p);
+        lights.push_back(lp);
+    }
+    
     
     // Animation
 
@@ -54,6 +67,11 @@ void ofApp::draw(){
     systemGui.draw();
     animGui.draw();
     fluidGui.draw();
+    
+    
+    for(LightPoint l : lights){
+        l.draw();
+    }
 //    scene.gui.draw();
 //    scene.animGui.draw();
 //    

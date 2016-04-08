@@ -108,6 +108,9 @@
 		BA22C5B41C8E2F0F004B30A7 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5A51C8E2F0F004B30A7 /* OscPrintReceivedElements.cpp */; };
 		BA22C5B51C8E2F0F004B30A7 /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5A71C8E2F0F004B30A7 /* OscReceivedElements.cpp */; };
 		BA22C5B61C8E2F0F004B30A7 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5A91C8E2F0F004B30A7 /* OscTypes.cpp */; };
+		BA5701951CB8168600C75341 /* csvLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA5701931CB8168600C75341 /* csvLoader.cpp */; };
+		BA57019A1CB8169D00C75341 /* ofxCsv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA5701981CB8169D00C75341 /* ofxCsv.cpp */; };
+		BA57019D1CB816F800C75341 /* lightPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA57019B1CB816F800C75341 /* lightPoint.cpp */; };
 		BE177617474F11F05E9260FC /* DirectoryWatcherManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B6179498D0110BD2E161373 /* DirectoryWatcherManager.cpp */; };
 		BEDFEE7400C58EA4E412B757 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B099E6BD1199664C48B177 /* ofxJSONElement.cpp */; };
 		C03093110A285D1F2241961E /* DefaultProxyProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00290A7A86EF45C1786B6DDC /* DefaultProxyProcessor.cpp */; };
@@ -470,6 +473,12 @@
 		BA22C5A81C8E2F0F004B30A7 /* OscReceivedElements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscReceivedElements.h; sourceTree = "<group>"; };
 		BA22C5A91C8E2F0F004B30A7 /* OscTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OscTypes.cpp; sourceTree = "<group>"; };
 		BA22C5AA1C8E2F0F004B30A7 /* OscTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscTypes.h; sourceTree = "<group>"; };
+		BA5701931CB8168600C75341 /* csvLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = csvLoader.cpp; sourceTree = "<group>"; };
+		BA5701941CB8168600C75341 /* csvLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csvLoader.h; sourceTree = "<group>"; };
+		BA5701981CB8169D00C75341 /* ofxCsv.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCsv.cpp; sourceTree = "<group>"; };
+		BA5701991CB8169D00C75341 /* ofxCsv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxCsv.h; sourceTree = "<group>"; };
+		BA57019B1CB816F800C75341 /* lightPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lightPoint.cpp; sourceTree = "<group>"; };
+		BA57019C1CB816F800C75341 /* lightPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lightPoint.h; sourceTree = "<group>"; };
 		BAE45B5EDF2D519E39986297 /* ofxNetworkUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNetworkUtils.h; path = ../../../addons/ofxNetworkUtils/src/ofxNetworkUtils.h; sourceTree = SOURCE_ROOT; };
 		BB2EB6EABC5A52C7C7F71482 /* DefaultClientSessionProvider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = DefaultClientSessionProvider.cpp; path = ../../../addons/ofxHTTP/libs/ofxHTTP/src/DefaultClientSessionProvider.cpp; sourceTree = SOURCE_ROOT; };
 		BEFFAA5B8275E0AE066FC2E3 /* DirectoryWatcherManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DirectoryWatcherManager.h; path = ../../../addons/ofxIO/libs/ofxIO/include/ofx/IO/DirectoryWatcherManager.h; sourceTree = SOURCE_ROOT; };
@@ -1407,6 +1416,24 @@
 			path = osc;
 			sourceTree = "<group>";
 		};
+		BA5701961CB8169D00C75341 /* ofxCsv */ = {
+			isa = PBXGroup;
+			children = (
+				BA5701971CB8169D00C75341 /* src */,
+			);
+			name = ofxCsv;
+			sourceTree = "<group>";
+		};
+		BA5701971CB8169D00C75341 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				BA5701981CB8169D00C75341 /* ofxCsv.cpp */,
+				BA5701991CB8169D00C75341 /* ofxCsv.h */,
+			);
+			name = src;
+			path = ../../../../of_v0.9.0_osx_release/addons/ofxCsv/src;
+			sourceTree = "<group>";
+		};
 		BA927607FD4C8BD5D2119338 /* Net */ = {
 			isa = PBXGroup;
 			children = (
@@ -1432,6 +1459,7 @@
 				BA22C5801C8E2F0F004B30A7 /* ofxOsc */,
 				BA18A9751CAC55DA007E76B8 /* ofxGui */,
 				BA18A9951CAC7D9D007E76B8 /* ofxFastFboReader */,
+				BA5701961CB8169D00C75341 /* ofxCsv */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -1628,6 +1656,10 @@
 				BA18A9B31CB2B966007E76B8 /* sceneBuilder.h */,
 				BA18A9A41CB2AD22007E76B8 /* stateManager.cpp */,
 				BA18A9A51CB2AD22007E76B8 /* stateManager.h */,
+				BA5701931CB8168600C75341 /* csvLoader.cpp */,
+				BA5701941CB8168600C75341 /* csvLoader.h */,
+				BA57019B1CB816F800C75341 /* lightPoint.cpp */,
+				BA57019C1CB816F800C75341 /* lightPoint.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1798,6 +1830,7 @@
 				92EEBA04652898D3493D1621 /* IPVideoRoute.cpp in Sources */,
 				94481A0386DADFE60F3A4F48 /* OAuth10Credentials.cpp in Sources */,
 				772823EA61998CAD3D1862C8 /* OAuth10RequestFilter.cpp in Sources */,
+				BA57019D1CB816F800C75341 /* lightPoint.cpp in Sources */,
 				BA18A96F1CAC5545007E76B8 /* ftDrawMouseForces.cpp in Sources */,
 				712A36E53BD5232A5078D74A /* OAuth20Credentials.cpp in Sources */,
 				111E97FD4195A8FD3F8F5E61 /* PostRequest.cpp in Sources */,
@@ -1832,6 +1865,7 @@
 				BA18A9AD1CB2B7B6007E76B8 /* sweepAnimation.cpp in Sources */,
 				BA18A9991CAC7D9D007E76B8 /* ofxFastFboReader.cpp in Sources */,
 				DFA0F30B1193D5DC1BB53E5E /* Base64Encoding.cpp in Sources */,
+				BA5701951CB8168600C75341 /* csvLoader.cpp in Sources */,
 				D932A5A24FCF08AE510A265D /* ByteBuffer.cpp in Sources */,
 				62509F39EA6197BEA0194276 /* ByteBufferReader.cpp in Sources */,
 				347D67CCF4C7C7725118DD59 /* ByteBufferStream.cpp in Sources */,
@@ -1860,6 +1894,7 @@
 				BA22C5B01C8E2F0F004B30A7 /* IpEndpointName.cpp in Sources */,
 				BA22C5B61C8E2F0F004B30A7 /* OscTypes.cpp in Sources */,
 				BA22C5AD1C8E2F0F004B30A7 /* ofxOscParameterSync.cpp in Sources */,
+				BA57019A1CB8169D00C75341 /* ofxCsv.cpp in Sources */,
 				1CC07C1A616F29EB8EEC3D21 /* SearchPath.cpp in Sources */,
 				B1BF03D79762719793CC9F1A /* SLIPEncoding.cpp in Sources */,
 				D81A435CE7FDF51B41956210 /* snappy-sinksource.cc in Sources */,

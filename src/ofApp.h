@@ -14,6 +14,8 @@
 #include "sceneBuilder.h"
 #include "ofxGui.h"
 #include "FluidManager.h"
+#include "csvLoader.h"
+#include "lightPoint.h"
 
 
 class ofApp: public ofBaseApp
@@ -48,6 +50,9 @@ public:
     
     StateManager state;
     SceneBuilder scene;
+    CsvLoader csv;
+    
+    vector<LightPoint> lights;
     
 //    FluidManager fluid;
 
