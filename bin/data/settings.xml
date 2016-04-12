@@ -68,5 +68,70 @@
 	<num_particles>267</num_particles>
 <system>
 		<framerate>0</framerate>
+	<show_anim>0</show_anim>
 	</system>
+<fluid>
+		<group>
+			<velocity_mask>
+				<strength>2.13869</strength>
+				<saturation>2.1262</saturation>
+				<blur_passes>3</blur_passes>
+				<blur_radius>2.45106</blur_radius>
+			</velocity_mask>
+			<optical_flow>
+				<strength>50.0208</strength>
+				<offset>2</offset>
+				<lambda>0.01</lambda>
+				<threshold>0.02</threshold>
+				<inverse_x>0</inverse_x>
+				<inverse_y>0</inverse_y>
+				<time_decay_blur>
+					<decay>0</decay>
+					<blur_radius>3</blur_radius>
+				</time_decay_blur>
+			</optical_flow>
+			<fluid_solver>
+				<reset>0</reset>
+				<speed>9.41275</speed>
+				<cell_size>0.386089</cell_size>
+				<iterations>12</iterations>
+				<viscosity>0.1</viscosity>
+				<vorticity>0.576572</vorticity>
+				<dissipation>0.00427322</dissipation>
+				<advanced_dissipation>
+					<velocity_offset>-0.001</velocity_offset>
+					<density_offset>0</density_offset>
+					<temperature_offset>-0.00168731</temperature_offset>
+				</advanced_dissipation>
+				<smoke_buoyancy>
+					<sigma>0.05</sigma>
+					<weight>0.05</weight>
+					<ambient_temperature>0</ambient_temperature>
+					<gravity>-4.13834e-05, 0</gravity>
+				</smoke_buoyancy>
+				<maximum>
+					<clampForce>0.05</clampForce>
+					<density>2</density>
+					<velocity>4</velocity>
+					<temperature>2</temperature>
+				</maximum>
+				<density_from_pressure>0</density_from_pressure>
+				<density_from_vorticity>-0.1</density_from_vorticity>
+			</fluid_solver>
+			<particle_flow>
+				<active>1</active>
+				<speed>9.41275</speed>
+				<cell_size>0.386089</cell_size>
+				<birth_chance>0.734486</birth_chance>
+				<birth_velocity_chance>0.5</birth_velocity_chance>
+				<lifespan>5</lifespan>
+				<lifespan_spread>0.25</lifespan_spread>
+				<mass>1.3</mass>
+				<mass_spread>0.2</mass_spread>
+				<size>2.55519</size>
+				<size_spread>0.390879</size_spread>
+				<twinkle_speed>2.50729</twinkle_speed>
+			</particle_flow>
+		</group>
+	</fluid>
 </settings>

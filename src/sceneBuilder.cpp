@@ -39,9 +39,12 @@ void SceneBuilder::setup(StateManager *_state){
     ofClear(0);
     compositeFbo.end();
     
-    particles.setup();
-    sweep.setup();
     
+    particles.setup();              //set up the particle manager
+    
+    sweep.setup();                  //set up sweep
+    pop.setup(&particles);
+    explode.setup(&particles);      //setup and pass reference to particle manager
     
     animParams.setName("Scene Settings");
     animParams.add(drawMode.set("Draw Mode", DRAW_COMPOSITE, DRAW_COMPOSITE, DRAW_SOURCE));
@@ -50,6 +53,7 @@ void SceneBuilder::setup(StateManager *_state){
     animParams.add(drawName.set("", ""));
     animParams.add(sweep.parameters);
     animParams.add(pop.parameters);
+    animParams.add(explode.parameters);
     animParams.add(particles.parameters);
     
     fluidParams.add(fluid.velocityMask.parameters);
@@ -81,12 +85,9 @@ void SceneBuilder::update(){
 //--------------------------------------------------------------
 void SceneBuilder::updateAnimation(){
     
-    ofVec2f acc(0.0, 0.0);
-    
-    if(ofGetFrameNum() % 100 == 0){
-        particles.explosion(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 100);
-    }
-    particles.update(acc);
+//    explode.update();
+    pop.update();
+
 }
 
 //--------------------------------------------------------------
@@ -95,7 +96,8 @@ void SceneBuilder::drawAnimation(){
     animationFbo.begin();
     ofClear(0);
     //draw animations based on scene
-    particles.draw();
+//    explode.draw();
+    pop.draw();
     animationFbo.end();
     
     

@@ -8,6 +8,9 @@
 
 #include "baseAnimation.h"
 
+BaseAnimation::BaseAnimation(){
+    parameters.add(brightness.set("brightness", 0.0, 0.0, 1.0));
+}
 void BaseAnimation::setup(){}
 void BaseAnimation::update(){}
 void BaseAnimation::draw(){}

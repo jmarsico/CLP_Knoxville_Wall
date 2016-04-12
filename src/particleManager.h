@@ -20,13 +20,13 @@ public:
     //pointer to the statemanager
     void setup();
     
-    
+    void addParticle(ofVec2f _loc);
     void update(ofVec2f _acc);
     
     void explosion(ofVec2f _loc, int numParts);
     
     
-    void draw();
+    void draw(float _brightness);
     
     
     ofParameterGroup parameters;

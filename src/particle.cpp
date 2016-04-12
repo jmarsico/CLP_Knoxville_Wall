@@ -53,9 +53,9 @@ void Particle::update(ofVec2f _force){
 }
 
 
-void Particle::draw(){
+void Particle::draw(float _brightness){
     ofFill();
-    ofSetColor(255, lifeSpan);
+    ofSetColor(255, lifeSpan * _brightness);
     ofDrawCircle(loc, 5);
 }
 

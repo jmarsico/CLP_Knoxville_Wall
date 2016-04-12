@@ -14,12 +14,16 @@
 
 class PopAnimation : public BaseAnimation {
 public:
-    void setup();
-//    void update();
-//    void draw();
+    void setup(ParticleManager* _pm);
+    void update();
+    void draw();
     
-    ofParameter<int> velocity;
     ofParameter<float> spawnProb;
+    ofParameter<int> spawnSize;
+    
+    ParticleManager* pm;
+    
+    
 };
 
 #endif /* defined(__CLP_Knoxville_Wall__popAnimation__) */

@@ -11,14 +11,17 @@
 
 #include <stdio.h>
 #include "ofMain.h"
+#include "particleManager.h"
 
 class BaseAnimation {
 public:
+    BaseAnimation();
     virtual void setup();
     virtual void update();
     virtual void draw();
     
     ofParameterGroup parameters;
+    ofParameter<float> brightness;
     
 };
 

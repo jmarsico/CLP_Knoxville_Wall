@@ -57,8 +57,9 @@ void LightPoint::draw(){
     ofSetColor(currentVal);
     ofDrawCircle(loc, 2);
     
-//    ofNoFill();
-//    ofSetColor(255, 100);
-//    ofDrawCircle(loc, 2);
+    ofNoFill();
+    ofSetLineWidth(0.2);
+    ofSetColor(200, 100);
+    ofDrawCircle(loc, 2);
 }
 

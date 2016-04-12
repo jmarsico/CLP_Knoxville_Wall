@@ -33,9 +33,9 @@ void ParticleManager::update(ofVec2f _acc){
 }
 
 //----------------------------------------------------------
-void ParticleManager::draw(){
+void ParticleManager::draw(float _brightness){
     for(size_t i = 0; i < particles.size(); i++){
-        particles[i].draw();
+        particles[i].draw(_brightness);
     }
 }
 
@@ -45,7 +45,7 @@ void ParticleManager::explosion(ofVec2f _loc, int numParts){
     ofLogNotice("ParticleManager") << "explosion";
     for(size_t i = 0; i < numParts; i++){
         Particle p;
-        ofVec2f vel(ofRandom(-5, 5), ofRandom(-5,5));
+        ofVec2f vel(ofRandom(-2, 2), ofRandom(-2,2));
         p.setup(_loc, vel, 3);
         p.turnOnNoise(true);
         
@@ -55,6 +55,15 @@ void ParticleManager::explosion(ofVec2f _loc, int numParts){
     }
     
 }
+
+//----------------------------------------------------------
+void ParticleManager::addParticle(ofVec2f _loc){
+    Particle p;
+    p.setup(_loc, ofVec2f(0,0), 5);
+    p.turnOnNoise(false);
+    particles.push_back(p);
+}
+
 
 
 

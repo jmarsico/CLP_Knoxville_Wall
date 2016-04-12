@@ -19,6 +19,7 @@
 #include "fluidManager.h"
 #include "ofxFastFboReader.h"
 #include "ofxGui.h"
+#include "explosionAnimation.h"
 
 
 //extern ofEvent<int> onSceneChange;
@@ -63,6 +64,7 @@ protected:
     ParticleManager particles;
     SweepAnimation sweep;
     PopAnimation pop;
+    ExplosionAnimation explode;
 
 
     

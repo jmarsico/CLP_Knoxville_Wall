@@ -1,7 +1,7 @@
 <animation>
 	<Scene_Settings>
-		<Draw_Mode>1</Draw_Mode>
-		<UnknownName>Particles</UnknownName>
+		<Draw_Mode>0</Draw_Mode>
+		<UnknownName>Composite</UnknownName>
 		<Sweep_Anim>
 			<velocity>0</velocity>
 			<spawn_prob>0</spawn_prob>

@@ -34,19 +34,17 @@ void ofApp::setup()
         lp.setup(p);
         lights.push_back(lp);
     }
+    ofLogNotice("ofApp::setup") << "number of lights from CSV: " << lights.size();
     
-    
-    // Animation
+    kinet.setup(lights.size());
 
-    
-    
-    
     
 }
 
 //------------------------------------------------------
 void ofApp::update(){
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+    FPS = ofGetFrameRate();
 
     ofSetColor(255);
     scene.update();
@@ -56,13 +54,12 @@ void ofApp::update(){
     
     for(size_t i = 0; i < lights.size(); i++){
         ofVec2f loc = lights[i].getLoc();
-//        ofLog() << compPix.getColor(loc.x, loc.y).getBrightness();
         int val = compPix.getColor(loc.x, loc.y).getBrightness();
         lights[i].setCurrentVal(val);
     }
     
-//    fluid.update(scene.animationFbo);
-
+    
+    
 }
 
 
@@ -84,11 +81,7 @@ void ofApp::draw(){
     for(size_t i = 0; i < lights.size(); i ++){
         lights[i].draw();
     }
-    
-    
-//    scene.gui.draw();
-//    scene.animGui.draw();
-//    
+  
  }
 
 
@@ -106,12 +99,13 @@ void ofApp::setupGui(){
     guiFillColor[1].set(200, 150);
     
     
-    systemGui.setup("system");
+    systemGui.setup("system", "systemSettings.xml");
     systemGui.add(FPS.set("framerate", 0, 0, 100));
-    systemGui.add(bShowAnim.set("show anim", true));
+    systemGui.add(bShowAnim.set("show anim", false));
+    systemGui.add(bSendToWall.set("send to lights", false));
     systemGui.setPosition(ofPoint(10,10));
 //    
-    fluidGui.setup("fluid", "fluidSettings.xml");
+    fluidGui.setup("fluid", "settings.xml");
     fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
     fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
     guiColorSwitch = 1 - guiColorSwitch;
@@ -125,7 +119,7 @@ void ofApp::setupGui(){
     
     // if the settings file is not present the parameters will not be set during this setup
 
-    
+    systemGui.loadFromFile("systemSettings.xml");
     fluidGui.loadFromFile("settings.xml");
     animGui.loadFromFile("animSettings.xml");
     

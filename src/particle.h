@@ -18,7 +18,7 @@ public:
     
     void setup(ofVec2f _loc, ofVec2f _vel, float _ageSpeed);
     void update(ofVec2f _force);
-    void draw();
+    void draw(float _brightness);
     
     void turnOnNoise(bool _noise);
     

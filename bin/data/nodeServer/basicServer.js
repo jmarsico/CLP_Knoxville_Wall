@@ -2,21 +2,60 @@
 var http = require('http');
 var osc = require('osc-min');
 var udp = require('dgram');
-var dispatcher = require('httpdispatcher');
+var app = require('express');
 
 
 //udp setup
 udp = udp.createSocket("udp4");
 
-dispatcher.setStatic('resources');
+app = express();
 
-dispatcher.onGet("/page1", function(req, res){
+// app.setStatic('resources');
+
+var get_explode_params = function(req, cb) {
+  var x = parseInt(req.param('x'));
+  var y = parseInt(req.param('y'));
+  var size = parseInt(req.param('size'));
+  if (x>=0 && y>=0 && size>=0) {
+    cb(null, x, y, size);
+  } else {
+    cb("missing parameters");
+  }
+}
+
+
+
+app.get('/api/explode/:x/:y/:size', function(req, res) {
+  get_color_params(req, function(err, x, y, size) {
+    if (err) {
+      res.json({
+        'status': 'fail',
+        msg: err
+      });
+    } else {
+      for (var i = 0; i < button_color_states12.length; i++) {
+        set_button_color_state(i, 8, r, g, b);
+      }
+      socks.emit('update', button_colors_to_array());
+      res.json({
+        'status': 'success'
+      })
+    }
+  });
+});
+
+//explode message
+dispatcher.onGet("/explode", function(req, res){
+
+	var x;
+	x = req.
+
 	res.writeHead(200, {'Content-Type': 'text/plain'});
 
 	//send an OSC message
 	var buf;
 	buf = osc.toBuffer({
-		address: "/test",
+		address: "/explode",
 		args: [
 		12,
 		12.3,
@@ -34,7 +73,7 @@ dispatcher.onPost("/post1", function(req, res) {
 });
 
 //Lets define a port we want to listen to
-const PORT=8080; 
+const PORT=8080;
 
 //We need a function which handles requests and send response
 function handleRequest(request, response){
