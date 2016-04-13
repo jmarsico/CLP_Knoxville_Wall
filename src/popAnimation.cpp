@@ -22,7 +22,7 @@ void PopAnimation::setup(ParticleManager* _pm){
 void PopAnimation::update(){
     
     int wait = 1 + (int)ofRandom((100.f * (1.1f -spawnProb)) + 5);
-    ofLog() << wait;
+    
     if(ofGetFrameNum() % wait  == 1){
         
         for(size_t i = 0; i < spawnSize; i++){

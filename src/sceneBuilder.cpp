@@ -85,8 +85,8 @@ void SceneBuilder::update(){
 //--------------------------------------------------------------
 void SceneBuilder::updateAnimation(){
     
-//    explode.update();
-    pop.update();
+    if(explode.brightness > 0) explode.update();
+    if(pop.brightness > 0) pop.update();
 
 }
 
@@ -94,10 +94,18 @@ void SceneBuilder::updateAnimation(){
 void SceneBuilder::drawAnimation(){
     
     animationFbo.begin();
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    
+    glEnable(GL_BLEND);
+    glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,GL_ONE,GL_ONE_MINUS_SRC_ALPHA);
+    
     ofClear(0);
     //draw animations based on scene
-//    explode.draw();
-    pop.draw();
+    if(explode.brightness > 0) explode.draw();
+    if(pop.brightness > 0) pop.draw();
+    
+    glDisable(GL_BLEND);
+    glPopAttrib();
     animationFbo.end();
     
     
