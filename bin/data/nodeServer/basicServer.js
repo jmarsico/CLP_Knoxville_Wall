@@ -2,97 +2,129 @@
 var http = require('http');
 var osc = require('osc-min');
 var udp = require('dgram');
-var app = require('express');
+
+
+var express = require('express');
+var bodyParser = require('body-parser');
+
+var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 
 //udp setup
 udp = udp.createSocket("udp4");
-
-app = express();
-
 // app.setStatic('resources');
 
-var get_explode_params = function(req, cb) {
-  var x = parseInt(req.param('x'));
-  var y = parseInt(req.param('y'));
-  var size = parseInt(req.param('size'));
-  if (x>=0 && y>=0 && size>=0) {
-    cb(null, x, y, size);
-  } else {
-    cb("missing parameters");
-  }
+
+//EXPLODE!!
+function send_explode_message(explodeParams) {
+    console.log('inside: ' + explodeParams);
+    var params = explodeParams.split(' ');
+    console.log('size: ' + params.length);
+
+    var buf;            //the UDP buffer
+
+    //if we only receive 2 parameters, default size param to 0.5
+    if(params.length == 2){
+        buf = osc.toBuffer({
+            address: "/explode",
+            args: [
+                params[0],
+                params[1],
+                0.5
+            ]
+        })
+    }
+
+    //if we receive all 3 parameters for explode
+    else if(params.length == 3){
+        buf = osc.toBuffer({
+            address: "/explode",
+            args: [
+                params[0],
+                params[1],
+                params[2]
+            ]
+        })
+    }
+    udp.send(buf, 0, buf.length, 12345, "localhost");
 }
 
 
+function send_sweep_params(sweepParams) {
+    //?sweep=x1 y1 x2 y2 speed
+    var params = sweepParams.split(' ');
 
-app.get('/api/explode/:x/:y/:size', function(req, res) {
-  get_color_params(req, function(err, x, y, size) {
-    if (err) {
-      res.json({
-        'status': 'fail',
-        msg: err
-      });
-    } else {
-      for (var i = 0; i < button_color_states12.length; i++) {
-        set_button_color_state(i, 8, r, g, b);
-      }
-      socks.emit('update', button_colors_to_array());
-      res.json({
-        'status': 'success'
-      })
+
+    if(params.length == 5){
+        var buf;
+        buf = osc.toBuffer({
+            address: "/sweep",
+            args: [
+                params[0],
+                params[1],
+                params[2],
+                params[3],
+                params[4]
+            ]
+        })
+        udp.send(buf, 0, buf.length, 12345, "localhost");
     }
-  });
+
+}
+
+function send_force_params(forceParams) {
+    // var params = forceParams.split(' ');
+
+
+}
+
+function send_dots_params(dotsParams){
+    // var params = queryString.split(' ');
+
+}
+
+
+app.get('/api', function(req, res){
+    //explode
+    var explode = req.query.explode;
+
+
+    if(req.query.explode !== 'undefined' && req.query.explode){
+        send_explode_message(req.query.explode);
+    }
+
+    //force (gravity)
+    if(req.query.force !== 'undefined' && req.query.force){
+        send_force_params(req.query.force);
+    }
+    //sweep
+    if(req.query.sweep !== 'undefined' && req.query.sweep){
+        send_sweep_params(req.query.sweep);
+    }
+    //dots
+    if(req.query.dots !== 'undefined' && req.query.dots){
+        send_dots_params(req.query.dots);
+    }
+
+    res.json({
+        'explode': req.query.explode,
+        'force': req.query.force,
+        'sweep': req.query.sweep,
+        'dots': req.query.dots
+    })
 });
 
-//explode message
-dispatcher.onGet("/explode", function(req, res){
-
-	var x;
-	x = req.
-
-	res.writeHead(200, {'Content-Type': 'text/plain'});
-
-	//send an OSC message
-	var buf;
-	buf = osc.toBuffer({
-		address: "/explode",
-		args: [
-		12,
-		12.3,
-		90,
-		]
-	});
-	udp.send(buf, 0, buf.length, 12345, "localhost");
-
-	res.end('Page One');
-});
-
-dispatcher.onPost("/post1", function(req, res) {
-	res.writeHead(200, {'Content-Type': 'text/plain'});
-	res.end('Got Post Data');
+app.get('/', function(req,res){
+    res.send('Hello World!');
 });
 
 //Lets define a port we want to listen to
 const PORT=8080;
 
-//We need a function which handles requests and send response
-function handleRequest(request, response){
-
-	try{
-		console.log(request.url);
-		dispatcher.dispatch(request, response);
-	} catch(err) {
-		console.log(err);
-	}
-}
-
-
-
-//Create a server
-var server = http.createServer(handleRequest);
-
 //Lets start our server
-server.listen(PORT, function(){
+app.listen(8080, function(){
     //Callback triggered when server is successfully listening. Hurray!
     console.log("Server listening on: http://localhost:%s", PORT);
 });
