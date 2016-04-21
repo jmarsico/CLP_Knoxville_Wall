@@ -17,6 +17,7 @@
 #include "csvLoader.h"
 #include "lightPoint.h"
 #include "kinetManager.h"
+#include "oscManager.h"
 
 
 class ofApp: public ofBaseApp
@@ -31,6 +32,7 @@ public:
     void setupServer();
     
     void setupGui();
+    void handleEvent(string & name);
 
 
     
@@ -60,7 +62,7 @@ public:
     ofPixels compPix;
     
     
-    
+    OscManager osc;
 
 private:
 

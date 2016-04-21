@@ -108,6 +108,8 @@
 		BA22C5B41C8E2F0F004B30A7 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5A51C8E2F0F004B30A7 /* OscPrintReceivedElements.cpp */; };
 		BA22C5B51C8E2F0F004B30A7 /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5A71C8E2F0F004B30A7 /* OscReceivedElements.cpp */; };
 		BA22C5B61C8E2F0F004B30A7 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5A91C8E2F0F004B30A7 /* OscTypes.cpp */; };
+		BA3D3AA41CC8185D0095C0DD /* oscManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA3D3AA21CC8185D0095C0DD /* oscManager.cpp */; };
+		BA3D3AAC1CC820430095C0DD /* ofxSimpleTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA3D3AAA1CC820430095C0DD /* ofxSimpleTimer.cpp */; };
 		BA5701951CB8168600C75341 /* csvLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA5701931CB8168600C75341 /* csvLoader.cpp */; };
 		BA57019A1CB8169D00C75341 /* ofxCsv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA5701981CB8169D00C75341 /* ofxCsv.cpp */; };
 		BA57019D1CB816F800C75341 /* lightPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA57019B1CB816F800C75341 /* lightPoint.cpp */; };
@@ -484,6 +486,10 @@
 		BA22C5A81C8E2F0F004B30A7 /* OscReceivedElements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscReceivedElements.h; sourceTree = "<group>"; };
 		BA22C5A91C8E2F0F004B30A7 /* OscTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OscTypes.cpp; sourceTree = "<group>"; };
 		BA22C5AA1C8E2F0F004B30A7 /* OscTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscTypes.h; sourceTree = "<group>"; };
+		BA3D3AA21CC8185D0095C0DD /* oscManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = oscManager.cpp; sourceTree = "<group>"; };
+		BA3D3AA31CC8185D0095C0DD /* oscManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oscManager.h; sourceTree = "<group>"; };
+		BA3D3AAA1CC820430095C0DD /* ofxSimpleTimer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleTimer.cpp; sourceTree = "<group>"; };
+		BA3D3AAB1CC820430095C0DD /* ofxSimpleTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSimpleTimer.h; sourceTree = "<group>"; };
 		BA5701931CB8168600C75341 /* csvLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = csvLoader.cpp; sourceTree = "<group>"; };
 		BA5701941CB8168600C75341 /* csvLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csvLoader.h; sourceTree = "<group>"; };
 		BA5701981CB8169D00C75341 /* ofxCsv.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCsv.cpp; sourceTree = "<group>"; };
@@ -1449,6 +1455,24 @@
 			path = osc;
 			sourceTree = "<group>";
 		};
+		BA3D3AA81CC820430095C0DD /* ofxSimpleTimer */ = {
+			isa = PBXGroup;
+			children = (
+				BA3D3AA91CC820430095C0DD /* src */,
+			);
+			name = ofxSimpleTimer;
+			sourceTree = "<group>";
+		};
+		BA3D3AA91CC820430095C0DD /* src */ = {
+			isa = PBXGroup;
+			children = (
+				BA3D3AAA1CC820430095C0DD /* ofxSimpleTimer.cpp */,
+				BA3D3AAB1CC820430095C0DD /* ofxSimpleTimer.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxSimpleTimer/src;
+			sourceTree = "<group>";
+		};
 		BA5701961CB8169D00C75341 /* ofxCsv */ = {
 			isa = PBXGroup;
 			children = (
@@ -1486,6 +1510,8 @@
 				BA5701941CB8168600C75341 /* csvLoader.h */,
 				BAF1A64A1CBC461E00D9E9E2 /* kinetManager.cpp */,
 				BAF1A64B1CBC461E00D9E9E2 /* kinetManager.h */,
+				BA3D3AA21CC8185D0095C0DD /* oscManager.cpp */,
+				BA3D3AA31CC8185D0095C0DD /* oscManager.h */,
 			);
 			name = peripherals;
 			sourceTree = "<group>";
@@ -1593,6 +1619,7 @@
 				BAF1A6501CBC470E00D9E9E2 /* ofxNetwork */,
 				BAF1A6611CBC476900D9E9E2 /* ofxKinet */,
 				BAF1A6661CBC481A00D9E9E2 /* ofxXmlSettings */,
+				BA3D3AA81CC820430095C0DD /* ofxSimpleTimer */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -1925,6 +1952,7 @@
 				BA22C5AE1C8E2F0F004B30A7 /* ofxOscReceiver.cpp in Sources */,
 				EE785EF526C01DF6EFE00FFE /* BaseRequest.cpp in Sources */,
 				272951916F9204E4960463E3 /* BaseResponse.cpp in Sources */,
+				BA3D3AAC1CC820430095C0DD /* ofxSimpleTimer.cpp in Sources */,
 				BA22C5B51C8E2F0F004B30A7 /* OscReceivedElements.cpp in Sources */,
 				BA18A9BD1CB2D489007E76B8 /* popAnimation.cpp in Sources */,
 				A98439CA25D32DDA6D0289BF /* BaseRoute.cpp in Sources */,
@@ -1951,6 +1979,7 @@
 				011C125713986CA14733A748 /* DefaultCookieProcessor.cpp in Sources */,
 				C03093110A285D1F2241961E /* DefaultProxyProcessor.cpp in Sources */,
 				BA18A9741CAC5545007E76B8 /* ftAverageVelocity.cpp in Sources */,
+				BA3D3AA41CC8185D0095C0DD /* oscManager.cpp in Sources */,
 				D186F87E991EEEF2B3EE1607 /* DefaultRedirectProcessor.cpp in Sources */,
 				CA45B0AEA60F00EC4FCA3C59 /* DefaultResponseStreamFilter.cpp in Sources */,
 				BAF1A6781CBD8BBF00D9E9E2 /* explosionAnimation.cpp in Sources */,

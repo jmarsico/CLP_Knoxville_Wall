@@ -38,6 +38,8 @@ void ofApp::setup()
     
     kinet.setup(lights.size());
 
+    osc.setup();
+    ofAddListener(OscManager::command, this, &ofApp::handleEvent);
     
 }
 
@@ -58,8 +60,12 @@ void ofApp::update(){
         lights[i].setCurrentVal(val);
     }
     
+    osc.update();
     
-    
+}
+
+void ofApp::handleEvent(string &name){
+    ofLog() << "event! " << name;
 }
 
 

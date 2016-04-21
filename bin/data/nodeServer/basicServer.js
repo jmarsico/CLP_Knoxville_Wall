@@ -14,8 +14,21 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 var systemStatus = 'running';
 
+
 //udp setup
-udp = udp.createSocket("udp4");
+var oscDestPort = 12345;
+var oscInPort = 23456;
+sock = udp.createSocket("udp4", function(msg, ringo) {
+    var error, error1, message;
+    try {
+        return console.log(osc.fromBuffer(msg));
+    }   catch(error1) {
+        error = error1;
+        return console.log('invalid OSC packet');
+    }
+});
+
+sock.bind(oscInPort);
 
 //EXPLODE!!
 function send_explode_message(explodeParams) {
@@ -46,7 +59,7 @@ function send_explode_message(explodeParams) {
                 ]
             })
         }
-        udp.send(buf, 0, buf.length, 12345, "localhost");
+        sock.send(buf, 0, buf.length, 12345, "localhost");
     }
 }
 
@@ -131,12 +144,17 @@ app.get('/api', function(req, res){
 
 
 app.get('/admin', function(req,res){
-    if(req.query.system){
-        
+    if(req.query.system !== 'undefined' && req.query.system){
+        res.json({
+            'status': systemStatus
+        })
     }
-    res.json({
-        'status': systemStatus
-    })
+    else {
+        res.json({
+            'fail': 'incorrect query'
+        })
+    }
+
 });
 
 
