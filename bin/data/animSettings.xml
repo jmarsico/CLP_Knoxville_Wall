@@ -5,11 +5,21 @@
 		<Sweep_Anim>
 			<velocity>0</velocity>
 			<spawn_prob>0</spawn_prob>
+		<brightness>0</brightness>
 		</Sweep_Anim>
 		<group>
 			<drag>0</drag>
 			<ageSpeed>0</ageSpeed>
 		</group>
+	<Pop_Anim>
+			<brightness>0</brightness>
+			<spawnProb>0</spawnProb>
+			<spawn_size>5</spawn_size>
+		</Pop_Anim>
+		<explode>
+			<brightness>1</brightness>
+			<frequency>0.93232</frequency>
+		</explode>
 	</Scene_Settings>
 <animation/>
 </animation>

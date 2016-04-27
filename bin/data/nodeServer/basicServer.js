@@ -81,23 +81,24 @@ function send_sweep_params(sweepParams) {
                 params[4]
             ]
         })
-        udp.send(buf, 0, buf.length, 12345, "localhost");
+        sock.send(buf, 0, buf.length, 12345, "localhost");
     }
 }
 
-function send_force_params(forceParams) {
+function send_force_params(forceParams){
     var params = forceParams.split(' ');
     if(params.length == 2){
         var buf;
         buf = osc.toBuffer({
-            address: '/force',
+            address: '/dots',
             args: [
                 params[0],
                 params[1]
             ]
         })
-        udp.send(buf, 0, buf.length, 12345, "localhost");
+        sock.send(buf, 0, buf.length, 12345, "localhost");
     }
+
 }
 
 function send_dots_params(dotsParams){
@@ -111,7 +112,7 @@ function send_dots_params(dotsParams){
                 params[1]
             ]
         })
-        udp.send(buf, 0, buf.length, 12345, "localhost");
+        sock.send(buf, 0, buf.length, 12345, "localhost");
     }
 
 }
@@ -160,7 +161,8 @@ app.get('/admin', function(req,res){
 
 
 app.get('/', function(req,res){
-    res.send('Hello World!');
+    res.send('/admin?system \t returns status' + "\r\n"
+    + '/api? \t sends requests');
 });
 
 //Lets define a port we want to listen to

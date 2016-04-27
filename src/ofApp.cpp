@@ -13,7 +13,7 @@ void ofApp::setup()
     ofSetFrameRate(60);
     ofSetLogLevel(OF_LOG_VERBOSE);
 
-    scene.setup(&state);
+    scene.setup(&state, ofVec2f(60,300), ofVec2f(1080,450));
     
     //setup the JSONRPC server
     setupServer();
@@ -38,8 +38,7 @@ void ofApp::setup()
     
     kinet.setup(lights.size());
 
-    osc.setup();
-    ofAddListener(OscManager::command, this, &ofApp::handleEvent);
+    osc.setup(&scene);
     
 }
 
@@ -87,6 +86,10 @@ void ofApp::draw(){
     for(size_t i = 0; i < lights.size(); i ++){
         lights[i].draw();
     }
+    
+    if(mouseLoc){
+        ofDrawBitmapStringHighlight(ofToString(mouseX) + "," + ofToString(mouseY), mouseX, mouseY);
+    }
   
  }
 
@@ -109,6 +112,7 @@ void ofApp::setupGui(){
     systemGui.add(FPS.set("framerate", 0, 0, 100));
     systemGui.add(bShowAnim.set("show anim", false));
     systemGui.add(bSendToWall.set("send to lights", false));
+    systemGui.add(mouseLoc.set("show mouselocation", false));
     systemGui.setPosition(ofPoint(10,10));
 //    
     fluidGui.setup("fluid", "settings.xml");

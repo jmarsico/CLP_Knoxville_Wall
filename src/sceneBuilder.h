@@ -18,8 +18,9 @@
 #include "guiElement.h"
 #include "fluidManager.h"
 #include "ofxFastFboReader.h"
-#include "ofxGui.h"
 #include "explosionAnimation.h"
+
+#include "userCommand.h"
 
 
 //extern ofEvent<int> onSceneChange;
@@ -31,7 +32,7 @@ class SceneBuilder {
 public:
     SceneBuilder();
     ~SceneBuilder();
-    void setup(StateManager *_state);
+    void setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottomRight);
     void updateAnimation();
     void drawAnimation();
     void generateSceneSettings(int &newScene);
@@ -41,8 +42,12 @@ public:
     ofPixels getPixels();
     void draw();
     
+    ofVec2f getTopLeft() { return topLeft; }
+    ofVec2f getBottomRight() { return bottomRight; }
+    
     ofParameterGroup getFluidParams();
     ofParameterGroup getAnimationParams();
+    ParticleManager getParticles() { return particles; };
     
     
 
@@ -66,14 +71,19 @@ protected:
     PopAnimation pop;
     ExplosionAnimation explode;
 
-
+    UserCommand uc;
     
     int drawWidth, drawHeight;
+    ofVec2f topLeft;
+    ofVec2f bottomRight;
     
 
     
     ofPixels compositePix;
     ofxFastFboReader reader;
+    
+    
+    
     
 };
 

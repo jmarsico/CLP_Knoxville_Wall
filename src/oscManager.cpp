@@ -9,10 +9,11 @@
 #include "oscManager.h"
 
 
-//ofEvent<string> OscManager::command = ofEvent<string>();
+ofEvent<UserCommand> OscManager::userCommand = ofEvent<UserCommand>();
 
 
-void OscManager::setup(){
+void OscManager::setup(StateManager* _state){
+    state = _state;
     receiver.setup(12345);
     sender.setup("127.0.0.1", 23456);
     
@@ -34,17 +35,40 @@ void OscManager::update(){
         // get the next message
         ofxOscMessage m;
         receiver.getNextMessage(m);
+        string s = "";
         
-//        if(m.getAddress() == "/explode"){
-//            ofNotifyEvent(command, "explode");
-//            
-//        }
-//        else if(m.getAddress() == "/sweep"){
-//            ofNotifyEvent(command, "sweep");
-//        }
+        if(m.getAddress() == "/explode"){
+            
+            float x = m.getArgAsFloat(0);
+            float y = m.getArgAsFloat(1);
+            float size = m.getArgAsFloat(2);
+            
+            uc.command = UserCommand::EXPLOSION;
+            uc.loc.x = m.getArgAsFloat(0);
+            uc.loc.y = m.getArgAsFloat(1);
+            uc.size = m.getArgAsFloat(2);
+            
+            ofNotifyEvent(userCommand, uc);
+            
+            
+            
+            
+            
+//            x = ofMap(x, 0.0, 1.0, scene->getTopLeft().x, scene->getBottomRight().x);
+            
+            
+            //mutex here!
+//            std::unique_lock<std::mutex> lock(mutex);
+//            scene->getParticles().explosion(ofVec2f(x,y), size);
+            
+        }
+        else if(m.getAddress() == "/sweep"){
+            s = "sweep";
+            ofNotifyEvent(userCommand, s);
+        }
          if(m.getAddress() == "/dots"){
-            string t = "dots";
-            ofNotifyEvent(command, t);
+             s = "dots";
+            ofNotifyEvent(userCommand, s);
         }
         
         

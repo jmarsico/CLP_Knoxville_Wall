@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "ofMain.h"
+#include "ofxSimpleTimer.h"
 
 class StateManager{
 public:
@@ -20,23 +21,30 @@ public:
     void setRunningState(bool onOff);
     void setCurrentScene(int scene);
     
-    ofEvent<int> onSceneChange;
-    ofEvent<bool> onUserInControl;
-    ofEvent<bool> onFullUserControl;
+    //event handlers
+    void onUserInControl();
+    void onTimerComplete(string & name);
+
+    
+    
+    static ofEvent<void> sceneChange;
+    static ofEvent<bool> endUserControl;
     
     
     int getCurrentScene() { return currentScene; };
     bool getRunningState() { return bIsRunning; };
     bool getIsUserInControl() { return bUserInControl; };
-    int getSceneTimeRemaining() { return sceneTimer; };
+    int getSceneTimeRemaining();
     
-private:
+    
+protected:
     
     bool bUserInControl;
     bool bIsRunning;
-    int sceneTimer;
     int currentScene;
     
+    ofxSimpleTimer *userControlTimer;
+    ofxSimpleTimer *sceneTimer;
 };
 
 #endif /* defined(__CLP_Knoxville_Wall__stateManager__) */

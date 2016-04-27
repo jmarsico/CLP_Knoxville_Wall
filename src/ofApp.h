@@ -51,6 +51,7 @@ public:
     ofParameter<int> FPS;
     ofParameter<bool> bShowAnim;
     ofParameter<bool> bSendToWall;
+    ofParameter<bool> mouseLoc;
     
     
     StateManager state;

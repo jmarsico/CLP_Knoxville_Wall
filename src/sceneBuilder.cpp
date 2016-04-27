@@ -19,14 +19,18 @@ SceneBuilder::SceneBuilder(){
 
 }
 //--------------------------------------------------------------
-void SceneBuilder::setup(StateManager *_state){
+void SceneBuilder::setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottomRight){
+    
+    //pointer to global state manager
     state = _state;
    
+    //set up location parameters
     drawWidth = ofGetWidth();
     drawHeight = ofGetHeight();
+    topLeft = _topLeft;
+    bottomRight = _bottomRight;
     
     fluid.init(drawWidth, drawHeight);
-    
 
     
     animationFbo.allocate(drawWidth, drawHeight);
