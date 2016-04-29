@@ -66,6 +66,10 @@ void SceneBuilder::setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottom
     fluidParams.add(fluid.particleFlow.parameters);
     
     
+    //set up event handlers
+    ofAddListener(OscManager::explosion, this, &SceneBuilder::onExplosionEvent);
+    
+    
 }
 
 ofParameterGroup SceneBuilder::getFluidParams(){
@@ -89,7 +93,8 @@ void SceneBuilder::update(){
 //--------------------------------------------------------------
 void SceneBuilder::updateAnimation(){
     
-    if(explode.brightness > 0) explode.update();
+//    if(explode.brightness > 0) explode.update();
+    particles.update(ofVec2f(0,0));
     if(pop.brightness > 0) pop.update();
 
 }
@@ -105,8 +110,10 @@ void SceneBuilder::drawAnimation(){
     
     ofClear(0);
     //draw animations based on scene
-    if(explode.brightness > 0) explode.draw();
+//    if(explode.brightness > 0) explode.draw();
     if(pop.brightness > 0) pop.draw();
+    
+    particles.draw(1.);
     
     glDisable(GL_BLEND);
     glPopAttrib();
@@ -190,6 +197,21 @@ void SceneBuilder::drawModeSetName(const int &_value) {
         case DRAW_FLUID_OBSTACLE:	drawName.set("Fluid Obstacle"); break;
         case DRAW_SOURCE:			drawName.set("Source"); break;
     }
+}
+
+void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
+    
+    
+    particles.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 0.1, 0.0, 1000.));
+    
+}
+
+ofVec2f SceneBuilder::deNormalize(ofVec2f &inputVector){
+    ofVec2f output;
+    output.x = ofMap(inputVector.x, 0.f, 1.f, topLeft.x, bottomRight.x);
+    output.y = ofMap(inputVector.y, 0.f, 1.f, topLeft.y, bottomRight.y);
+    
+    return output;
 }
 
 

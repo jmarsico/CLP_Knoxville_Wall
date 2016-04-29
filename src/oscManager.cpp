@@ -10,6 +10,7 @@
 
 
 ofEvent<bool> OscManager::userCommand = ofEvent<bool>();
+ofEvent<ExplosionMsg> OscManager::explosion = ofEvent<ExplosionMsg>();
 
 
 void OscManager::setup(){
@@ -49,6 +50,11 @@ void OscManager::update(){
             
             bool b = true;
             ofNotifyEvent(userCommand, b);
+            
+            ExplosionMsg em;
+            em.loc.set(x, y);
+            em.size = size;
+            ofNotifyEvent(explosion, em);
             
             
             

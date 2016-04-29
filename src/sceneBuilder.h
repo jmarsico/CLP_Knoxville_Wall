@@ -22,6 +22,7 @@
 
 #include "oscManager.h"
 #include "userCommand.h"
+#include "msgTypes.h"
 
 
 //extern ofEvent<int> onSceneChange;
@@ -50,8 +51,9 @@ public:
     ofParameterGroup getAnimationParams();
     ParticleManager getParticles() { return particles; };
     
-    
+    void onExplosionEvent(ExplosionMsg &em);
 
+    ofVec2f deNormalize(ofVec2f &inputVector);
     
     ofFbo animationFbo;
     ofFbo compositeFbo;
