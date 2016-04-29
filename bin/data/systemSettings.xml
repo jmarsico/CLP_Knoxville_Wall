@@ -1,5 +1,7 @@
 <system>
-	<framerate>37</framerate>
+	<framerate>58</framerate>
 	<show_anim>0</show_anim>
 	<send_to_lights>0</send_to_lights>
+<system/>
+	<show_mouselocation>0</show_mouselocation>
 </system>

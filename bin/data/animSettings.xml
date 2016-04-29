@@ -1,7 +1,7 @@
 <animation>
 	<Scene_Settings>
-		<Draw_Mode>0</Draw_Mode>
-		<UnknownName>Composite</UnknownName>
+		<Draw_Mode>3</Draw_Mode>
+		<UnknownName>Fluid Density</UnknownName>
 		<Sweep_Anim>
 			<velocity>0</velocity>
 			<spawn_prob>0</spawn_prob>

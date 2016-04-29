@@ -73,7 +73,7 @@
 <fluid>
 		<group>
 			<velocity_mask>
-				<strength>2.13869</strength>
+				<strength>1.14952</strength>
 				<saturation>2.1262</saturation>
 				<blur_passes>3</blur_passes>
 				<blur_radius>2.45106</blur_radius>
@@ -92,9 +92,9 @@
 			</optical_flow>
 			<fluid_solver>
 				<reset>0</reset>
-				<speed>9.41275</speed>
-				<cell_size>0.386089</cell_size>
-				<iterations>12</iterations>
+				<speed>19.8251</speed>
+				<cell_size>0.61516</cell_size>
+				<iterations>11</iterations>
 				<viscosity>0.1</viscosity>
 				<vorticity>0.576572</vorticity>
 				<dissipation>0.00427322</dissipation>
@@ -120,8 +120,8 @@
 			</fluid_solver>
 			<particle_flow>
 				<active>1</active>
-				<speed>9.41275</speed>
-				<cell_size>0.386089</cell_size>
+				<speed>19.8251</speed>
+				<cell_size>0.61516</cell_size>
 				<birth_chance>0.734486</birth_chance>
 				<birth_velocity_chance>0.5</birth_velocity_chance>
 				<lifespan>5</lifespan>
@@ -130,7 +130,7 @@
 				<mass_spread>0.2</mass_spread>
 				<size>2.55519</size>
 				<size_spread>0.390879</size_spread>
-				<twinkle_speed>2.50729</twinkle_speed>
+				<twinkle_speed>5.83923</twinkle_speed>
 			</particle_flow>
 		</group>
 	</fluid>
