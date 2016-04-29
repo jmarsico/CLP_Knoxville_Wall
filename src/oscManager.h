@@ -13,7 +13,6 @@
 #include "ofMain.h"
 #include "ofxOsc.h"
 #include "ofxSimpleTimer.h"
-#include "stateManager.h"
 
 #include "userCommand.h"
 
@@ -22,7 +21,7 @@ class OscManager{
 public:
     OscManager(){}
     
-    void setup(StateManager* _state);
+    void setup();
     void update();
     void timerComplete(string & name);
     
@@ -31,9 +30,8 @@ public:
     
     ofxSimpleTimer *heartBeat;
     
-    static ofEvent<UserCommand> userCommand;
+    static ofEvent<bool> userCommand;
     
-    StateManager* state;
     mutable std::mutex mutex;
     
     UserCommand uc;

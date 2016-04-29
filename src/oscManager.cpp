@@ -9,11 +9,10 @@
 #include "oscManager.h"
 
 
-ofEvent<UserCommand> OscManager::userCommand = ofEvent<UserCommand>();
+ofEvent<bool> OscManager::userCommand = ofEvent<bool>();
 
 
-void OscManager::setup(StateManager* _state){
-    state = _state;
+void OscManager::setup(){
     receiver.setup(12345);
     sender.setup("127.0.0.1", 23456);
     
@@ -48,7 +47,8 @@ void OscManager::update(){
             uc.loc.y = m.getArgAsFloat(1);
             uc.size = m.getArgAsFloat(2);
             
-            ofNotifyEvent(userCommand, uc);
+            bool b = true;
+            ofNotifyEvent(userCommand, b);
             
             
             
@@ -64,11 +64,11 @@ void OscManager::update(){
         }
         else if(m.getAddress() == "/sweep"){
             s = "sweep";
-            ofNotifyEvent(userCommand, s);
+//            ofNotifyEvent(userCommand, true);
         }
          if(m.getAddress() == "/dots"){
              s = "dots";
-            ofNotifyEvent(userCommand, s);
+//            ofNotifyEvent(userCommand, true);
         }
         
         

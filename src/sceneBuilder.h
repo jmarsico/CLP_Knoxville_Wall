@@ -20,6 +20,7 @@
 #include "ofxFastFboReader.h"
 #include "explosionAnimation.h"
 
+#include "oscManager.h"
 #include "userCommand.h"
 
 

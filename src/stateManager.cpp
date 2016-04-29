@@ -8,6 +8,8 @@
 
 #include "stateManager.h"
 
+//ofEvent<bool> StateManager::endUserControl = ofEvent<bool>();
+
 //------------------------------------------------------------
 StateManager::StateManager(){
     
@@ -27,12 +29,12 @@ StateManager::StateManager(){
     //set up event listeners
     //timer listener
     ofAddListener(ofxSimpleTimer::TIMER_COMPLETE, this, &StateManager::onTimerComplete);
-    
+    ofAddListener(OscManager::userCommand, this, &StateManager::onUserInControl);
     
 }
 
 //------------------------------------------------------------
-void StateManager::onUserInControl(){
+void StateManager::onUserInControl(bool &t){
     
     //turn on the user timer (or reset it)
     userControlTimer->start();
@@ -54,7 +56,7 @@ void StateManager::onTimerComplete(string &name){
     //user timer
     if(name == "inUseTimer"){
         //send out event notifying end of user control
-        ofNotifyEvent(endUserControl, true);
+//        ofNotifyEvent(endUserControl, true, this);
         
         //set user control flag to fals
         bUserInControl = false;
@@ -70,7 +72,7 @@ void StateManager::onTimerComplete(string &name){
     else if(name == "sceneTimer"){
         
         //send out event to change scene
-        ofNotifyEvent(sceneChange);
+//        ofNotifyEvent(sceneChange, true);
         
         //get a new random time for next scene change
         int newTimerLength = (int)ofRandom(10000, 60000);

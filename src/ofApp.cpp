@@ -38,7 +38,7 @@ void ofApp::setup()
     
     kinet.setup(lights.size());
 
-    osc.setup(&scene);
+    osc.setup();
     
 }
 

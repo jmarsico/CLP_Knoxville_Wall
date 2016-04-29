@@ -12,6 +12,10 @@
 #include <stdio.h>
 #include "ofMain.h"
 #include "ofxSimpleTimer.h"
+#include "oscManager.h"
+
+
+// ofEvent<bool> OscManager::userCommand;
 
 class StateManager{
 public:
@@ -22,13 +26,13 @@ public:
     void setCurrentScene(int scene);
     
     //event handlers
-    void onUserInControl();
+    void onUserInControl(bool &t);
     void onTimerComplete(string & name);
 
     
     
-    static ofEvent<void> sceneChange;
-    static ofEvent<bool> endUserControl;
+    ofEvent<bool> sceneChange;
+    ofEvent<bool> endUserControl;
     
     
     int getCurrentScene() { return currentScene; };
