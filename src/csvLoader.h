@@ -14,22 +14,22 @@
 #include "ofxCsv.h"
 #include "lightPoint.h"
 
-using namespace wng;
+// using namespace wng;
 
 class CsvLoader {
 public:
-    
+
     CsvLoader(){}
     void loadLightPoints(string filename);
     int getNumLights();
     ofVec2f getLightLoc(int index);
-    
+
     string lightLocFileName;
     ofxCsv lightLocationCsv;
-    
+
 protected:
     vector<ofVec2f> lightPoints;
-    
+
 };
 
 #endif /* defined(__CLP_Knoxville_Wall__csvLoader__) */

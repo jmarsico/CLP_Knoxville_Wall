@@ -1,3 +1,4 @@
+ofxFlowTools
 ofxHTTP
 ofxIO
 ofxJSON
@@ -6,3 +7,11 @@ ofxMediaType
 ofxNetworkUtils
 ofxSSLManager
 ofxTaskQueue
+ofxOsc
+ofxGui
+ofxFastFboReader
+ofxCsv
+ofxNetwork
+ofxKinet
+ofxXmlSettings
+ofxSimpleTimer

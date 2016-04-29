@@ -13,7 +13,7 @@
 #include "stateManager.h"
 #include "sceneBuilder.h"
 #include "ofxGui.h"
-#include "FluidManager.h"
+#include "fluidManager.h"
 #include "csvLoader.h"
 #include "lightPoint.h"
 #include "kinetManager.h"
@@ -28,22 +28,22 @@ public:
     void draw();
     void exit();
     void keyReleased(int key);
-    
+
     void setupServer();
-    
+
     void setupGui();
     void handleEvent(string & name);
 
 
-    
+
     void getSlider(ofx::JSONRPC::MethodArgs& args);
     void ping();
     void pong();
 
     ofx::HTTP::JSONRPCServer server;
     int drawWidth, drawHeight;
-    
-    
+
+
     //GUI
     ofxPanel fluidGui;
     ofxPanel animGui;
@@ -52,17 +52,17 @@ public:
     ofParameter<bool> bShowAnim;
     ofParameter<bool> bSendToWall;
     ofParameter<bool> mouseLoc;
-    
-    
+
+
     StateManager state;
     SceneBuilder scene;
     CsvLoader csv;
     KinetManager kinet;
-    
+
     vector<LightPoint> lights;
     ofPixels compPix;
-    
-    
+
+
     OscManager osc;
 
 private:
