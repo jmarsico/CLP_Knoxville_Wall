@@ -14,7 +14,6 @@
 #include "ofxCsv.h"
 #include "lightPoint.h"
 
-// using namespace wng;
 
 class CsvLoader {
 public:
