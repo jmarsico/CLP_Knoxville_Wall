@@ -19,4 +19,5 @@ requirements:
 - [ofxFastFboReader](https://github.com/satoruhiga/ofxFastFboReader)
 - ofxKinet (proprietary, ask Jake)
 - [ofxSimpleTimer](https://github.com/HeliosInteractive/ofxSimpleTimer)
+- [ofxNetworkUtils](https://github.com/bakercp/ofxNetworkUtils)
 
