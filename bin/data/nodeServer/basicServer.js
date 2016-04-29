@@ -42,8 +42,8 @@ function send_explode_message(explodeParams) {
             buf = osc.toBuffer({
                 address: "/explode",
                 args: [
-                    params[0],
-                    params[1],
+                    parseFloat(params[0]),
+                    parseFloat(params[1]),
                     0.5
                 ]
             })
@@ -53,9 +53,9 @@ function send_explode_message(explodeParams) {
             buf = osc.toBuffer({
                 address: "/explode",
                 args: [
-                    params[0],
-                    params[1],
-                    params[2]
+                    parseFloat(params[0]),
+                    parseFloat(params[1]),
+                    parseFloat(params[2])
                 ]
             })
         }
@@ -108,8 +108,8 @@ function send_dots_params(dotsParams){
         buf = osc.toBuffer({
             address: '/dots',
             args: [
-                params[0],
-                params[1]
+                parseFloat(params[0]),
+                parseFloat(params[1])
             ]
         })
         sock.send(buf, 0, buf.length, 12345, "localhost");

@@ -15,7 +15,6 @@
 #include "oscManager.h"
 
 
-// ofEvent<bool> OscManager::userCommand;
 
 class StateManager{
 public:

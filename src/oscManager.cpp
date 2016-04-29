@@ -42,10 +42,10 @@ void OscManager::update(){
             float y = m.getArgAsFloat(1);
             float size = m.getArgAsFloat(2);
             
-            uc.command = UserCommand::EXPLOSION;
-            uc.loc.x = m.getArgAsFloat(0);
-            uc.loc.y = m.getArgAsFloat(1);
-            uc.size = m.getArgAsFloat(2);
+//            uc.command = UserCommand::EXPLOSION;
+//            uc.loc.x = m.getArgAsFloat(0);
+//            uc.loc.y = m.getArgAsFloat(1);
+//            uc.size = m.getArgAsFloat(2);
             
             bool b = true;
             ofNotifyEvent(userCommand, b);
