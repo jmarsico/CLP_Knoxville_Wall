@@ -5,7 +5,7 @@ to compile:
   - clone into of_v_9.3...../apps/myApps/
   - open xcode project
 
-requirements: 
+requirements:
 - [openframeworks 9.3](http://openframeworks.cc/download/)
 - addons (clone each addon into of_v_9.3...../addons/):
 - [ofxFlowTools](https://github.com/moostrik/ofxFlowTools)
@@ -18,6 +18,5 @@ requirements:
 - [ofxTaskQueue](https://github.com/bakercp/ofxTaskQueue)
 - [ofxFastFboReader](https://github.com/satoruhiga/ofxFastFboReader)
 - ofxKinet (proprietary, ask Jake)
-- [ofxSimpleTimer](https://github.com/HeliosInteractive/ofxSimpleTimer)
+- [ofxSimpleTimer](https://github.com/sfjmt/ofxSimpleTimer)
 - [ofxNetworkUtils](https://github.com/bakercp/ofxNetworkUtils)
-
