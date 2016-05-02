@@ -37,7 +37,6 @@ public:
     void setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottomRight);
     void updateAnimation();
     void drawAnimation();
-    void generateSceneSettings(int &newScene);
     void update();
     void drawModeSetName(const int &_value);
     void generateFinalComposite();
@@ -47,11 +46,12 @@ public:
     ofVec2f getTopLeft() { return topLeft; }
     ofVec2f getBottomRight() { return bottomRight; }
     
-    ofParameterGroup getFluidParams();
-    ofParameterGroup getAnimationParams();
-    ParticleManager getParticles() { return particles; };
+    ofParameterGroup getFluidParams() { return fluidParams; };
+    ofParameterGroup getAnimationParams() { return animParams; };
+    ParticleManager getParticles() { return generativePM; };
     
     void onExplosionEvent(ExplosionMsg &em);
+    void onSceneChange();
 
     ofVec2f deNormalize(ofVec2f &inputVector);
     
@@ -62,25 +62,28 @@ public:
     
 protected:
     
+    StateManager *state;
+    
     ofParameterGroup animParams;
     ofParameter<int>drawMode;
     ofParameter<string>drawName;
-    
+    ofParameter<float>particleForceX;
+    ofParameter<float>particleForceY;
     ofParameterGroup fluidParams;
     
-    StateManager *state;
-    ParticleManager particles;
-    SweepAnimation sweep;
-    PopAnimation pop;
-    ExplosionAnimation explode;
-
-    UserCommand uc;
+    //particle managers
+    ParticleManager generativePM;
+    ParticleManager userPM;
     
+    //generative animations
+    SweepAnimation sweepAnim;
+    PopAnimation popAnim;
+    ExplosionAnimation explodeAnim;
+    
+    //world size variables
     int drawWidth, drawHeight;
     ofVec2f topLeft;
     ofVec2f bottomRight;
-    
-
     
     ofPixels compositePix;
     ofxFastFboReader reader;

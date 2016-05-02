@@ -14,7 +14,10 @@
 
 class ExplosionMsg {
 public:
-    ExplosionMsg(){}
+    ExplosionMsg(ofVec2f _loc, float _size){
+        loc = _loc;
+        size = _size;
+    }
     
     ofVec2f loc;
     float size;

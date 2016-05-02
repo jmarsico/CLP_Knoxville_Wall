@@ -15,7 +15,15 @@
 class UserCommand{
 public:
     
-    UserCommand();
+    UserCommand(){
+        loc.set(0,0);
+        force.set(0, 0);
+        freq = 0;
+        size = 0;
+        
+        command = -1;
+        
+    };
     
     ofVec2f loc;
     ofVec2f force;

@@ -23,13 +23,16 @@ void ParticleManager::setup(){
 }
 
 //----------------------------------------------------------
-void ParticleManager::update(ofVec2f _acc){
-    acc = _acc;
+void ParticleManager::update(){
     for(size_t i = 0; i < particles.size(); i++){
         particles[i].update(acc);
         if(particles[i].bTimeToDie) particles.erase(particles.begin() + i);
     }
     
+}
+
+void ParticleManager::setForces(ofVec2f _acc){
+    acc = _acc;
 }
 
 //----------------------------------------------------------

@@ -1,7 +1,6 @@
 // =============================================================================
 //
 // Copyright (C) 2016 Jakob Marsico <http://ultralowres.com>
-// based on example code from Christopher Baker <http://christopherbaker.net>
 
 
 

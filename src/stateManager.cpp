@@ -8,7 +8,9 @@
 
 #include "stateManager.h"
 
-//ofEvent<bool> StateManager::endUserControl = ofEvent<bool>();
+ofEvent<void> StateManager::endUserControl = ofEvent<void>();
+ofEvent<void> StateManager::sceneChange = ofEvent<void>();
+
 
 //------------------------------------------------------------
 StateManager::StateManager(){
@@ -20,6 +22,7 @@ StateManager::StateManager(){
     userControlTimer = new ofxSimpleTimer();
     userControlTimer->setTime(1000, 1);
     userControlTimer->setName("inUseTimer");
+    userControlTimer->start();
     
     sceneTimer = new ofxSimpleTimer();
     sceneTimer->setTime(10000,1);
@@ -33,12 +36,20 @@ StateManager::StateManager(){
     
 }
 
+
+//------------------------------------------------------------
+void StateManager::update(){
+    sceneTimer->update();
+    userControlTimer->update();
+}
+
+
 //------------------------------------------------------------
 void StateManager::onUserInControl(bool &t){
     
     //turn on the user timer (or reset it)
-    userControlTimer->start();
     userControlTimer->reset();
+    userControlTimer->start();
     
     //set the user in control flag to rue;
     bUserInControl = true;
@@ -56,13 +67,15 @@ void StateManager::onTimerComplete(string &name){
     //user timer
     if(name == "inUseTimer"){
         //send out event notifying end of user control
-//        ofNotifyEvent(endUserControl, true, this);
+        bool uc = true;
+        ofNotifyEvent(endUserControl);
         
         //set user control flag to fals
         bUserInControl = false;
         
         //restart the scene timer
         sceneTimer->start();
+        userControlTimer->pause();
         
         //log it
         ofLogVerbose("StateManager") << "user control timer complete";
@@ -72,7 +85,8 @@ void StateManager::onTimerComplete(string &name){
     else if(name == "sceneTimer"){
         
         //send out event to change scene
-//        ofNotifyEvent(sceneChange, true);
+        bool sc = true;
+        ofNotifyEvent(sceneChange);
         
         //get a new random time for next scene change
         int newTimerLength = (int)ofRandom(10000, 60000);
@@ -83,6 +97,5 @@ void StateManager::onTimerComplete(string &name){
         
         //log it
         ofLogVerbose("StateManager") << "scenetimer complete;  new time until scene change: " << newTimerLength;
-        
     }
 }

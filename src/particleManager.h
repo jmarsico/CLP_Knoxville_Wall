@@ -21,7 +21,8 @@ public:
     void setup();
     
     void addParticle(ofVec2f _loc);
-    void update(ofVec2f _acc);
+    void update();
+    void setForces(ofVec2f);
     
     void explosion(ofVec2f _loc, int numParts);
     

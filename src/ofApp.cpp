@@ -1,7 +1,6 @@
 // =============================================================================
 //
 // Copyright (C) 2016 Jakob Marsico <http://ultralowres.com>
-// based on example code from Christopher Baker <http://christopherbaker.net>
 
 
 
@@ -48,7 +47,9 @@ void ofApp::update(){
     FPS = ofGetFrameRate();
 
     ofSetColor(255);
+    osc.update();
     scene.update();
+    state.update();
 
     scene.generateFinalComposite();
     compPix = scene.getPixels();
@@ -59,7 +60,7 @@ void ofApp::update(){
         lights[i].setCurrentVal(val);
     }
 
-    osc.update();
+    
 
 }
 

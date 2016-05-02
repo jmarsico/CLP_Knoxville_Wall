@@ -10,12 +10,10 @@
 
 //--------------------------------------------------------------
 SceneBuilder::SceneBuilder(){
-
     
-
     
-
-//    ofAddListener(state->onSceneChange, this, &SceneBuilder::generateSceneSettings);
+    
+    
 
 }
 //--------------------------------------------------------------
@@ -31,7 +29,6 @@ void SceneBuilder::setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottom
     bottomRight = _bottomRight;
     
     fluid.init(drawWidth, drawHeight);
-
     
     animationFbo.allocate(drawWidth, drawHeight);
     animationFbo.begin();
@@ -43,41 +40,36 @@ void SceneBuilder::setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottom
     ofClear(0);
     compositeFbo.end();
     
+    //particle managers (we have two, one for generative, one for users)
+    generativePM.setup();              //set up the generative particle manager
+    userPM.setup();
     
-    particles.setup();              //set up the particle manager
+    sweepAnim.setup();                  //set up sweep
+    popAnim.setup(&generativePM);
+    explodeAnim.setup(&generativePM);      //setup and pass reference to particle manager
     
-    sweep.setup();                  //set up sweep
-    pop.setup(&particles);
-    explode.setup(&particles);      //setup and pass reference to particle manager
-    
+    //parameters & gui
     animParams.setName("Scene Settings");
     animParams.add(drawMode.set("Draw Mode", DRAW_COMPOSITE, DRAW_COMPOSITE, DRAW_SOURCE));
-    
-    //    ofAddListener(SceneBuilder::drawMode, this, &SceneBuilder::drawModeSetName);
     animParams.add(drawName.set("", ""));
-    animParams.add(sweep.parameters);
-    animParams.add(pop.parameters);
-    animParams.add(explode.parameters);
-    animParams.add(particles.parameters);
+    animParams.add(particleForceX.set("particle forces X", 0.f, 0.f, 5.f));
+    animParams.add(particleForceY.set("particle forces Y", 0.f, 0.f, 5.f));
+    animParams.add(sweepAnim.parameters);
+    animParams.add(popAnim.parameters);
+    animParams.add(explodeAnim.parameters);
+    animParams.add(generativePM.parameters);
+    animParams.add(userPM.parameters);
     
     fluidParams.add(fluid.velocityMask.parameters);
     fluidParams.add(fluid.opticalFlow.parameters);
     fluidParams.add(fluid.fluidSimulation.parameters);
     fluidParams.add(fluid.particleFlow.parameters);
     
-    
     //set up event handlers
     ofAddListener(OscManager::explosion, this, &SceneBuilder::onExplosionEvent);
+    ofAddListener(StateManager::sceneChange, this, &SceneBuilder::onSceneChange);
     
     
-}
-
-ofParameterGroup SceneBuilder::getFluidParams(){
-    return fluidParams;
-}
-
-ofParameterGroup SceneBuilder::getAnimationParams(){
-    return animParams;
 }
 
 
@@ -93,9 +85,14 @@ void SceneBuilder::update(){
 //--------------------------------------------------------------
 void SceneBuilder::updateAnimation(){
     
-//    if(explode.brightness > 0) explode.update();
-    particles.update(ofVec2f(0,0));
-    if(pop.brightness > 0) pop.update();
+    if(explodeAnim.brightness > 0) explodeAnim.update();
+    generativePM.setForces(ofVec2f(particleForceX, particleForceY));
+    userPM.setForces(ofVec2f(particleForceX, particleForceY));
+    
+    generativePM.update();
+    userPM.update();
+    
+    if(popAnim.brightness > 0) popAnim.update();
 
 }
 
@@ -103,26 +100,22 @@ void SceneBuilder::updateAnimation(){
 void SceneBuilder::drawAnimation(){
     
     animationFbo.begin();
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
-    
-    glEnable(GL_BLEND);
-    glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,GL_ONE,GL_ONE_MINUS_SRC_ALPHA);
-    
     ofClear(0);
     //draw animations based on scene
-//    if(explode.brightness > 0) explode.draw();
-    if(pop.brightness > 0) pop.draw();
+    if(explodeAnim.brightness > 0) explodeAnim.draw();
+    if(popAnim.brightness > 0) popAnim.draw();
     
-    particles.draw(1.);
+    generativePM.draw(1.);
+    userPM.draw(1.);
     
     glDisable(GL_BLEND);
     glPopAttrib();
     animationFbo.end();
     
-    
 }
 
-void SceneBuilder::generateSceneSettings(int &newScene){
+//--------------------------------------------------------------
+void SceneBuilder::onSceneChange(){
     
     //THIS IS WHERE GENERATIVE changes HAPPEN
     
@@ -177,12 +170,7 @@ ofPixels SceneBuilder::getPixels(){
 
 //--------------------------------------------------------------
 void SceneBuilder::draw(){
-//    compositeFbo.draw(0,0);
-//    animationFbo.draw(0,0);
-//    compositeFbo.draw(0, 0, ofGetWidth()/2, ofGetHeight()/2);
     fluid.draw(drawMode);
-//    animationFbo.draw(0, ofGetHeight()/2, ofGetWidth()/2, ofGetHeight()/2);
-
 }
 
 
@@ -199,13 +187,13 @@ void SceneBuilder::drawModeSetName(const int &_value) {
     }
 }
 
+//--------------------------------------------------------------
 void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
     
-    
-    particles.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 0.1, 0.0, 1000.));
-    
+    userPM.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 0.1, 0.0, 80.));
 }
 
+//--------------------------------------------------------------
 ofVec2f SceneBuilder::deNormalize(ofVec2f &inputVector){
     ofVec2f output;
     output.x = ofMap(inputVector.x, 0.f, 1.f, topLeft.x, bottomRight.x);
@@ -214,8 +202,9 @@ ofVec2f SceneBuilder::deNormalize(ofVec2f &inputVector){
     return output;
 }
 
-
+//--------------------------------------------------------------
 SceneBuilder::~SceneBuilder(){
 //    ofRemoveListener(state->onSceneChange, this, &SceneBuilder::generateSceneSettings);
+    ofRemoveListener(OscManager::explosion, this, &SceneBuilder::onExplosionEvent);
 }
 

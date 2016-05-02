@@ -20,6 +20,7 @@ class StateManager{
 public:
     
     StateManager();
+    void update();
     void setUserInControl(bool bUserControl);
     void setRunningState(bool onOff);
     void setCurrentScene(int scene);
@@ -28,11 +29,9 @@ public:
     void onUserInControl(bool &t);
     void onTimerComplete(string & name);
 
-    
-    
-    ofEvent<bool> sceneChange;
-    ofEvent<bool> endUserControl;
-    
+    //events
+    static ofEvent<void> sceneChange;
+    static ofEvent<void> endUserControl;
     
     int getCurrentScene() { return currentScene; };
     bool getRunningState() { return bIsRunning; };

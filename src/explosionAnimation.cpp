@@ -22,11 +22,10 @@ void ExplosionAnimation::update(){
     if(ofGetFrameNum() % ((int)(1000 * (1.0 - frequency)) + 20) == 0){
         pm->explosion(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 100);
     }
-    pm->update(ofVec2f(0,0));
+    
 }
 
 //-----------------------------------------------------
 void ExplosionAnimation::draw(){
     
-    pm->draw(brightness.get());
 }

@@ -30,8 +30,6 @@ void PopAnimation::update(){
         }
     }
     
-    pm->update(ofVec2f(0,0));
-    
 }
 
 

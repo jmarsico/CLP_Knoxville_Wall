@@ -112,10 +112,8 @@
 		BA3D3AAC1CC820430095C0DD /* ofxSimpleTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA3D3AAA1CC820430095C0DD /* ofxSimpleTimer.cpp */; };
 		BA5701951CB8168600C75341 /* csvLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA5701931CB8168600C75341 /* csvLoader.cpp */; };
 		BA57019D1CB816F800C75341 /* lightPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA57019B1CB816F800C75341 /* lightPoint.cpp */; };
-		BADBF29B1CD150BA009AE778 /* userCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADBF2991CD150BA009AE778 /* userCommand.cpp */; };
 		BADBF2AB1CD394C2009AE778 /* ofxCsv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADBF2A71CD394C2009AE778 /* ofxCsv.cpp */; };
 		BADBF2AC1CD394C2009AE778 /* ofxCsvRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADBF2A91CD394C2009AE778 /* ofxCsvRow.cpp */; };
-		BADBF2B11CD3C183009AE778 /* explosionMsg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADBF2AF1CD3C183009AE778 /* explosionMsg.cpp */; };
 		BAF1A64C1CBC461E00D9E9E2 /* kinetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF1A64A1CBC461E00D9E9E2 /* kinetManager.cpp */; };
 		BAF1A65C1CBC470E00D9E9E2 /* ofxTCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF1A6541CBC470E00D9E9E2 /* ofxTCPClient.cpp */; };
 		BAF1A65D1CBC470E00D9E9E2 /* ofxTCPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF1A6561CBC470E00D9E9E2 /* ofxTCPManager.cpp */; };
@@ -497,14 +495,12 @@
 		BA5701941CB8168600C75341 /* csvLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csvLoader.h; sourceTree = "<group>"; };
 		BA57019B1CB816F800C75341 /* lightPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lightPoint.cpp; sourceTree = "<group>"; };
 		BA57019C1CB816F800C75341 /* lightPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lightPoint.h; sourceTree = "<group>"; };
-		BADBF2991CD150BA009AE778 /* userCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = userCommand.cpp; sourceTree = "<group>"; };
 		BADBF29A1CD150BA009AE778 /* userCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userCommand.h; sourceTree = "<group>"; };
 		BADBF2A71CD394C2009AE778 /* ofxCsv.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCsv.cpp; sourceTree = "<group>"; };
 		BADBF2A81CD394C2009AE778 /* ofxCsv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxCsv.h; sourceTree = "<group>"; };
 		BADBF2A91CD394C2009AE778 /* ofxCsvRow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCsvRow.cpp; sourceTree = "<group>"; };
 		BADBF2AA1CD394C2009AE778 /* ofxCsvRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxCsvRow.h; sourceTree = "<group>"; };
 		BADBF2AE1CD3C120009AE778 /* msgTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = msgTypes.h; sourceTree = "<group>"; };
-		BADBF2AF1CD3C183009AE778 /* explosionMsg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = explosionMsg.cpp; sourceTree = "<group>"; };
 		BADBF2B01CD3C183009AE778 /* explosionMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = explosionMsg.h; sourceTree = "<group>"; };
 		BAE45B5EDF2D519E39986297 /* ofxNetworkUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNetworkUtils.h; path = ../../../addons/ofxNetworkUtils/src/ofxNetworkUtils.h; sourceTree = SOURCE_ROOT; };
 		BAF1A64A1CBC461E00D9E9E2 /* kinetManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kinetManager.cpp; sourceTree = "<group>"; };
@@ -1496,10 +1492,8 @@
 		BADBF2981CD14F79009AE778 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				BADBF2991CD150BA009AE778 /* userCommand.cpp */,
 				BADBF29A1CD150BA009AE778 /* userCommand.h */,
 				BADBF2AE1CD3C120009AE778 /* msgTypes.h */,
-				BADBF2AF1CD3C183009AE778 /* explosionMsg.cpp */,
 				BADBF2B01CD3C183009AE778 /* explosionMsg.h */,
 			);
 			name = data;
@@ -1984,7 +1978,6 @@
 				1C499EA2AD1749FB7569E701 /* BaseServer.cpp in Sources */,
 				CB5F8611AA8E77C8C2BC2290 /* ClientEvents.cpp in Sources */,
 				BA22C5B11C8E2F0F004B30A7 /* NetworkingUtils.cpp in Sources */,
-				BADBF29B1CD150BA009AE778 /* userCommand.cpp in Sources */,
 				630A54B4C43A1DDEA17E6D4F /* ClientProgressStream.cpp in Sources */,
 				12F4DCE71C214211C3393D99 /* ClientSessionSettings.cpp in Sources */,
 				8D1E10EF50181EB4AFF75AEB /* Context.cpp in Sources */,
@@ -2091,7 +2084,6 @@
 				BA22C5AD1C8E2F0F004B30A7 /* ofxOscParameterSync.cpp in Sources */,
 				BAF1A65C1CBC470E00D9E9E2 /* ofxTCPClient.cpp in Sources */,
 				BAF1A65D1CBC470E00D9E9E2 /* ofxTCPManager.cpp in Sources */,
-				BADBF2B11CD3C183009AE778 /* explosionMsg.cpp in Sources */,
 				1CC07C1A616F29EB8EEC3D21 /* SearchPath.cpp in Sources */,
 				B1BF03D79762719793CC9F1A /* SLIPEncoding.cpp in Sources */,
 				D81A435CE7FDF51B41956210 /* snappy-sinksource.cc in Sources */,
