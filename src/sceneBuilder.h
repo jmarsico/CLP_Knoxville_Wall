@@ -21,7 +21,6 @@
 #include "explosionAnimation.h"
 
 #include "oscManager.h"
-#include "userCommand.h"
 #include "msgTypes.h"
 
 
@@ -51,6 +50,7 @@ public:
     ParticleManager getParticles() { return generativePM; };
     
     void onExplosionEvent(ExplosionMsg &em);
+    void onSweepEvent(SweepMsg &sm);
     void onSceneChange();
 
     ofVec2f deNormalize(ofVec2f &inputVector);

@@ -9,8 +9,9 @@
 #include "oscManager.h"
 
 
-ofEvent<bool> OscManager::userCommand = ofEvent<bool>();
+ofEvent<void> OscManager::userCommand = ofEvent<void>();
 ofEvent<ExplosionMsg> OscManager::explosion = ofEvent<ExplosionMsg>();
+ofEvent<SweepMsg> OscManager::sweep = ofEvent<SweepMsg>();
 
 
 void OscManager::setup(){
@@ -35,7 +36,7 @@ void OscManager::update(){
         // get the next message
         ofxOscMessage m;
         receiver.getNextMessage(m);
-        string s = "";
+//        ofLog() << "got a message" << m.getAddress();
         
         if(m.getAddress() == "/explode"){
             
@@ -43,21 +44,31 @@ void OscManager::update(){
             float y = m.getArgAsFloat(1);
             float size = m.getArgAsFloat(2);
 
-            bool b = true;
-            ofNotifyEvent(userCommand, b);
+            ofNotifyEvent(userCommand);
             
             //send an explosion event
             ExplosionMsg em(ofVec2f(x,y), size);
             ofNotifyEvent(explosion, em);
             
+            ofLogNotice("OscManager") << "received explode message";
+            
         }
         else if(m.getAddress() == "/sweep"){
-            s = "sweep";
-//            ofNotifyEvent(userCommand, true);
+            float startX = m.getArgAsFloat(0);
+            float startY = m.getArgAsFloat(1);
+            float endX = m.getArgAsFloat(2);
+            float endY = m.getArgAsFloat(3);
+            
+            ofNotifyEvent(userCommand);
+            
+            SweepMsg sm(ofVec2f(startX, startY), ofVec2f(endX, endY));
+            ofNotifyEvent(sweep, sm);
+            
+            ofLogNotice("OscManager") << "received sweep message";
+            
         }
          if(m.getAddress() == "/dots"){
-             s = "dots";
-//            ofNotifyEvent(userCommand, true);
+            ofNotifyEvent(userCommand);
         }
         
         

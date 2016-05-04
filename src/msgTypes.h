@@ -10,5 +10,7 @@
 #define CLP_Knoxville_Wall_Header_h
 
 #include "explosionMsg.h"
+#include "sweepMsg.h"
+
 
 #endif

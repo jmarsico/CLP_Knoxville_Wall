@@ -14,7 +14,6 @@
 #include "ofxOsc.h"
 #include "ofxSimpleTimer.h"
 #include "msgTypes.h"
-#include "userCommand.h"
 
 class OscManager{
     
@@ -30,12 +29,12 @@ public:
     
     ofxSimpleTimer *heartBeat;
     
-    static ofEvent<bool> userCommand;
+    static ofEvent<void> userCommand;
     static ofEvent<ExplosionMsg> explosion;
+    static ofEvent<SweepMsg> sweep;
     
     mutable std::mutex mutex;
     
-    UserCommand uc;
 
 };
 

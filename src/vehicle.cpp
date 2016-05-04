@@ -20,8 +20,8 @@ void Vehicle::setup(ofVec2f startLoc, ofVec2f _destination, float _size){
     acc.set(0, 0);
     vel.set(0,0);
     
-    maxSpeed = 4.f;
-    maxForce = 0.1;
+    maxSpeed = 40.f;
+    maxForce = 0.9;
     
     bTimeToDie = false;
     
@@ -29,13 +29,14 @@ void Vehicle::setup(ofVec2f startLoc, ofVec2f _destination, float _size){
 
 //-------------------------------------------------------------
 void Vehicle::update(){
-    
+   
+    seek();
     vel += acc;
     vel.limit(maxSpeed);
     loc += vel;
     acc *= 0;
     
-    if (loc == dest) bTimeToDie = true;
+    if (loc.x > dest.x + 20 && loc.x < dest.x - 20) bTimeToDie = true;
 }
 
 //-------------------------------------------------------------

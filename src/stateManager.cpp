@@ -45,7 +45,7 @@ void StateManager::update(){
 
 
 //------------------------------------------------------------
-void StateManager::onUserInControl(bool &t){
+void StateManager::onUserInControl(){
     
     //turn on the user timer (or reset it)
     userControlTimer->reset();

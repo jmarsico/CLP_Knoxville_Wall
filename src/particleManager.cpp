@@ -48,12 +48,15 @@ void ParticleManager::draw(float _brightness){
     for(size_t i = 0; i < particles.size(); i++){
         particles[i].draw(_brightness);
     }
+    
+    for(auto &v : vehicles){
+        v.draw();
+    }
 }
 
 //----------------------------------------------------------
 void ParticleManager::explosion(ofVec2f _loc, int numParts){
     
-    ofLogNotice("ParticleManager") << "explosion";
     for(size_t i = 0; i < numParts; i++){
         Particle p;
         ofVec2f vel(ofRandom(-2, 2), ofRandom(-2,2));
@@ -61,7 +64,6 @@ void ParticleManager::explosion(ofVec2f _loc, int numParts){
         p.turnOnNoise(true);
         
         particles.push_back(p);
-        
         
     }
     

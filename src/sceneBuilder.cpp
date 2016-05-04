@@ -68,6 +68,7 @@ void SceneBuilder::setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottom
     //set up event handlers
     ofAddListener(OscManager::explosion, this, &SceneBuilder::onExplosionEvent);
     ofAddListener(StateManager::sceneChange, this, &SceneBuilder::onSceneChange);
+    ofAddListener(OscManager::sweep, this, &SceneBuilder::onSweepEvent);
     
     
 }
@@ -192,14 +193,18 @@ void SceneBuilder::drawModeSetName(const int &_value) {
 //--------------------------------------------------------------
 void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
     
-    userPM.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 0.1, 0.0, 80.));
+    userPM.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 100.f, 0.0, 80.));
+}
+
+void SceneBuilder::onSweepEvent(SweepMsg &sm){
+    userPM.addVehicle(deNormalize(sm.loc), deNormalize(sm.dest));
 }
 
 //--------------------------------------------------------------
 ofVec2f SceneBuilder::deNormalize(ofVec2f &inputVector){
     ofVec2f output;
-    output.x = ofMap(inputVector.x, 0.f, 1.f, topLeft.x, bottomRight.x);
-    output.y = ofMap(inputVector.y, 0.f, 1.f, topLeft.y, bottomRight.y);
+    output.x = ofMap(inputVector.x, 0.f, 100.f, topLeft.x, bottomRight.x);
+    output.y = ofMap(inputVector.y, 0.f, 100.f, topLeft.y, bottomRight.y);
     
     return output;
 }
