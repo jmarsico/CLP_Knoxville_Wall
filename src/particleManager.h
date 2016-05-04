@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "ofMain.h"
 #include "particle.h"
+#include "vehicle.h"
 
 class ParticleManager {
 public:
@@ -21,6 +22,7 @@ public:
     void setup();
     
     void addParticle(ofVec2f _loc);
+    void addVehicle(ofVec2f _loc, ofVec2f _dest);
     void update();
     void setForces(ofVec2f);
     
@@ -39,6 +41,7 @@ public:
 private:
     
     vector<Particle> particles;
+    vector<Vehicle> vehicles;
 
 };
 

@@ -119,6 +119,8 @@ void SceneBuilder::onSceneChange(){
     
     //THIS IS WHERE GENERATIVE changes HAPPEN
     
+    ofLogNotice("SceneBuilder") << "scene change";
+    
     //change settings of different animations
     /*eg: 
     sweepAnimation on/off

@@ -89,7 +89,7 @@ void StateManager::onTimerComplete(string &name){
         ofNotifyEvent(sceneChange);
         
         //get a new random time for next scene change
-        int newTimerLength = (int)ofRandom(10000, 60000);
+        int newTimerLength = (int)ofRandom(1000, 6000);
         
         //set up the new timer and start it
         sceneTimer->setTime(newTimerLength, 1);

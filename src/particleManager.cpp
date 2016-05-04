@@ -24,9 +24,17 @@ void ParticleManager::setup(){
 
 //----------------------------------------------------------
 void ParticleManager::update(){
+    
+    //update particles
     for(size_t i = 0; i < particles.size(); i++){
         particles[i].update(acc);
         if(particles[i].bTimeToDie) particles.erase(particles.begin() + i);
+    }
+    
+    //update vehicles
+    for(size_t i = 0; i < vehicles.size(); i++){
+        vehicles[i].update();
+        if(vehicles[i].bTimeToDie) vehicles.erase(vehicles.begin() + i);
     }
     
 }
@@ -65,6 +73,13 @@ void ParticleManager::addParticle(ofVec2f _loc){
     p.setup(_loc, ofVec2f(0,0), 5);
     p.turnOnNoise(false);
     particles.push_back(p);
+}
+
+void ParticleManager::addVehicle(ofVec2f _loc, ofVec2f _dest){
+    Vehicle v;
+    v.setup(_loc, _dest, ofRandom(4, 10));
+    
+    vehicles.push_back(v);
 }
 
 

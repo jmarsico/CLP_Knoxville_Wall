@@ -55,6 +55,7 @@ public:
 
     ofVec2f deNormalize(ofVec2f &inputVector);
     
+    
     ofFbo animationFbo;
     ofFbo compositeFbo;
     
