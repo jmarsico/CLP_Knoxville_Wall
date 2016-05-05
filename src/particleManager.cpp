@@ -77,9 +77,10 @@ void ParticleManager::addParticle(ofVec2f _loc){
     particles.push_back(p);
 }
 
+//----------------------------------------------------------
 void ParticleManager::addVehicle(ofVec2f _loc, ofVec2f _dest){
     Vehicle v;
-    v.setup(_loc, _dest, ofRandom(4, 10));
+    v.setup(_loc, _dest, ofRandom(10, 50));
     
     vehicles.push_back(v);
 }

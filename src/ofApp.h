@@ -17,6 +17,7 @@
 #include "lightPoint.h"
 #include "kinetManager.h"
 #include "oscManager.h"
+#include "logger.h"
 
 
 class ofApp: public ofBaseApp
@@ -63,6 +64,8 @@ public:
 
 
     OscManager osc;
+    
+    Logger logger;
 
 private:
 

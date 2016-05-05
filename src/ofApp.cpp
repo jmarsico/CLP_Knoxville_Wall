@@ -11,6 +11,9 @@ void ofApp::setup()
 {
     ofSetFrameRate(200);
     ofSetLogLevel(OF_LOG_VERBOSE);
+    
+    ofFilePath logPath;
+    logger.setup(logPath.getAbsolutePath("jake.log", true));
 
     scene.setup(&state, ofVec2f(60,300), ofVec2f(1080,450));
 
@@ -45,6 +48,7 @@ void ofApp::setup()
 void ofApp::update(){
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
     FPS = ofGetFrameRate();
+    logger.update();
 
     ofSetColor(255);
     osc.update();

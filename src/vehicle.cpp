@@ -21,7 +21,7 @@ void Vehicle::setup(ofVec2f startLoc, ofVec2f _destination, float _size){
     vel.set(0,0);
     
     maxSpeed = 40.f;
-    maxForce = 0.9;
+    maxForce = 2.0;
     
     bTimeToDie = false;
     
@@ -36,7 +36,10 @@ void Vehicle::update(){
     loc += vel;
     acc *= 0;
     
-    if (loc.x > dest.x + 20 && loc.x < dest.x - 20) bTimeToDie = true;
+    if (loc.x > dest.x - 20 && loc.x < dest.x + 20){
+        bTimeToDie = true;
+//        ofLog() << "TIME TO DIE";
+    }
 }
 
 //-------------------------------------------------------------
@@ -56,11 +59,12 @@ void Vehicle::seek(){
     
 }
 
-
+//-------------------------------------------------------------
 void Vehicle::changeDestination(ofVec2f _destination){
     dest = _destination;
 }
 
+//-------------------------------------------------------------
 void Vehicle::draw(){
     ofSetColor(255);
     ofFill();

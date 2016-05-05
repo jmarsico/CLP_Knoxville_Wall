@@ -113,6 +113,7 @@
 		BA5701951CB8168600C75341 /* csvLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA5701931CB8168600C75341 /* csvLoader.cpp */; };
 		BA57019D1CB816F800C75341 /* lightPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA57019B1CB816F800C75341 /* lightPoint.cpp */; };
 		BA9E815B1CDA74A9001C6F5B /* vehicle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA9E81591CDA74A9001C6F5B /* vehicle.cpp */; };
+		BA9E81601CDAE7DA001C6F5B /* logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA9E815E1CDAE7DA001C6F5B /* logger.cpp */; };
 		BADBF2AB1CD394C2009AE778 /* ofxCsv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADBF2A71CD394C2009AE778 /* ofxCsv.cpp */; };
 		BADBF2AC1CD394C2009AE778 /* ofxCsvRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADBF2A91CD394C2009AE778 /* ofxCsvRow.cpp */; };
 		BAF1A64C1CBC461E00D9E9E2 /* kinetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF1A64A1CBC461E00D9E9E2 /* kinetManager.cpp */; };
@@ -499,6 +500,8 @@
 		BA9E81591CDA74A9001C6F5B /* vehicle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vehicle.cpp; sourceTree = "<group>"; };
 		BA9E815A1CDA74A9001C6F5B /* vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vehicle.h; sourceTree = "<group>"; };
 		BA9E815C1CDA9285001C6F5B /* sweepMsg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sweepMsg.h; sourceTree = "<group>"; };
+		BA9E815E1CDAE7DA001C6F5B /* logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = logger.cpp; sourceTree = "<group>"; };
+		BA9E815F1CDAE7DA001C6F5B /* logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logger.h; sourceTree = "<group>"; };
 		BADBF2A71CD394C2009AE778 /* ofxCsv.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCsv.cpp; sourceTree = "<group>"; };
 		BADBF2A81CD394C2009AE778 /* ofxCsv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxCsv.h; sourceTree = "<group>"; };
 		BADBF2A91CD394C2009AE778 /* ofxCsvRow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCsvRow.cpp; sourceTree = "<group>"; };
@@ -1546,6 +1549,8 @@
 				BAF1A64B1CBC461E00D9E9E2 /* kinetManager.h */,
 				BA3D3AA21CC8185D0095C0DD /* oscManager.cpp */,
 				BA3D3AA31CC8185D0095C0DD /* oscManager.h */,
+				BA9E815E1CDAE7DA001C6F5B /* logger.cpp */,
+				BA9E815F1CDAE7DA001C6F5B /* logger.h */,
 			);
 			name = peripherals;
 			sourceTree = "<group>";
@@ -2034,6 +2039,7 @@
 				10B158B194807374A26775AC /* ProgressMonitor.cpp in Sources */,
 				8F6DCF982CF06434EF9E4654 /* ProxySettings.cpp in Sources */,
 				BA22C5B41C8E2F0F004B30A7 /* OscPrintReceivedElements.cpp in Sources */,
+				BA9E81601CDAE7DA001C6F5B /* logger.cpp in Sources */,
 				BA18A96E1CAC5545007E76B8 /* ftDrawForce.cpp in Sources */,
 				BAF1A65F1CBC470E00D9E9E2 /* ofxUDPManager.cpp in Sources */,
 				A9CA54326603BFA5029E72EA /* PutRequest.cpp in Sources */,
