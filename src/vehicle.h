@@ -16,7 +16,7 @@
 class Vehicle{
 public:
     Vehicle(){};
-    void setup(ofVec2f _startLoc, ofVec2f _destination, float _size);
+    void setup(ofVec2f _startLoc, ofVec2f _destination, float _size, float _speed);
     void update();
     void seek();
     void applyForce(ofVec2f force);

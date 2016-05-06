@@ -11,18 +11,22 @@
 
 #include <stdio.h>
 #include "baseAnimation.h"
+#include "ofxSimpleTimer.h"
 
 class ExplosionAnimation : public BaseAnimation {
 public:
     
     ExplosionAnimation(){}
-    void setup(ParticleManager* _pm);
+    void setup();
     void update();
     void draw();
     
+    void onTimerComplete(string &name);
     
-    ParticleManager* pm;
+    ParticleManager pm;
     ofParameter<float> frequency;
+    
+    ofxSimpleTimer *timer;
 };
 
 #endif /* defined(__CLP_Knoxville_Wall__explosionAnimation__) */

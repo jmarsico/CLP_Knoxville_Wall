@@ -11,17 +11,22 @@
 
 #include <stdio.h>
 #include "baseAnimation.h"
+#include "ofxSimpleTimer.h"
 
 class PopAnimation : public BaseAnimation {
 public:
-    void setup(ParticleManager* _pm);
+    void setup();
     void update();
     void draw();
     
-    ofParameter<float> spawnProb;
-    ofParameter<int> spawnSize;
+    void onTimerComplete(string &name);
     
-    ParticleManager* pm;
+    ofParameter<float> spawnProb;
+    ofParameter<float> frequency;
+    
+    ParticleManager pm;
+    
+    ofxSimpleTimer *timer;
     
     
 };

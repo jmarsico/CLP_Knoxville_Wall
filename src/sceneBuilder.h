@@ -22,18 +22,15 @@
 
 #include "oscManager.h"
 #include "msgTypes.h"
+#include "logger.h"
 
-
-//extern ofEvent<int> onSceneChange;
-//extern ofEvent<bool> onUserInControl;
-//extern ofEvent<bool> onFullUserControl;
 
 
 class SceneBuilder {
 public:
     SceneBuilder();
     ~SceneBuilder();
-    void setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottomRight);
+    void setup(StateManager *_state, Logger *_logger, ofVec2f _topLeft, ofVec2f _bottomRight);
     void updateAnimation();
     void drawAnimation();
     void update();
@@ -47,7 +44,6 @@ public:
     
     ofParameterGroup getFluidParams() { return fluidParams; };
     ofParameterGroup getAnimationParams() { return animParams; };
-    ParticleManager getParticles() { return generativePM; };
     
     void onExplosionEvent(ExplosionMsg &em);
     void onSweepEvent(SweepMsg &sm);
@@ -64,6 +60,7 @@ public:
 protected:
     
     StateManager *state;
+    Logger *logger;
     
     ofParameterGroup animParams;
     ofParameter<int>drawMode;
@@ -73,7 +70,6 @@ protected:
     ofParameterGroup fluidParams;
     
     //particle managers
-    ParticleManager generativePM;
     ParticleManager userPM;
     
     //generative animations

@@ -9,23 +9,44 @@
 #include "explosionAnimation.h"
 
 //-----------------------------------------------------
-void ExplosionAnimation::setup(ParticleManager* _pm){
-    pm = _pm;
+void ExplosionAnimation::setup(){
+    pm.setup();
     brightness = 1.f;
     parameters.setName("explode");
     parameters.add(frequency.set("frequency", 0.0, 0.0, 1.0));
+    
+    timer = new ofxSimpleTimer();
+    timer->setName("explodeAnimTimer");
+    timer->setTime(1000, 2);
+    timer->start();
+    
+    ofAddListener(ofxSimpleTimer::TIMER_COMPLETE, this, &ExplosionAnimation::onTimerComplete);
+    
 }
 
 //-----------------------------------------------------
 void ExplosionAnimation::update(){
     
-    if(ofGetFrameNum() % ((int)(1000 * (1.0 - frequency)) + 20) == 0){
-        pm->explosion(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 100);
-    }
+    pm.update();
+    timer->update();
     
 }
 
-//-----------------------------------------------------
-void ExplosionAnimation::draw(){
+
+void ExplosionAnimation::onTimerComplete(string &name){
+    if(name == "explodeAnimTimer"){
+        pm.explosion(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 100);
     
+        //reset timer based on frequency parameter
+        int newTime = int((1.1f - frequency) * ofRandom(1000, 15000));
+        timer->setTime(newTime, 2);
+        timer->reset();
+        timer->start();
+    }
 }
+
+
+void ExplosionAnimation::draw(){
+    pm.draw(brightness);
+}
+

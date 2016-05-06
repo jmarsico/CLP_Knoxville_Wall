@@ -33,11 +33,8 @@ void KinetManager::setup(int numLights){
                 psPort = 1;
             }
             
-//            powerSupplies[i*2].getPsPort();
-            
             ofLogNotice("KinetManager::setup") << "new powerSupply. IP: " << powerSupplies[i].getIP()
             << " psPort: " << powerSupplies[i].getPsPort();
-            
            
         }
     } else {

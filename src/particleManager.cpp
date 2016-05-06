@@ -11,7 +11,8 @@
 
 //----------------------------------------------------------
 ParticleManager::ParticleManager(){
-    
+    topLeft.set(60,300);
+    bottomRight.set(1080,450);
 }
 
 //----------------------------------------------------------
@@ -39,6 +40,7 @@ void ParticleManager::update(){
     
 }
 
+//----------------------------------------------------------
 void ParticleManager::setForces(ofVec2f _acc){
     acc = _acc;
 }
@@ -62,11 +64,8 @@ void ParticleManager::explosion(ofVec2f _loc, int numParts){
         ofVec2f vel(ofRandom(-2, 2), ofRandom(-2,2));
         p.setup(_loc, vel, 3);
         p.turnOnNoise(true);
-        
         particles.push_back(p);
-        
     }
-    
 }
 
 //----------------------------------------------------------
@@ -78,11 +77,19 @@ void ParticleManager::addParticle(ofVec2f _loc){
 }
 
 //----------------------------------------------------------
-void ParticleManager::addVehicle(ofVec2f _loc, ofVec2f _dest){
+void ParticleManager::addVehicle(ofVec2f _loc, ofVec2f _dest, float size, float speed){
     Vehicle v;
-    v.setup(_loc, _dest, ofRandom(10, 50));
-    
+    v.setup(_loc, _dest, size, speed);
     vehicles.push_back(v);
+}
+
+//----------------------------------------------------------
+ofVec2f ParticleManager::deNormalize(ofVec2f &inputVector){
+    ofVec2f output;
+    output.x = ofMap(inputVector.x, 0.f, 100.f, topLeft.x, bottomRight.x);
+    output.y = ofMap(inputVector.y, 0.f, 100.f, topLeft.y, bottomRight.y);
+    
+    return output;
 }
 
 

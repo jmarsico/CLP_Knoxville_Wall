@@ -12,15 +12,16 @@
 #include "vehicle.h"
 
 //-------------------------------------------------------------
-void Vehicle::setup(ofVec2f startLoc, ofVec2f _destination, float _size){
+void Vehicle::setup(ofVec2f startLoc, ofVec2f _destination, float _size, float _speed){
     loc = startLoc;
     dest = _destination;
-    size = _size;
+    size = ofMap(_size, 0, 100, 5, 40);
     
     acc.set(0, 0);
     vel.set(0,0);
     
-    maxSpeed = 40.f;
+    
+    maxSpeed = ofMap(_speed, 0, 100, 30, 100);
     maxForce = 2.0;
     
     bTimeToDie = false;
@@ -38,7 +39,6 @@ void Vehicle::update(){
     
     if (loc.x > dest.x - 20 && loc.x < dest.x + 20){
         bTimeToDie = true;
-//        ofLog() << "TIME TO DIE";
     }
 }
 

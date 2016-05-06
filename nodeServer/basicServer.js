@@ -4,6 +4,7 @@ var osc = require('osc-min');
 var udp = require('dgram');
 var express = require('express');
 var bodyParser = require('body-parser');
+var winston = require('winston');
 
 //http://localhost:8080/api?explode=2%201&force=0.23%200.1&sweep=0.1%200.2%200.4%200.2%200.3&dots=0.1%200.2
 
@@ -30,12 +31,14 @@ sock = udp.createSocket("udp4", function(msg, ringo) {
 
 sock.bind(oscInPort);
 
+winston.add(winston.transports.File,{ filename: '/var/log/node.log'});
+
 //EXPLODE!!
 function send_explode_message(explodeParams) {
     var params = explodeParams.split(' ');
 
 
-    if(params.length >= 2){
+    if(params.length == 2 || params.length == 3){
         var buf;            //the UDP buffer
         //if we only receive 2 parameters, default size param to 0.5
         if(params.length == 2){
@@ -60,6 +63,7 @@ function send_explode_message(explodeParams) {
             })
         }
         sock.send(buf, 0, buf.length, 12345, "localhost");
+        winston.log('request','explode');
     }
 }
 
@@ -143,6 +147,9 @@ app.get('/api', function(req, res){
     })
 });
 
+app.post('/api/explode', function(req,res){
+    send_explode_message(req.body);
+});
 
 app.get('/admin', function(req,res){
     if(req.query.system !== 'undefined' && req.query.system){

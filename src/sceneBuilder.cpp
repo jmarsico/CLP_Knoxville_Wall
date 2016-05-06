@@ -17,10 +17,13 @@ SceneBuilder::SceneBuilder(){
 
 }
 //--------------------------------------------------------------
-void SceneBuilder::setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottomRight){
+void SceneBuilder::setup(StateManager *_state, Logger *_logger, ofVec2f _topLeft, ofVec2f _bottomRight){
     
     //pointer to global state manager
     state = _state;
+    
+    //pointer to global logger
+    logger = _logger;
    
     //set up location parameters
     drawWidth = ofGetWidth();
@@ -41,12 +44,11 @@ void SceneBuilder::setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottom
     compositeFbo.end();
     
     //particle managers (we have two, one for generative, one for users)
-    generativePM.setup();              //set up the generative particle manager
     userPM.setup();
     
     sweepAnim.setup();                  //set up sweep
-    popAnim.setup(&generativePM);
-    explodeAnim.setup(&generativePM);      //setup and pass reference to particle manager
+    popAnim.setup();
+    explodeAnim.setup();      //setup and pass reference to particle manager
     
     //parameters & gui
     animParams.setName("Scene Settings");
@@ -57,7 +59,6 @@ void SceneBuilder::setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottom
     animParams.add(sweepAnim.parameters);
     animParams.add(popAnim.parameters);
     animParams.add(explodeAnim.parameters);
-    animParams.add(generativePM.parameters);
     animParams.add(userPM.parameters);
     
     fluidParams.add(fluid.velocityMask.parameters);
@@ -87,13 +88,12 @@ void SceneBuilder::update(){
 void SceneBuilder::updateAnimation(){
     
     if(explodeAnim.brightness > 0) explodeAnim.update();
-    generativePM.setForces(ofVec2f(particleForceX, particleForceY));
     userPM.setForces(ofVec2f(particleForceX, particleForceY));
     
-    generativePM.update();
     userPM.update();
     
     if(popAnim.brightness > 0) popAnim.update();
+    if(sweepAnim.brightness > 0) sweepAnim.update();
 
 }
 
@@ -105,12 +105,9 @@ void SceneBuilder::drawAnimation(){
     //draw animations based on scene
     if(explodeAnim.brightness > 0) explodeAnim.draw();
     if(popAnim.brightness > 0) popAnim.draw();
+    if(sweepAnim.brightness > 0) sweepAnim.draw();
     
-    generativePM.draw(1.);
     userPM.draw(1.);
-    
-    glDisable(GL_BLEND);
-    glPopAttrib();
     animationFbo.end();
     
 }
@@ -142,11 +139,21 @@ void SceneBuilder::onSceneChange(){
      - fluid.fluidSimulation.setDissipation(0.0);
      
        - myParticle size
+        - myParicle speed
      
      
     */
     
-//
+    
+    
+    
+//    
+//    explodeAnim.brightness.set(ofRandom(0, 1.0));
+//    popAnim.brightness.set(ofRandom(0.0, 1.0));
+    
+    
+    
+    
     
     
 }
@@ -194,14 +201,17 @@ void SceneBuilder::drawModeSetName(const int &_value) {
 void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
     
     userPM.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 100.f, 0.0, 80.));
+    logger->logToFile("Explosion Msg");
 }
 
 void SceneBuilder::onSweepEvent(SweepMsg &sm){
-    userPM.addVehicle(deNormalize(sm.loc), deNormalize(sm.dest));
+    userPM.addVehicle(deNormalize(sm.loc), deNormalize(sm.dest), ofRandom(100), ofRandom(100));
+    logger->logToFile("Sweep Msg");
 }
 
 //--------------------------------------------------------------
 ofVec2f SceneBuilder::deNormalize(ofVec2f &inputVector){
+    
     ofVec2f output;
     output.x = ofMap(inputVector.x, 0.f, 100.f, topLeft.x, bottomRight.x);
     output.y = ofMap(inputVector.y, 0.f, 100.f, topLeft.y, bottomRight.y);
@@ -211,7 +221,11 @@ ofVec2f SceneBuilder::deNormalize(ofVec2f &inputVector){
 
 //--------------------------------------------------------------
 SceneBuilder::~SceneBuilder(){
-//    ofRemoveListener(state->onSceneChange, this, &SceneBuilder::generateSceneSettings);
+    
+    //remove all event listeners
     ofRemoveListener(OscManager::explosion, this, &SceneBuilder::onExplosionEvent);
+    ofRemoveListener(OscManager::sweep, this, &SceneBuilder::onSweepEvent);
+    ofRemoveListener(StateManager::sceneChange, this, &SceneBuilder::onSceneChange);
+    
 }
 

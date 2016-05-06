@@ -18,7 +18,7 @@
 class KinetManager{
 public:
     KinetManager(){}
-    void setup(int numLights);
+    void setup(	int numLights);
     void update(const vector<uint8_t> &lightVals);
     void send();
     

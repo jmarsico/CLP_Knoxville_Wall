@@ -13,9 +13,8 @@ void ofApp::setup()
     ofSetLogLevel(OF_LOG_VERBOSE);
     
     ofFilePath logPath;
-    logger.setup(logPath.getAbsolutePath("jake.log", true));
-
-    scene.setup(&state, ofVec2f(60,300), ofVec2f(1080,450));
+    logger.setup(logPath.getAbsolutePath("animationEngine.log", true));
+    scene.setup(&state, &logger, ofVec2f(60,300), ofVec2f(1080,450));
 
     //setup the JSONRPC server
     setupServer();

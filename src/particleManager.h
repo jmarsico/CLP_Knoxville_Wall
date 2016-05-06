@@ -22,14 +22,13 @@ public:
     void setup();
     
     void addParticle(ofVec2f _loc);
-    void addVehicle(ofVec2f _loc, ofVec2f _dest);
+    void addVehicle(ofVec2f _loc, ofVec2f _dest, float size, float speed);
     void update();
     void setForces(ofVec2f);
-    
     void explosion(ofVec2f _loc, int numParts);
-    
-    
     void draw(float _brightness);
+    
+    ofVec2f deNormalize(ofVec2f &inputVec);
     
     
     ofParameterGroup parameters;
@@ -42,6 +41,8 @@ private:
     
     vector<Particle> particles;
     vector<Vehicle> vehicles;
+    
+    ofVec2f topLeft, bottomRight;
 
 };
 
