@@ -17,19 +17,21 @@ SceneBuilder::SceneBuilder(){
 
 }
 //--------------------------------------------------------------
-void SceneBuilder::setup(StateManager *_state, Logger *_logger, ofVec2f _topLeft, ofVec2f _bottomRight){
+void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f _topLeft, ofVec2f _bottomRight){
     
     //pointer to global state manager
     state = _state;
     
     //pointer to global logger
-    logger = _logger;
+    ga = _ga;
    
     //set up location parameters
     drawWidth = ofGetWidth();
     drawHeight = 720;
     topLeft = _topLeft;
     bottomRight = _bottomRight;
+    
+    ofClear(0);
     
     fluid.init(drawWidth, drawHeight);
     
@@ -195,6 +197,8 @@ void SceneBuilder::updateGenerativeSettings(){
                                              )
                                       );
     
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -293,6 +297,8 @@ void SceneBuilder::onSceneChange(){
     newGenParams.fGravityX = ofRandom(-0.03, 0.03);
     newGenParams.fGravityY = ofRandom(-0.03, 0.03);
     
+    
+    
 }
 
 
@@ -338,12 +344,13 @@ void SceneBuilder::drawModeSetName(const int &_value) {
 void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
     
     userPM.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 100.f, 0.0, 80.), ofRandom(1.0));
-    logger->logToFile("Explosion Msg");
+    ga->sendEvent("KeyboardEvent", "pressed7", '7', "someLabel");
 }
 
+//--------------------------------------------------------------
 void SceneBuilder::onSweepEvent(SweepMsg &sm){
     userPM.addVehicle(deNormalize(sm.loc), deNormalize(sm.dest), ofRandom(100), ofRandom(100));
-    logger->logToFile("Sweep Msg");
+    ga->sendEvent("KeyboardEvent", "pressed7", '7', "someLabel");
 }
 
 //--------------------------------------------------------------

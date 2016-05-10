@@ -8,7 +8,6 @@
 
 
 #include "ofMain.h"
-#include "ofxJSONRPC.h"
 #include "stateManager.h"
 #include "sceneBuilder.h"
 #include "ofxGui.h"
@@ -17,7 +16,8 @@
 #include "lightPoint.h"
 #include "kinetManager.h"
 #include "oscManager.h"
-#include "logger.h"
+#include "ofxGoogleAnalytics.h"
+
 
 
 class ofApp: public ofBaseApp
@@ -29,18 +29,12 @@ public:
     void exit();
     void keyReleased(int key);
 
-    void setupServer();
 
     void setupGui();
     void handleEvent(string & name);
 
 
 
-    void getSlider(ofx::JSONRPC::MethodArgs& args);
-    void ping();
-    void pong();
-
-    ofx::HTTP::JSONRPCServer server;
     int drawWidth, drawHeight;
 
 
@@ -64,8 +58,9 @@ public:
 
 
     OscManager osc;
+    ofxGoogleAnalytics ga;
     
-    Logger logger;
+    
 
 private:
 

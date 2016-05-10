@@ -12,12 +12,25 @@ void ofApp::setup()
     ofSetFrameRate(200);
     ofSetLogLevel(OF_LOG_VERBOSE);
     
-    ofFilePath logPath;
-    logger.setup(logPath.getAbsolutePath("animationEngine.log", true));
-    scene.setup(&state, &logger, ofVec2f(0,200), ofVec2f(ofGetWidth(),500));
+    //set up google analytics
+    ga.setShouldReportFramerates(true);
+    ga.setFramerateReportInterval(60);
+    ga.setEnabled(true);
+    ga.setUserID("ULR_Studio");
+    ga.setup("UA-77526554-1",				//google track ID << REPLACE WITH YOURS!
+             "CLP-Knoxville",	//app name
+             "v1",									//app version
+             "01",						//ap id
+             "01"				//app installer id
+             );
+
+    
+    
+    
+    
+    scene.setup(&state, &ga, ofVec2f(0,200), ofVec2f(ofGetWidth(),500));
 
     //setup the JSONRPC server
-    setupServer();
     setupGui();
 
     drawWidth = 1280;
@@ -47,7 +60,6 @@ void ofApp::setup()
 //------------------------------------------------------
 void ofApp::update(){
     FPS = ofGetFrameRate();
-    logger.update();
 
     ofSetColor(255);
     osc.update();
@@ -64,7 +76,7 @@ void ofApp::update(){
     }
 
     
-
+    ga.update();
 }
 
 void ofApp::handleEvent(string &name){
@@ -152,30 +164,6 @@ void ofApp::exit(){
     // Set the logger back to the default to make sure any
     // remaining messages are logged correctly.
     ofLogToConsole();
-}
-
-//------------------------------------------------------
-void ofApp::setupServer(){
-    ofx::HTTP::JSONRPCServerSettings settings;
-    settings.setPort(8197);
-
-    // Initialize the server.
-    server.setup(settings);
-    server.registerMethod("test-slider",
-                          "Send a JSONRPC slider",
-                          this,
-                          &ofApp::getSlider);
-
-    // Start the server.
-    server.start();
-
-}
-
-
-//------------------------------------------------------
-void ofApp::getSlider(ofx::JSONRPC::MethodArgs& args){
-    std::unique_lock<std::mutex> lock(mutex);
-    ofLog() << ofToFloat(args.params.asString());
 }
 
 
