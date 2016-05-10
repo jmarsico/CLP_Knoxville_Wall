@@ -25,7 +25,6 @@ public:
     ofParameter<float> frequency;
     
     ParticleManager pm;
-    
     ofxSimpleTimer *timer;
     
     

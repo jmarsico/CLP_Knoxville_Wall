@@ -14,14 +14,14 @@ void ofApp::setup()
     
     ofFilePath logPath;
     logger.setup(logPath.getAbsolutePath("animationEngine.log", true));
-    scene.setup(&state, &logger, ofVec2f(60,300), ofVec2f(1080,450));
+    scene.setup(&state, &logger, ofVec2f(0,200), ofVec2f(ofGetWidth(),500));
 
     //setup the JSONRPC server
     setupServer();
     setupGui();
 
-    drawWidth = ofGetWidth();
-    drawHeight = ofGetHeight();
+    drawWidth = 1280;
+    drawHeight = 720;
 
     csv.loadLightPoints("allPoints.csv");
 
@@ -31,21 +31,21 @@ void ofApp::setup()
         ofVec2f trans(50, 300);
         p += trans;
 
-        p *= 1.5;
+        p *= 2.0;
         lp.setup(p);
         lights.push_back(lp);
     }
     ofLogNotice("ofApp::setup") << "number of lights from CSV: " << lights.size();
 
-    kinet.setup(lights.size());
+//    kinet.setup(lights.size());
 
     osc.setup();
+    
 
 }
 
 //------------------------------------------------------
 void ofApp::update(){
-    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
     FPS = ofGetFrameRate();
     logger.update();
 
@@ -140,9 +140,9 @@ void ofApp::setupGui(){
     fluidGui.minimizeAll();
     animGui.minimizeAll();
 
-    fluidGui.setPosition(10,10);
-    systemGui.setPosition(20 + fluidGui.getWidth(), 10);
-    animGui.setPosition(20 + fluidGui.getWidth(), 10 + systemGui.getHeight());
+    fluidGui.setPosition(ofGetWidth() - fluidGui.getWidth() - 10,10);
+    systemGui.setPosition(ofGetWidth() - fluidGui.getWidth() - systemGui.getWidth() - 10, 10);
+    animGui.setPosition(systemGui.getPosition().x - 10, 10 + systemGui.getHeight());
 }
 
 

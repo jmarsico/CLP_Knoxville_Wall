@@ -16,7 +16,7 @@ class Particle {
 public:
     Particle(){};
     
-    void setup(ofVec2f _loc, ofVec2f _vel, float _ageSpeed);
+    void setup(ofVec2f _loc, ofVec2f _vel, float _ageSpeed, float _size);
     void update(ofVec2f _force);
     void draw(float _brightness);
     
@@ -35,7 +35,7 @@ public:
     float counterX;
     float counterY;
     
-
+    float size;
     
     bool bNoise;
     

@@ -73,13 +73,13 @@
 <fluid>
 		<group>
 			<velocity_mask>
-				<strength>1.14952</strength>
+				<strength>5.36651</strength>
 				<saturation>2.1262</saturation>
 				<blur_passes>3</blur_passes>
 				<blur_radius>2.45106</blur_radius>
 			</velocity_mask>
 			<optical_flow>
-				<strength>50.0208</strength>
+				<strength>64.5981</strength>
 				<offset>2</offset>
 				<lambda>0.01</lambda>
 				<threshold>0.02</threshold>
@@ -92,12 +92,12 @@
 			</optical_flow>
 			<fluid_solver>
 				<reset>0</reset>
-				<speed>19.8251</speed>
-				<cell_size>0.61516</cell_size>
+				<speed>52.9199</speed>
+				<cell_size>0.516012</cell_size>
 				<iterations>11</iterations>
-				<viscosity>0.1</viscosity>
-				<vorticity>0.576572</vorticity>
-				<dissipation>0.00427322</dissipation>
+				<viscosity>0.497621</viscosity>
+				<vorticity>0.604698</vorticity>
+				<dissipation>0.00662807</dissipation>
 				<advanced_dissipation>
 					<velocity_offset>-0.001</velocity_offset>
 					<density_offset>0</density_offset>
@@ -107,7 +107,7 @@
 					<sigma>0.05</sigma>
 					<weight>0.05</weight>
 					<ambient_temperature>0</ambient_temperature>
-					<gravity>-4.13834e-05, 0</gravity>
+					<gravity>0.00687192, -0.00346226</gravity>
 				</smoke_buoyancy>
 				<maximum>
 					<clampForce>0.05</clampForce>
@@ -120,17 +120,17 @@
 			</fluid_solver>
 			<particle_flow>
 				<active>1</active>
-				<speed>19.8251</speed>
-				<cell_size>0.61516</cell_size>
+				<speed>52.9199</speed>
+				<cell_size>0.516012</cell_size>
 				<birth_chance>0.734486</birth_chance>
 				<birth_velocity_chance>0.5</birth_velocity_chance>
 				<lifespan>5</lifespan>
-				<lifespan_spread>0.25</lifespan_spread>
+				<lifespan_spread>0.236855</lifespan_spread>
 				<mass>1.3</mass>
 				<mass_spread>0.2</mass_spread>
-				<size>2.55519</size>
-				<size_spread>0.390879</size_spread>
-				<twinkle_speed>5.83923</twinkle_speed>
+				<size>8.07372</size>
+				<size_spread>0.140983</size_spread>
+				<twinkle_speed>7.9217</twinkle_speed>
 			</particle_flow>
 		</group>
 	</fluid>

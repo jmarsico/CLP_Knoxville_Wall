@@ -21,11 +21,11 @@ public:
     //pointer to the statemanager
     void setup();
     
-    void addParticle(ofVec2f _loc);
+    void addParticle(ofVec2f _loc, float _size = 5);
     void addVehicle(ofVec2f _loc, ofVec2f _dest, float size, float speed);
     void update();
     void setForces(ofVec2f);
-    void explosion(ofVec2f _loc, int numParts);
+    void explosion(ofVec2f _loc, int numParts, float startingVel);
     void draw(float _brightness);
     
     ofVec2f deNormalize(ofVec2f &inputVec);

@@ -35,6 +35,8 @@ void FluidManager::init(int w, int h){
     pressureField.setup(flowWidth / 4, flowHeight / 4);
     velocityTemperatureField.setup(flowWidth / 4, flowHeight / 4);
     
+    
+    
 
 }
 

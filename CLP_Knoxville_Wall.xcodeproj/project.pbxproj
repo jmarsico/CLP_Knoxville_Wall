@@ -108,6 +108,7 @@
 		BA22C5B41C8E2F0F004B30A7 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5A51C8E2F0F004B30A7 /* OscPrintReceivedElements.cpp */; };
 		BA22C5B51C8E2F0F004B30A7 /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5A71C8E2F0F004B30A7 /* OscReceivedElements.cpp */; };
 		BA22C5B61C8E2F0F004B30A7 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA22C5A91C8E2F0F004B30A7 /* OscTypes.cpp */; };
+		BA255ED71CE12A9100B7D06F /* settingsGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA255ED51CE12A9100B7D06F /* settingsGenerator.cpp */; };
 		BA3D3AA41CC8185D0095C0DD /* oscManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA3D3AA21CC8185D0095C0DD /* oscManager.cpp */; };
 		BA3D3AAC1CC820430095C0DD /* ofxSimpleTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA3D3AAA1CC820430095C0DD /* ofxSimpleTimer.cpp */; };
 		BA5701951CB8168600C75341 /* csvLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA5701931CB8168600C75341 /* csvLoader.cpp */; };
@@ -489,6 +490,10 @@
 		BA22C5A81C8E2F0F004B30A7 /* OscReceivedElements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscReceivedElements.h; sourceTree = "<group>"; };
 		BA22C5A91C8E2F0F004B30A7 /* OscTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OscTypes.cpp; sourceTree = "<group>"; };
 		BA22C5AA1C8E2F0F004B30A7 /* OscTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscTypes.h; sourceTree = "<group>"; };
+		BA255ED31CE128F800B7D06F /* easing_terms_of_use.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = easing_terms_of_use.html; sourceTree = "<group>"; };
+		BA255ED41CE128F800B7D06F /* ofxEasing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxEasing.h; sourceTree = "<group>"; };
+		BA255ED51CE12A9100B7D06F /* settingsGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = settingsGenerator.cpp; sourceTree = "<group>"; };
+		BA255ED61CE12A9100B7D06F /* settingsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsGenerator.h; sourceTree = "<group>"; };
 		BA3D3AA21CC8185D0095C0DD /* oscManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = oscManager.cpp; sourceTree = "<group>"; };
 		BA3D3AA31CC8185D0095C0DD /* oscManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oscManager.h; sourceTree = "<group>"; };
 		BA3D3AAA1CC820430095C0DD /* ofxSimpleTimer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleTimer.cpp; sourceTree = "<group>"; };
@@ -1355,6 +1360,8 @@
 				BA18A9BC1CB2D489007E76B8 /* popAnimation.h */,
 				BAF1A6761CBD8BBF00D9E9E2 /* explosionAnimation.cpp */,
 				BAF1A6771CBD8BBF00D9E9E2 /* explosionAnimation.h */,
+				BA255ED51CE12A9100B7D06F /* settingsGenerator.cpp */,
+				BA255ED61CE12A9100B7D06F /* settingsGenerator.h */,
 			);
 			name = animations;
 			sourceTree = "<group>";
@@ -1469,6 +1476,24 @@
 			path = osc;
 			sourceTree = "<group>";
 		};
+		BA255ED11CE128F800B7D06F /* ofxEasing */ = {
+			isa = PBXGroup;
+			children = (
+				BA255ED21CE128F800B7D06F /* src */,
+			);
+			name = ofxEasing;
+			sourceTree = "<group>";
+		};
+		BA255ED21CE128F800B7D06F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				BA255ED31CE128F800B7D06F /* easing_terms_of_use.html */,
+				BA255ED41CE128F800B7D06F /* ofxEasing.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxEasing/src;
+			sourceTree = "<group>";
+		};
 		BA3D3AA81CC820430095C0DD /* ofxSimpleTimer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1500,6 +1525,8 @@
 		BA9E81581CDA747A001C6F5B /* managers */ = {
 			isa = PBXGroup;
 			children = (
+				BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */,
+				BA18A9931CAC7C5D007E76B8 /* fluidManager.h */,
 				BA18A9B21CB2B966007E76B8 /* sceneBuilder.cpp */,
 				BA18A9B31CB2B966007E76B8 /* sceneBuilder.h */,
 				BA18A9A41CB2AD22007E76B8 /* stateManager.cpp */,
@@ -1630,15 +1657,6 @@
 			path = ../../../addons/ofxXmlSettings/libs;
 			sourceTree = "<group>";
 		};
-		BAF1A6751CBD8B1400D9E9E2 /* fluid */ = {
-			isa = PBXGroup;
-			children = (
-				BA18A9921CAC7C5D007E76B8 /* fluidManager.cpp */,
-				BA18A9931CAC7C5D007E76B8 /* fluidManager.h */,
-			);
-			name = fluid;
-			sourceTree = "<group>";
-		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -1659,6 +1677,7 @@
 				BAF1A6661CBC481A00D9E9E2 /* ofxXmlSettings */,
 				BA3D3AA81CC820430095C0DD /* ofxSimpleTimer */,
 				BADBF2A51CD394C2009AE778 /* ofxCsv */,
+				BA255ED11CE128F800B7D06F /* ofxEasing */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -1848,7 +1867,6 @@
 			children = (
 				BA9E81581CDA747A001C6F5B /* managers */,
 				BADBF2981CD14F79009AE778 /* data */,
-				BAF1A6751CBD8B1400D9E9E2 /* fluid */,
 				BAF1A6491CBC45FB00D9E9E2 /* peripherals */,
 				BA18A9AE1CB2B815007E76B8 /* particles */,
 				BA18A9A71CB2B57C007E76B8 /* animations */,
@@ -2101,6 +2119,7 @@
 				BA18A98F1CAC55DA007E76B8 /* ofxToggle.cpp in Sources */,
 				BA22C5B01C8E2F0F004B30A7 /* IpEndpointName.cpp in Sources */,
 				BA22C5B61C8E2F0F004B30A7 /* OscTypes.cpp in Sources */,
+				BA255ED71CE12A9100B7D06F /* settingsGenerator.cpp in Sources */,
 				BA22C5AD1C8E2F0F004B30A7 /* ofxOscParameterSync.cpp in Sources */,
 				BAF1A65C1CBC470E00D9E9E2 /* ofxTCPClient.cpp in Sources */,
 				BAF1A65D1CBC470E00D9E9E2 /* ofxTCPManager.cpp in Sources */,

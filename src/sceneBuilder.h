@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "ofMain.h"
+#include "ofxEasing.h"
 #include "stateManager.h"
 #include "sweepAnimation.h"
 #include "popAnimation.h"
@@ -32,6 +33,7 @@ public:
     ~SceneBuilder();
     void setup(StateManager *_state, Logger *_logger, ofVec2f _topLeft, ofVec2f _bottomRight);
     void updateAnimation();
+    void updateGenerativeSettings();
     void drawAnimation();
     void update();
     void drawModeSetName(const int &_value);
@@ -65,8 +67,12 @@ protected:
     ofParameterGroup animParams;
     ofParameter<int>drawMode;
     ofParameter<string>drawName;
+    ofParameter<float>transitionTime;
     ofParameter<float>particleForceX;
     ofParameter<float>particleForceY;
+    
+    
+    
     ofParameterGroup fluidParams;
     
     //particle managers
@@ -86,7 +92,26 @@ protected:
     ofxFastFboReader reader;
     
     
+    struct generativeSetting {
+        //fluid params to be changed generatively
+        float fDissipation;
+        float fVorticity;
+        float fViscosity;
+        float fSpeed;
+        float fCellSize;
+        float fGravityX;
+        float fGravityY;
+        
+        //animation params to be changed generatively
+        float exlBright;
+        float popBright;
+        float sweepBright;
+    };
     
+    generativeSetting oldGenParams;
+    generativeSetting newGenParams;
+    float initTime;
+    float endTime;
     
 };
 

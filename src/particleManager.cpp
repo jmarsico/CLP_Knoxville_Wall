@@ -11,8 +11,8 @@
 
 //----------------------------------------------------------
 ParticleManager::ParticleManager(){
-    topLeft.set(60,300);
-    bottomRight.set(1080,450);
+    topLeft.set(0,200);
+    bottomRight.set(ofGetWidth(),500);
 }
 
 //----------------------------------------------------------
@@ -57,21 +57,22 @@ void ParticleManager::draw(float _brightness){
 }
 
 //----------------------------------------------------------
-void ParticleManager::explosion(ofVec2f _loc, int numParts){
+void ParticleManager::explosion(ofVec2f _loc, int numParts, float startingVel){
     
     for(size_t i = 0; i < numParts; i++){
         Particle p;
-        ofVec2f vel(ofRandom(-2, 2), ofRandom(-2,2));
-        p.setup(_loc, vel, 3);
+        float sv = ofMap(startingVel, 0.0, 1.0, 0.2, 2.0);
+        ofVec2f vel(ofRandom(-sv, sv), ofRandom(-sv,sv));
+        p.setup(_loc, vel, 3, 5);
         p.turnOnNoise(true);
         particles.push_back(p);
     }
 }
 
 //----------------------------------------------------------
-void ParticleManager::addParticle(ofVec2f _loc){
+void ParticleManager::addParticle(ofVec2f _loc, float _size){
     Particle p;
-    p.setup(_loc, ofVec2f(0,0), 5);
+    p.setup(_loc, ofVec2f(0,0), 5, _size);
     p.turnOnNoise(false);
     particles.push_back(p);
 }

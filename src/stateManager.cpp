@@ -20,7 +20,7 @@ StateManager::StateManager(){
     
     //set up timers
     userControlTimer = new ofxSimpleTimer();
-    userControlTimer->setTime(1000, 1);
+    userControlTimer->setTime(20000, 1);
     userControlTimer->setName("inUseTimer");
     userControlTimer->start();
     
@@ -89,7 +89,7 @@ void StateManager::onTimerComplete(string &name){
         ofNotifyEvent(sceneChange);
         
         //get a new random time for next scene change
-        int newTimerLength = (int)ofRandom(1000, 6000);
+        int newTimerLength = (int)ofRandom(5 * 1000, 10 * 1000);
         
         //set up the new timer and start it
         sceneTimer->setTime(newTimerLength, 1);

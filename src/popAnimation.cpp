@@ -21,12 +21,14 @@ void PopAnimation::setup(){
     timer->setTime(1000, 2);
     timer->start();
     
+    ofAddListener(ofxSimpleTimer::TIMER_COMPLETE, this, &PopAnimation::onTimerComplete);
 }
 
 
 void PopAnimation::update(){
     
     timer->update();
+    pm.update();
     
 }
 
@@ -50,7 +52,7 @@ void PopAnimation::onTimerComplete(string &name){
         
         if(prob > probThresh){
             ofVec2f loc(ofRandom(100), ofRandom(100));
-            pm.addParticle(pm.deNormalize(loc));
+            pm.addParticle(pm.deNormalize(loc), 10);
         }
     }
 }

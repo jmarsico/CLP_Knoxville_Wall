@@ -35,7 +35,9 @@ void ExplosionAnimation::update(){
 
 void ExplosionAnimation::onTimerComplete(string &name){
     if(name == "explodeAnimTimer"){
-        pm.explosion(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 100);
+        pm.explosion(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 100, ofRandom(1.0));
+        
+        
     
         //reset timer based on frequency parameter
         int newTime = int((1.1f - frequency) * ofRandom(1000, 15000));

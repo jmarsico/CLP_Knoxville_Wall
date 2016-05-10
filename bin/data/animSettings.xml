@@ -1,25 +1,28 @@
 <animation>
 	<Scene_Settings>
-		<Draw_Mode>3</Draw_Mode>
-		<UnknownName>Fluid Density</UnknownName>
+		<Draw_Mode>0</Draw_Mode>
+		<UnknownName>Composite</UnknownName>
 		<Sweep_Anim>
 			<velocity>0</velocity>
-			<spawn_prob>0</spawn_prob>
-		<brightness>0</brightness>
+			<spawn_prob>1</spawn_prob>
+		<brightness>0.339461</brightness>
 		</Sweep_Anim>
 		<group>
 			<drag>0</drag>
 			<ageSpeed>0</ageSpeed>
 		</group>
 	<Pop_Anim>
-			<brightness>0</brightness>
-			<spawnProb>0</spawnProb>
-			<spawn_size>5</spawn_size>
+			<brightness>0.252526</brightness>
+			<spawnProb>0.979175</spawnProb>
+			<spawn_size>92.7843</spawn_size>
 		</Pop_Anim>
 		<explode>
-			<brightness>1</brightness>
+			<brightness>0.408014</brightness>
 			<frequency>0.93232</frequency>
 		</explode>
+	<particle_forces_X>0</particle_forces_X>
+		<particle_forces_Y>0</particle_forces_Y>
+	<tranition_time>9.84694</tranition_time>
 	</Scene_Settings>
 <animation/>
 </animation>

@@ -103,6 +103,8 @@ public:
     int					numDrawForces;
     ftDrawForce*		flexDrawForces;
     int deltaTime, lastTime;
+    
+    ofTexture obstacleTex;
 
     
     

@@ -10,7 +10,7 @@
 
 
 
-void Particle::setup(ofVec2f _loc, ofVec2f _vel, float _ageSpeed){
+void Particle::setup(ofVec2f _loc, ofVec2f _vel, float _ageSpeed, float _size){
     loc = _loc;
     vel = _vel;
     acc.set(0, 0);
@@ -19,6 +19,7 @@ void Particle::setup(ofVec2f _loc, ofVec2f _vel, float _ageSpeed){
     bTimeToDie = false;
     
     bNoise = false;
+    size = _size;
     
     counterInc = ofRandom(0.1);
     counterX = ofRandom(10);
@@ -56,7 +57,7 @@ void Particle::update(ofVec2f _force){
 void Particle::draw(float _brightness){
     ofFill();
     ofSetColor(255, lifeSpan * _brightness);
-    ofDrawCircle(loc, 5);
+    ofDrawCircle(loc, size);
 }
 
 
