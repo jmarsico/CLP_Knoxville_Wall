@@ -8,7 +8,7 @@ to compile:
 requirements:
 - [openframeworks 9.3](http://openframeworks.cc/download/)
 - addons (clone each addon into of_v_9.3...../addons/):
-- [ofxFlowTools](https://github.com/moostrik/ofxFlowTools)
+- [ofxFlowTools](https://github.com/jmarsico/ofxFlowTools)
 - [ofxHTTP](https://github.com/bakercp/ofxHTTP)
 - [ofxIO](https://github.com/bakercp/ofxIO)
 - [ofxJSON](https://github.com/jefftimesten/ofxJSON)
