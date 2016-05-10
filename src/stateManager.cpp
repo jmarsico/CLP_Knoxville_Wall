@@ -28,7 +28,6 @@ StateManager::StateManager(){
     sceneTimer->setTime(10000,1);
     sceneTimer->setName("sceneTimer");
     sceneTimer->start();
-    sceneTimer->debugStart();
     
     //set up event listeners
     //timer listener

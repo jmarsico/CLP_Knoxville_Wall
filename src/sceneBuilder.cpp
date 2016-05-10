@@ -34,6 +34,7 @@ void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f 
     ofClear(0);
     
     fluid.init(drawWidth, drawHeight);
+
     
     animationFbo.allocate(drawWidth, drawHeight);
     animationFbo.begin();
@@ -86,9 +87,13 @@ void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f 
     oldGenParams.fCellSize = fluid.fluidSimulation.getCellSize();
     oldGenParams.fGravityX = fluid.fluidSimulation.getGravity().x;
     oldGenParams.fGravityY = fluid.fluidSimulation.getGravity().y;
-    oldGenParams.exlBright = 0;
-    oldGenParams.popBright = 0;
-    oldGenParams.sweepBright = 0;
+    oldGenParams.pShowPart = fluid.particleFlow.isActive();
+    oldGenParams.pSize = fluid.particleFlow.getSize();
+    oldGenParams.pTwinkle = fluid.particleFlow.getTwinkleSpeed();
+    
+    oldGenParams.exlBright = 0.1;
+    oldGenParams.popBright = 0.1;
+    oldGenParams.sweepBright = 0.1;
     
     onSceneChange();
 
@@ -186,7 +191,7 @@ void SceneBuilder::updateGenerativeSettings(){
                                          );
     
     fluid.fluidSimulation.setGravity(ofVec2f(
-                                      ofxeasing::map_clamp(now,
+                                             ofxeasing::map_clamp(now,
                                                            initTime,
                                                            endTime,
                                                            oldGenParams.fGravityX,

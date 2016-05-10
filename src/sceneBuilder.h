@@ -104,11 +104,16 @@ protected:
         float fCellSize;
         float fGravityX;
         float fGravityY;
+        float pShowPart;
+        float pSize;
+        float pTwinkle;
+        float pLifespan;
         
         //animation params to be changed generatively
         float exlBright;
         float popBright;
         float sweepBright;
+        
     };
     
     generativeSetting oldGenParams;
