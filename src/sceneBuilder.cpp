@@ -54,6 +54,7 @@ void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f 
     
     //parameters & gui
     animParams.setName("Scene Settings");
+    animParams.add(bUserInControl.set("User In Control", false));
     animParams.add(drawMode.set("Draw Mode", DRAW_COMPOSITE, DRAW_COMPOSITE, DRAW_SOURCE));
     animParams.add(drawName.set("", ""));
     animParams.add(transitionTime.set("tranition time", 0.5, 0.0, 10.0));
@@ -73,6 +74,7 @@ void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f 
     ofAddListener(OscManager::explosion, this, &SceneBuilder::onExplosionEvent);
     ofAddListener(StateManager::sceneChange, this, &SceneBuilder::onSceneChange);
     ofAddListener(OscManager::sweep, this, &SceneBuilder::onSweepEvent);
+    ofAddListener(StateManager::userControl, this, &SceneBuilder::onUserControl);
     
     
     
@@ -101,6 +103,8 @@ void SceneBuilder::update(){
     drawAnimation();
     fluid.update(animationFbo);
     drawModeSetName(drawMode.get());
+    bUserInControl = state->getIsUserInControl();
+    
 }
 
 void SceneBuilder::updateGenerativeSettings(){
@@ -211,10 +215,12 @@ void SceneBuilder::updateAnimation(){
     
     
     
+    if(state->getIsUserInControl() == false){
+        if(explodeAnim.brightness > 0) explodeAnim.update();
+        if(popAnim.brightness > 0) popAnim.update();
+        if(sweepAnim.brightness > 0) sweepAnim.update();
+    }
     
-    if(explodeAnim.brightness > 0) explodeAnim.update();
-    if(popAnim.brightness > 0) popAnim.update();
-    if(sweepAnim.brightness > 0) sweepAnim.update();
 
 }
 
@@ -344,14 +350,35 @@ void SceneBuilder::drawModeSetName(const int &_value) {
 void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
     
     userPM.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 100.f, 0.0, 80.), ofRandom(1.0));
-    ga->sendEvent("KeyboardEvent", "pressed7", '7', "someLabel");
+    ga->sendEvent("uc", "explode", '0', "");
 }
 
 //--------------------------------------------------------------
 void SceneBuilder::onSweepEvent(SweepMsg &sm){
     userPM.addVehicle(deNormalize(sm.loc), deNormalize(sm.dest), ofRandom(100), ofRandom(100));
-    ga->sendEvent("KeyboardEvent", "pressed7", '7', "someLabel");
+    ga->sendEvent("uc", "sweep", '0', "");
 }
+
+//--------------------------------------------------------------
+void SceneBuilder::onUserControl(bool &uc){
+    
+    if(uc == true){
+        explodeAnim.pause();
+        sweepAnim.pause();
+        popAnim.pause();
+    }
+    
+    else if(uc == false){
+        explodeAnim.start();
+        sweepAnim.start();
+        popAnim.start();
+    }
+        
+    
+    
+}
+
+
 
 //--------------------------------------------------------------
 ofVec2f SceneBuilder::deNormalize(ofVec2f &inputVector){

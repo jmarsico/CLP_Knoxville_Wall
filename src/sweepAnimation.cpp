@@ -8,6 +8,7 @@
 
 #include "sweepAnimation.h"
 
+//-----------------------------------------------------
 void SweepAnimation::setup(){
     
     pm.setup();
@@ -26,12 +27,23 @@ void SweepAnimation::setup(){
     
 }
 
-
+//-----------------------------------------------------
 void SweepAnimation::update(){
     pm.update();
     timer->update();
 }
 
+//-----------------------------------------------------
+void SweepAnimation::pause(){
+    timer->pause();
+}
+
+//-----------------------------------------------------
+void SweepAnimation::start(){
+    timer->start();
+}
+
+//-----------------------------------------------------
 void SweepAnimation::onTimerComplete(string &name){
     if(name == "sweepAnimTimer"){
         
@@ -39,20 +51,18 @@ void SweepAnimation::onTimerComplete(string &name){
         timer->reset();
         timer->start();
         
-        
         float prob = ofRandom(1.);
         float probThresh = 1.0 - spawnProb;
         
         if(prob > probThresh){
             ofVec2f start(ofRandom(100), ofRandom(100));
             ofVec2f end(ofRandom(100), ofRandom(100));
-            
             pm.addVehicle(pm.deNormalize(start), pm.deNormalize(end), ofRandom(100), ofRandom(100));
-            //add vehicle
         }
     }
 }
 
+//-----------------------------------------------------
 void SweepAnimation::draw(){
     pm.draw(brightness);
 }

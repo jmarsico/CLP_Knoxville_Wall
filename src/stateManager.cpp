@@ -8,7 +8,7 @@
 
 #include "stateManager.h"
 
-ofEvent<void> StateManager::endUserControl = ofEvent<void>();
+ofEvent<bool> StateManager::userControl = ofEvent<bool>();
 ofEvent<void> StateManager::sceneChange = ofEvent<void>();
 
 
@@ -21,13 +21,14 @@ StateManager::StateManager(){
     //set up timers
     userControlTimer = new ofxSimpleTimer();
     userControlTimer->setTime(20000, 1);
-    userControlTimer->setName("inUseTimer");
-    userControlTimer->start();
+    userControlTimer->setName("userControlTimer");
+    userControlTimer->debugStart();
     
     sceneTimer = new ofxSimpleTimer();
     sceneTimer->setTime(10000,1);
     sceneTimer->setName("sceneTimer");
     sceneTimer->start();
+    sceneTimer->debugStart();
     
     //set up event listeners
     //timer listener
@@ -39,7 +40,8 @@ StateManager::StateManager(){
 
 //------------------------------------------------------------
 void StateManager::update(){
-    sceneTimer->update();
+    
+    if(getIsUserInControl() == false) sceneTimer->update();
     userControlTimer->update();
 }
 
@@ -53,6 +55,8 @@ void StateManager::onUserInControl(){
     
     //set the user in control flag to rue;
     bUserInControl = true;
+    bool uc = true;
+    ofNotifyEvent(userControl, uc);
     
     //pause the scene timer
     sceneTimer->pause();
@@ -65,13 +69,13 @@ void StateManager::onUserInControl(){
 void StateManager::onTimerComplete(string &name){
     
     //user timer
-    if(name == "inUseTimer"){
+    if(name == "userControlTimer"){
         //send out event notifying end of user control
-        bool uc = true;
-        ofNotifyEvent(endUserControl);
+        bool uc = false;
         
         //set user control flag to fals
         bUserInControl = false;
+        ofNotifyEvent(userControl, uc);
         
         //restart the scene timer
         sceneTimer->start();
@@ -89,7 +93,7 @@ void StateManager::onTimerComplete(string &name){
         ofNotifyEvent(sceneChange);
         
         //get a new random time for next scene change
-        int newTimerLength = (int)ofRandom(5 * 1000, 10 * 1000);
+        int newTimerLength = (int)ofRandom(10 * 1000,  20 * 1000);
         
         //set up the new timer and start it
         sceneTimer->setTime(newTimerLength, 1);

@@ -10,7 +10,7 @@
 void ofApp::setup()
 {
     ofSetFrameRate(200);
-    ofSetLogLevel(OF_LOG_VERBOSE);
+//    ofSetLogLevel(OF_LOG_VERBOSE);
     
     //set up google analytics
     ga.setShouldReportFramerates(true);

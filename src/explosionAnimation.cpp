@@ -26,19 +26,25 @@ void ExplosionAnimation::setup(){
 
 //-----------------------------------------------------
 void ExplosionAnimation::update(){
-    
     pm.update();
     timer->update();
-    
 }
 
+//-----------------------------------------------------
+void ExplosionAnimation::pause(){
+    timer->pause();
+}
 
+//-----------------------------------------------------
+void ExplosionAnimation::start(){
+    timer->start();
+}
+
+//-----------------------------------------------------
 void ExplosionAnimation::onTimerComplete(string &name){
     if(name == "explodeAnimTimer"){
         pm.explosion(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 100, ofRandom(1.0));
         
-        
-    
         //reset timer based on frequency parameter
         int newTime = int((1.1f - frequency) * ofRandom(1000, 15000));
         timer->setTime(newTime, 2);
@@ -47,7 +53,7 @@ void ExplosionAnimation::onTimerComplete(string &name){
     }
 }
 
-
+//-----------------------------------------------------
 void ExplosionAnimation::draw(){
     pm.draw(brightness);
 }

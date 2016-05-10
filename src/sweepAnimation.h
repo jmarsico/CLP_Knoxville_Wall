@@ -18,13 +18,15 @@ public:
     void setup();
     void update();
     void draw();
+    void pause();
+    void start();
+    
     
     void onTimerComplete(string &name);
     
     
     ofParameter<int> velocity;
     ofParameter<float> spawnProb;
-    
     
     ParticleManager pm;
     

@@ -8,8 +8,8 @@
 
 #include "popAnimation.h"
 
+//-----------------------------------------------------
 void PopAnimation::setup(){
-    
     pm.setup();
     
     parameters.setName("Pop Anim");
@@ -24,20 +24,28 @@ void PopAnimation::setup(){
     ofAddListener(ofxSimpleTimer::TIMER_COMPLETE, this, &PopAnimation::onTimerComplete);
 }
 
-
+//-----------------------------------------------------
 void PopAnimation::update(){
-    
     timer->update();
     pm.update();
-    
 }
 
-
+//-----------------------------------------------------
 void PopAnimation::draw(){
     pm.draw(brightness);
 }
 
+//-----------------------------------------------------
+void PopAnimation::pause(){
+    timer->pause();
+}
 
+//-----------------------------------------------------
+void PopAnimation::start(){
+    timer->start();
+}
+
+//-----------------------------------------------------
 void PopAnimation::onTimerComplete(string &name){
     if(name == "popTimer"){
         

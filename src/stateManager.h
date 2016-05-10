@@ -31,7 +31,8 @@ public:
 
     //events
     static ofEvent<void> sceneChange;
-    static ofEvent<void> endUserControl;
+    static ofEvent<bool> userControl;
+    
     
     int getCurrentScene() { return currentScene; };
     bool getRunningState() { return bIsRunning; };

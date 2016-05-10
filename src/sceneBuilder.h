@@ -51,6 +51,7 @@ public:
     void onExplosionEvent(ExplosionMsg &em);
     void onSweepEvent(SweepMsg &sm);
     void onSceneChange();
+    void onUserControl(bool &uc);
 
     ofVec2f deNormalize(ofVec2f &inputVector);
     
@@ -66,6 +67,7 @@ protected:
     ofxGoogleAnalytics *ga;
     
     ofParameterGroup animParams;
+    ofParameter<bool>bUserInControl;
     ofParameter<int>drawMode;
     ofParameter<string>drawName;
     ofParameter<float>transitionTime;
