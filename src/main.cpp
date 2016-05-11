@@ -16,7 +16,7 @@
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
 // =============================================================================
@@ -25,18 +25,12 @@
 #include "ofMain.h"
 #include "ofApp.h"
 
-//========================================================================
-int main( ){
-    
-    ofGLFWWindowSettings windowSettings;
-#ifdef USE_PROGRAMMABLE_GL
-    windowSettings.setGLVersion(4, 1);
-#endif
-    windowSettings.width = 1280;
-    windowSettings.height = 720;
-    windowSettings.windowMode = OF_FULLSCREEN;
-    
-    ofCreateWindow(windowSettings);
-    
-    ofRunApp(new ofApp());
+
+
+int main()
+{
+
+
+    ofSetupOpenGL(1580, 1080, OF_WINDOW);
+    ofRunApp(std::make_shared<ofApp>());
 }
