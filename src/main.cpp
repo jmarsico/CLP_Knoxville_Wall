@@ -1,7 +1,6 @@
 // =============================================================================
 //
-// Copyright (c) 2014-2015 Christopher Baker <http://christopherbaker.net>
-//
+// Copyright (c) 2016 Jakob Marsico www.ultralowres.com
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -23,13 +22,21 @@
 // =============================================================================
 
 
+#include "ofMain.h"
 #include "ofApp.h"
 
-
-int main()
-{
-
+//========================================================================
+int main( ){
     
-    ofSetupOpenGL(1580, 1080, OF_WINDOW);
-    ofRunApp(std::make_shared<ofApp>());
+    ofGLFWWindowSettings windowSettings;
+#ifdef USE_PROGRAMMABLE_GL
+    windowSettings.setGLVersion(4, 1);
+#endif
+    windowSettings.width = 1280;
+    windowSettings.height = 720;
+    windowSettings.windowMode = OF_FULLSCREEN;
+    
+    ofCreateWindow(windowSettings);
+    
+    ofRunApp(new ofApp());
 }
