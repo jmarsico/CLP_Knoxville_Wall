@@ -10,49 +10,49 @@
 
 //--------------------------------------------------------------
 SceneBuilder::SceneBuilder(){
-    
-    
-    
-    
+
+
+
+
 
 }
 //--------------------------------------------------------------
 void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f _topLeft, ofVec2f _bottomRight){
-    
+
     //pointer to global state manager
     state = _state;
-    
+
     //pointer to global logger
     ga = _ga;
-   
+
     //set up location parameters
     drawWidth = ofGetWidth();
     drawHeight = 720;
     topLeft = _topLeft;
     bottomRight = _bottomRight;
-    
+
     ofClear(0);
-    
+
     fluid.init(drawWidth, drawHeight);
 
-    
+
     animationFbo.allocate(drawWidth, drawHeight);
     animationFbo.begin();
     ofClear(0);
     animationFbo.end();
-    
+
     compositeFbo.allocate(drawWidth, drawHeight);
     compositeFbo.begin();
     ofClear(0);
     compositeFbo.end();
-    
+
     //particle managers (we have two, one for generative, one for users)
     userPM.setup();
-    
+
     sweepAnim.setup();                  //set up sweep
     popAnim.setup();
     explodeAnim.setup();      //setup and pass reference to particle manager
-    
+
     //parameters & gui
     animParams.setName("Scene Settings");
     animParams.add(bUserInControl.set("User In Control", false));
@@ -65,20 +65,20 @@ void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f 
     animParams.add(popAnim.parameters);
     animParams.add(explodeAnim.parameters);
     animParams.add(userPM.parameters);
-    
+
     fluidParams.add(fluid.velocityMask.parameters);
     fluidParams.add(fluid.opticalFlow.parameters);
     fluidParams.add(fluid.fluidSimulation.parameters);
     fluidParams.add(fluid.particleFlow.parameters);
-    
+
     //set up event handlers
     ofAddListener(OscManager::explosion, this, &SceneBuilder::onExplosionEvent);
     ofAddListener(StateManager::sceneChange, this, &SceneBuilder::onSceneChange);
     ofAddListener(OscManager::sweep, this, &SceneBuilder::onSweepEvent);
     ofAddListener(StateManager::userControl, this, &SceneBuilder::onUserControl);
-    
-    
-    
+
+
+
     //set up starting value for generative parameters
     oldGenParams.fDissipation = fluid.fluidSimulation.getDissipation();
     oldGenParams.fVorticity = fluid.fluidSimulation.getVorticity();
@@ -90,14 +90,14 @@ void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f 
     oldGenParams.pShowPart = fluid.particleFlow.isActive();
     oldGenParams.pSize = fluid.particleFlow.getSize();
     oldGenParams.pTwinkle = fluid.particleFlow.getTwinkleSpeed();
-    
+
     oldGenParams.exlBright = 0.1;
     oldGenParams.popBright = 0.1;
     oldGenParams.sweepBright = 0.1;
-    
+
     onSceneChange();
 
-    
+
 }
 
 
@@ -109,14 +109,14 @@ void SceneBuilder::update(){
     fluid.update(&animationFbo);
     drawModeSetName(drawMode.get());
     bUserInControl = state->getIsUserInControl();
-    
+
 }
 
 void SceneBuilder::updateGenerativeSettings(){
-    
+
     float now = ofGetElapsedTimef();
     endTime = initTime + transitionTime;
-    
+
     explodeAnim.brightness.set(
                                ofxeasing::map_clamp(now,
                                                     initTime,
@@ -125,8 +125,8 @@ void SceneBuilder::updateGenerativeSettings(){
                                                     newGenParams.exlBright,
                                                     &ofxeasing::linear::easeIn)
                                );
-    
-    
+
+
     popAnim.brightness.set(
                                ofxeasing::map_clamp(now,
                                                     initTime,
@@ -135,7 +135,7 @@ void SceneBuilder::updateGenerativeSettings(){
                                                     newGenParams.popBright,
                                                     &ofxeasing::linear::easeIn)
                                );
-    
+
     sweepAnim.brightness.set(
                                ofxeasing::map_clamp(now,
                                                     initTime,
@@ -144,7 +144,7 @@ void SceneBuilder::updateGenerativeSettings(){
                                                     newGenParams.sweepBright,
                                                     &ofxeasing::linear::easeIn)
                                );
-    
+
     fluid.fluidSimulation.setDissipation(
                                          ofxeasing::map_clamp(now,
                                                               initTime,
@@ -153,7 +153,7 @@ void SceneBuilder::updateGenerativeSettings(){
                                                               newGenParams.fDissipation,
                                                               &ofxeasing::linear::easeIn)
                                );
-    
+
     fluid.fluidSimulation.setVorticity(
                                          ofxeasing::map_clamp(now,
                                                               initTime,
@@ -162,7 +162,7 @@ void SceneBuilder::updateGenerativeSettings(){
                                                               newGenParams.fVorticity,
                                                               &ofxeasing::linear::easeIn)
                                          );
-    
+
     fluid.fluidSimulation.setViscosity(
                                          ofxeasing::map_clamp(now,
                                                               initTime,
@@ -171,7 +171,7 @@ void SceneBuilder::updateGenerativeSettings(){
                                                               newGenParams.fViscosity,
                                                               &ofxeasing::linear::easeIn)
                                          );
-    
+
     fluid.fluidSimulation.setSpeed(
                                          ofxeasing::map_clamp(now,
                                                               initTime,
@@ -180,7 +180,7 @@ void SceneBuilder::updateGenerativeSettings(){
                                                               newGenParams.fSpeed,
                                                               &ofxeasing::linear::easeIn)
                                          );
-    
+
     fluid.fluidSimulation.setCellSize(
                                          ofxeasing::map_clamp(now,
                                                               initTime,
@@ -189,7 +189,7 @@ void SceneBuilder::updateGenerativeSettings(){
                                                               newGenParams.fCellSize,
                                                               &ofxeasing::linear::easeIn)
                                          );
-    
+
     fluid.fluidSimulation.setGravity(ofVec2f(
                                              ofxeasing::map_clamp(now,
                                                            initTime,
@@ -205,61 +205,61 @@ void SceneBuilder::updateGenerativeSettings(){
                                                                   &ofxeasing::linear::easeIn)
                                              )
                                       );
-    
-    
-    
+
+
+
 }
 
 //--------------------------------------------------------------
 void SceneBuilder::updateAnimation(){
-    
+
     if(explodeAnim.brightness > 0) explodeAnim.update();
     userPM.setForces(ofVec2f(particleForceX, particleForceY));
-    
+
     userPM.update();
-    
-    
-    
+
+
+
     if(state->getIsUserInControl() == false){
         if(explodeAnim.brightness > 0) explodeAnim.update();
         if(popAnim.brightness > 0) popAnim.update();
         if(sweepAnim.brightness > 0) sweepAnim.update();
     }
-    
+
 
 }
 
 //--------------------------------------------------------------
 void SceneBuilder::drawAnimation(){
-    
-    
-    
+
+
+
     animationFbo.begin();
     ofClear(0);
     //draw animations based on scene
     if(explodeAnim.brightness > 0) explodeAnim.draw();
     if(popAnim.brightness > 0) popAnim.draw();
     if(sweepAnim.brightness > 0) sweepAnim.draw();
-    
+
     userPM.draw(1.);
     animationFbo.end();
-    
+
 }
 
 //--------------------------------------------------------------
 void SceneBuilder::onSceneChange(){
-    
+
     //THIS IS WHERE GENERATIVE changes HAPPEN
-    
+
     ofLogNotice("SceneBuilder") << "scene change";
-    
+
     //change settings of different animations
-    /*eg: 
+    /*eg:
     sweepAnimation on/off
      sweepAnimation velocity = ofRandom(1.f);
      popAnimation spawnProb = ofRandom(2.3);
      fluid (random on/off)
-     
+
      - fluid-particle size
      - fluid-particle twinkle
      - fluid-particle birth chance
@@ -269,21 +269,21 @@ void SceneBuilder::onSceneChange(){
      - fluid-velocity strength
      - fluid-optflow strength
      - fluid-optflow offset
-     
+
      - fluid.fluidSimulation.setDissipation(0.0);
-     
+
        - myParticle size
         - myParicle speed
-     
-     
+
+
     */
-    
+
     initTime = ofGetElapsedTimef();
-    
+
     //copy current gen params to holder for old
     oldGenParams = newGenParams;
-    
-    
+
+
     //generate new param targets
     float r0, r1, r2;
     r0 = ofRandom(10);
@@ -297,8 +297,8 @@ void SceneBuilder::onSceneChange(){
     newGenParams.exlBright = r0;
     newGenParams.popBright = r1;
     newGenParams.sweepBright = r2;
-    
-    
+
+
     //generate new fluid param targets
     newGenParams.fDissipation = ofRandom(0.005, 0.008);
     newGenParams.fVorticity = ofRandom(0.1, 0.7);
@@ -308,23 +308,23 @@ void SceneBuilder::onSceneChange(){
     newGenParams.fGravityX = ofRandom(-0.03, 0.03);
     newGenParams.fGravityY = ofRandom(-0.03, 0.03);
     newGenParams.pSize = ofRandom(1.0, 10.0);
-    newGenParams.pTwinkle = 
-    
-    
-    
+    newGenParams.pTwinkle = ofRandom(0.0, 1.0);
+
+
+
 }
 
 
 //--------------------------------------------------------------
 void SceneBuilder::generateFinalComposite(){
-    
+
     compositeFbo.begin();
     ofClear(0);
     fluid.draw(drawMode);
     compositeFbo.end();
-    
+
     reader.readToPixels(compositeFbo, compositePix);
-    
+
 }
 
 //--------------------------------------------------------------
@@ -355,7 +355,7 @@ void SceneBuilder::drawModeSetName(const int &_value) {
 
 //--------------------------------------------------------------
 void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
-    
+
     userPM.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 100.f, 0.0, 80.), ofRandom(1.0));
     ga->sendEvent("uc", "explode", '0', "");
 }
@@ -368,51 +368,50 @@ void SceneBuilder::onSweepEvent(SweepMsg &sm){
 
 //--------------------------------------------------------------
 void SceneBuilder::onUserControl(bool &uc){
-    
+
     if(uc == true){
         explodeAnim.pause();
         sweepAnim.pause();
         popAnim.pause();
     }
-    
+
     else if(uc == false){
         explodeAnim.start();
         sweepAnim.start();
         popAnim.start();
     }
-        
-    
-    
+
+
+
 }
 
 
 
 //--------------------------------------------------------------
 ofVec2f SceneBuilder::deNormalize(ofVec2f &inputVector){
-    
+
     ofVec2f output;
     output.x = ofMap(inputVector.x, 0.f, 100.f, topLeft.x, bottomRight.x);
     output.y = ofMap(inputVector.y, 0.f, 100.f, topLeft.y, bottomRight.y);
-    
+
     return output;
 }
 
 //--------------------------------------------------------------
 SceneBuilder::~SceneBuilder(){
-    
+
     //remove all event listeners
     ofRemoveListener(OscManager::explosion, this, &SceneBuilder::onExplosionEvent);
     ofRemoveListener(OscManager::sweep, this, &SceneBuilder::onSweepEvent);
     ofRemoveListener(StateManager::sceneChange, this, &SceneBuilder::onSceneChange);
-    
-    
+
+
     animationFbo.begin();
     ofClear(0);
     animationFbo.end();
-    
+
     compositeFbo.begin();
     ofClear(0);
     compositeFbo.end();
-    
-}
 
+}
