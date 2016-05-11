@@ -29,11 +29,13 @@ public:
     
     ofxSimpleTimer *heartBeat;
     
-    static ofEvent<void> userCommand;
+    static ofEvent<int> userCommand;
     static ofEvent<ExplosionMsg> explosion;
     static ofEvent<SweepMsg> sweep;
     
     mutable std::mutex mutex;
+    
+    int defaultWaitTime;
     
 
 };

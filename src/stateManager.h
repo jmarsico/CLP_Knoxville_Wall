@@ -26,7 +26,7 @@ public:
     void setCurrentScene(int scene);
     
     //event handlers
-    void onUserInControl();
+    void onUserInControl(int &seconds);
     void onTimerComplete(string & name);
 
     //events

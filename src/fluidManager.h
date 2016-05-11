@@ -31,7 +31,7 @@ class FluidManager  {
 public:
     FluidManager(){}
     void init(int w, int h);
-    void update(const ofFbo &inputFbo);
+    void update(ofFbo *inputFbo);
     void draw(int _mode);
     
     void drawComposite(){ drawComposite(0, 0, ofGetWindowWidth(), ofGetWindowHeight()); }
@@ -64,10 +64,7 @@ public:
     void drawSource(int _x, int _y, int _width, int _height);
     void drawMouseForces(){ drawMouseForces(0, 0, ofGetWindowWidth(), ofGetWindowHeight()); }
     void drawMouseForces(int _x, int _y, int _width, int _height);
-    void drawVelocityDots(){ drawVelocityDots(0, 0, ofGetWindowWidth(), ofGetWindowHeight()); }
-    void drawVelocityDots(int _x, int _y, int _width, int _height);
-    
-    
+        
     void setDisplayScalarScale(float& _value) { displayScalar.setScale(_value); }
     void setVelocityFieldScale(float& _value) { velocityField.setVelocityScale(_value); velocityTemperatureField.setVelocityScale(_value); }
     void setTemperatureFieldScale(float& _value) { temperatureField.setTemperatureScale(_value); velocityTemperatureField.setTemperatureScale(_value); }
@@ -77,7 +74,7 @@ public:
     
     
     
-    ofFbo               inputFbo;
+    ofFbo               *inputFbo;
     
     int					flowWidth;
     int					flowHeight;

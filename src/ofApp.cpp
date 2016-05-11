@@ -153,8 +153,8 @@ void ofApp::setupGui(){
     animGui.minimizeAll();
 
     fluidGui.setPosition(ofGetWidth() - fluidGui.getWidth() - 10,10);
-    systemGui.setPosition(ofGetWidth() - fluidGui.getWidth() - systemGui.getWidth() - 10, 10);
-    animGui.setPosition(systemGui.getPosition().x - 10, 10 + systemGui.getHeight());
+    systemGui.setPosition(ofGetWidth() - fluidGui.getWidth() - systemGui.getWidth() - 20, 10);
+    animGui.setPosition(systemGui.getPosition().x, 10 + systemGui.getHeight());
 }
 
 
@@ -164,6 +164,7 @@ void ofApp::exit(){
     // Set the logger back to the default to make sure any
     // remaining messages are logged correctly.
     ofLogToConsole();
+    ofClear(0);
 }
 
 

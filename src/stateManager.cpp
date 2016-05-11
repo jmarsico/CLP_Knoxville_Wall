@@ -46,9 +46,10 @@ void StateManager::update(){
 
 
 //------------------------------------------------------------
-void StateManager::onUserInControl(){
+void StateManager::onUserInControl(int &seconds){
     
     //turn on the user timer (or reset it)
+    userControlTimer->setTime(seconds * 1000, 1);
     userControlTimer->reset();
     userControlTimer->start();
     

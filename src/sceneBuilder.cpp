@@ -106,7 +106,7 @@ void SceneBuilder::update(){
     updateGenerativeSettings();
     updateAnimation();
     drawAnimation();
-    fluid.update(animationFbo);
+    fluid.update(&animationFbo);
     drawModeSetName(drawMode.get());
     bUserInControl = state->getIsUserInControl();
     
@@ -402,6 +402,15 @@ SceneBuilder::~SceneBuilder(){
     ofRemoveListener(OscManager::explosion, this, &SceneBuilder::onExplosionEvent);
     ofRemoveListener(OscManager::sweep, this, &SceneBuilder::onSweepEvent);
     ofRemoveListener(StateManager::sceneChange, this, &SceneBuilder::onSceneChange);
+    
+    
+    animationFbo.begin();
+    ofClear(0);
+    animationFbo.end();
+    
+    compositeFbo.begin();
+    ofClear(0);
+    compositeFbo.end();
     
 }
 

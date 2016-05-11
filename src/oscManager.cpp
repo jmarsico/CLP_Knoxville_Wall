@@ -9,7 +9,7 @@
 #include "oscManager.h"
 
 
-ofEvent<void> OscManager::userCommand = ofEvent<void>();
+ofEvent<int> OscManager::userCommand = ofEvent<int>();
 ofEvent<ExplosionMsg> OscManager::explosion = ofEvent<ExplosionMsg>();
 ofEvent<SweepMsg> OscManager::sweep = ofEvent<SweepMsg>();
 
@@ -22,6 +22,8 @@ void OscManager::setup(){
     heartBeat->setTime(1000, 10);
     heartBeat->setName("heartbeat");
     heartBeat->start();
+    
+    defaultWaitTime = 20;
     
     ofAddListener(ofxSimpleTimer::TIMER_COMPLETE, this, &OscManager::timerComplete);
     
@@ -43,8 +45,9 @@ void OscManager::update(){
             float x = m.getArgAsFloat(0);
             float y = m.getArgAsFloat(1);
             float size = m.getArgAsFloat(2);
-
-            ofNotifyEvent(userCommand);
+            
+            
+            ofNotifyEvent(userCommand, defaultWaitTime);
             
             //send an explosion event
             ExplosionMsg em(ofVec2f(x,y), size);
@@ -59,7 +62,7 @@ void OscManager::update(){
             float endX = m.getArgAsFloat(2);
             float endY = m.getArgAsFloat(3);
             
-            ofNotifyEvent(userCommand);
+            ofNotifyEvent(userCommand, defaultWaitTime);
             
             SweepMsg sm(ofVec2f(startX, startY), ofVec2f(endX, endY));
             ofNotifyEvent(sweep, sm);
@@ -67,8 +70,12 @@ void OscManager::update(){
             ofLogNotice("OscManager") << "received sweep message";
             
         }
-         if(m.getAddress() == "/dots"){
-            ofNotifyEvent(userCommand);
+        else if(m.getAddress() == "/dots"){
+            ofNotifyEvent(userCommand, defaultWaitTime);
+        }
+        else if(m.getAddress() == "/pause"){
+            int pauseLength = m.getArgAsInt(0);
+            ofNotifyEvent(userCommand, pauseLength);
         }
         
         

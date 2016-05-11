@@ -41,12 +41,12 @@ void FluidManager::init(int w, int h){
 }
 
 
-void FluidManager::update(const ofFbo &_inputFbo){
+void FluidManager::update(ofFbo *_inputFbo){
     inputFbo = _inputFbo;
-    opticalFlow.setSource(inputFbo.getTexture());
+    opticalFlow.setSource(inputFbo->getTexture());
     opticalFlow.update();
     
-    velocityMask.setDensity(inputFbo.getTexture());
+    velocityMask.setDensity(inputFbo->getTexture());
     velocityMask.setVelocity(opticalFlow.getOpticalFlow());
     velocityMask.update();
     
@@ -273,19 +273,12 @@ void FluidManager::drawMask(int _x, int _y, int _width, int _height) {
 void FluidManager::drawSource(int _x, int _y, int _width, int _height) {
     ofPushStyle();
     ofEnableBlendMode(OF_BLENDMODE_DISABLED);
-    inputFbo.draw(_x, _y, _width, _height);
+    inputFbo->draw(_x, _y, _width, _height);
     ofPopStyle();
 }
 
 
-//--------------------------------------------------------------
-void FluidManager::drawVelocityDots(int _x, int _y, int _width, int _height) {
-    ofPushStyle();
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
-    velocityDots.setVelocity(fluidSimulation.getVelocity());
-    velocityDots.draw(_x, _y, _width, _height);
-    ofPopStyle();
-}
+
 
 
 
