@@ -1,12 +1,4 @@
 ofxFlowTools
-ofxHTTP
-ofxIO
-ofxJSON
-ofxJSONRPC
-ofxMediaType
-ofxNetworkUtils
-ofxSSLManager
-ofxTaskQueue
 ofxOsc
 ofxGui
 ofxFastFboReader
@@ -15,3 +7,6 @@ ofxNetwork
 ofxKinet
 ofxXmlSettings
 ofxSimpleTimer
+ofxEasing
+ofxGoogleAnalytics
+ofxSimpleHttp
