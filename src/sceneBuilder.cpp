@@ -307,6 +307,8 @@ void SceneBuilder::onSceneChange(){
     newGenParams.fCellSize = ofRandom(0.3, 0.8);
     newGenParams.fGravityX = ofRandom(-0.03, 0.03);
     newGenParams.fGravityY = ofRandom(-0.03, 0.03);
+    newGenParams.pSize = ofRandom(1.0, 10.0);
+    newGenParams.pTwinkle = 
     
     
     

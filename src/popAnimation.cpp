@@ -50,7 +50,7 @@ void PopAnimation::onTimerComplete(string &name){
     if(name == "popTimer"){
         
         //reset timer based on frequency parameter
-        int newTime = int((1.1f - frequency) * ofRandom(100, 1500));
+        int newTime = int((1.1f - frequency) * ofRandom(10, 150));
         timer->setTime(newTime, 2);
         timer->reset();
         timer->start();
