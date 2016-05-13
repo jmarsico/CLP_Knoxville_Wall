@@ -25,12 +25,18 @@
 #include "ofMain.h"
 #include "ofApp.h"
 
-
-
-int main()
-{
-
-
-    ofSetupOpenGL(1580, 1080, OF_WINDOW);
-    ofRunApp(std::make_shared<ofApp>());
+//========================================================================
+int main( ){
+    
+    ofGLFWWindowSettings windowSettings;
+#ifdef USE_PROGRAMMABLE_GL
+    windowSettings.setGLVersion(4, 1);
+#endif
+    windowSettings.width = 1280;
+    windowSettings.height = 720;
+    windowSettings.windowMode = OF_FULLSCREEN;
+    
+    ofCreateWindow(windowSettings);
+    
+    ofRunApp(new ofApp());
 }

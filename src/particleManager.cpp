@@ -63,6 +63,7 @@ void ParticleManager::explosion(ofVec2f _loc, int numParts, float startingVel){
         Particle p;
         float sv = ofMap(startingVel, 0.0, 1.0, 0.2, 2.0);
         ofVec2f vel(ofRandom(-sv, sv), ofRandom(-sv,sv));
+//        ofVec2f vel(0,0);
         p.setup(_loc, vel, 3, 5);
         p.turnOnNoise(true);
         particles.push_back(p);
@@ -70,10 +71,10 @@ void ParticleManager::explosion(ofVec2f _loc, int numParts, float startingVel){
 }
 
 //----------------------------------------------------------
-void ParticleManager::addParticle(ofVec2f _loc, float _size){
+void ParticleManager::addParticle(ofVec2f _loc, float _size, bool noise){
     Particle p;
     p.setup(_loc, ofVec2f(0,0), 5, _size);
-    p.turnOnNoise(false);
+    p.turnOnNoise(noise);
     particles.push_back(p);
 }
 

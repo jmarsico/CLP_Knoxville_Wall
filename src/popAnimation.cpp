@@ -59,8 +59,12 @@ void PopAnimation::onTimerComplete(string &name){
         float probThresh = 1.0 - spawnProb;
         
         if(prob > probThresh){
-            ofVec2f loc(ofRandom(100), ofRandom(100));
-            pm.addParticle(pm.deNormalize(loc), 10);
+            ofVec2f loc(ofRandom(1,99), ofRandom(1,99));
+            bool noise;
+            float num = ofRandom(1);
+            num > 0.8 ? noise = true : noise = false;
+            
+            pm.addParticle(pm.deNormalize(loc), 10, noise);
         }
     }
 }

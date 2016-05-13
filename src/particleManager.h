@@ -21,7 +21,7 @@ public:
     //pointer to the statemanager
     void setup();
     
-    void addParticle(ofVec2f _loc, float _size = 5);
+    void addParticle(ofVec2f _loc, float _size = 5, bool noise = false);
     void addVehicle(ofVec2f _loc, ofVec2f _dest, float size, float speed);
     void update();
     void setForces(ofVec2f);

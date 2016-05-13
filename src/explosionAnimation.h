@@ -29,6 +29,7 @@ public:
     ofParameter<float> frequency;
     
     ofxSimpleTimer *timer;
+    int maxW, maxH;
 };
 
 #endif /* defined(__CLP_Knoxville_Wall__explosionAnimation__) */

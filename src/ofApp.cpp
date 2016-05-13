@@ -9,7 +9,7 @@
 
 void ofApp::setup()
 {
-    ofSetFrameRate(200);
+    ofSetFrameRate(60);
 //    ofSetLogLevel(OF_LOG_VERBOSE);
     
     //set up google analytics

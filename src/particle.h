@@ -36,6 +36,7 @@ public:
     float counterY;
     
     float size;
+    int maxW, maxH;
     
     bool bNoise;
     

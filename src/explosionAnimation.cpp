@@ -20,6 +20,9 @@ void ExplosionAnimation::setup(){
     timer->setTime(1000, 2);
     timer->start();
     
+    maxW = ofGetWidth();
+    maxH = ofGetHeight();
+    
     ofAddListener(ofxSimpleTimer::TIMER_COMPLETE, this, &ExplosionAnimation::onTimerComplete);
     
 }
@@ -43,7 +46,9 @@ void ExplosionAnimation::start(){
 //-----------------------------------------------------
 void ExplosionAnimation::onTimerComplete(string &name){
     if(name == "explodeAnimTimer"){
-        pm.explosion(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 100, ofRandom(1.0));
+        
+        ofVec2f loc(ofRandom(100), ofRandom(100));
+        pm.explosion(pm.deNormalize(loc), ofRandom(60,150), ofRandom(1.0));
         
         //reset timer based on frequency parameter
         int newTime = int((1.1f - frequency) * ofRandom(1000, 15000));
