@@ -33,15 +33,13 @@ sock.bind(oscInPort);
 
 winston.add(winston.transports.File,{ filename: '/var/log/node.log'});
 
-//EXPLODE!!
+//----------------------------------------------------------EXPLODE!!
 function send_explode_message(explodeParams) {
-    var params = explodeParams.split(' ');
 
-
-    if(params.length == 2 || params.length == 3){
+    if(explodeParams.length == 2 || explodeParams.length == 3){
         var buf;            //the UDP buffer
         //if we only receive 2 parameters, default size param to 0.5
-        if(params.length == 2){
+        if(explodeParams.length == 2){
             buf = osc.toBuffer({
                 address: "/explode",
                 args: [
@@ -63,11 +61,10 @@ function send_explode_message(explodeParams) {
             })
         }
         sock.send(buf, 0, buf.length, 12345, "localhost");
-        winston.log('request','explode');
     }
 }
 
-
+//----------------------------------------------------------SWEEP!!
 function send_sweep_params(sweepParams) {
     //?sweep=x1 y1 x2 y2 speed
     var params = sweepParams.split(' ');
@@ -89,6 +86,7 @@ function send_sweep_params(sweepParams) {
     }
 }
 
+//----------------------------------------------------------FORCE!!
 function send_force_params(forceParams){
     var params = forceParams.split(' ');
     if(params.length == 2){
@@ -102,9 +100,9 @@ function send_force_params(forceParams){
         })
         sock.send(buf, 0, buf.length, 12345, "localhost");
     }
-
 }
 
+//----------------------------------------------------------DOTS!!
 function send_dots_params(dotsParams){
     var params = dotsParams.split(' ');
     if(params.length == 2){
@@ -121,10 +119,12 @@ function send_dots_params(dotsParams){
 
 }
 
+//----------------------------------------------------------GET!!
 app.get('/api', function(req, res){
     //explode
     if(req.query.explode !== 'undefined' && req.query.explode){
-        send_explode_message(req.query.explode);
+        var params = req.query.explode.split(' ');
+        send_explode_message(params);
     }
     //force (gravity)
     if(req.query.force !== 'undefined' && req.query.force){
@@ -147,9 +147,16 @@ app.get('/api', function(req, res){
     })
 });
 
+
+//----------------------------------------------------------POST!!
 app.post('/api/explode', function(req,res){
+    var params;
+    params.push(req.body.x);
+    params.push(req.body.y);
+    params.push(req.body.size);
     send_explode_message(req.body);
 });
+
 
 app.get('/admin', function(req,res){
     if(req.query.system !== 'undefined' && req.query.system){

@@ -47,7 +47,7 @@ void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f 
     compositeFbo.end();
 
     //particle managers (we have two, one for generative, one for users)
-//    userPM.setup();
+    userPM.setup();
 
     sweepAnim.setup();                  //set up sweep
     popAnim.setup();
@@ -213,9 +213,9 @@ void SceneBuilder::updateGenerativeSettings(){
 //--------------------------------------------------------------
 void SceneBuilder::updateAnimation(){
 
-//    userPM.setForces(ofVec2f(particleForceX, particleForceY));
+    userPM.setForces(ofVec2f(particleForceX, particleForceY));
 
-//    userPM.update();
+    userPM.update();
 
 
 
@@ -355,7 +355,7 @@ void SceneBuilder::drawModeSetName(const int &_value) {
 //--------------------------------------------------------------
 void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
 
-    userPM.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 100.f, 0.0, 80.), ofRandom(1.0));
+    userPM.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 100.f, 10, 80.), ofRandom(1.0));
     ga->sendEvent("uc", "explode", '0', "");
 }
 
