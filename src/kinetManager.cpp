@@ -18,7 +18,7 @@ void KinetManager::setup(int numLights){
     ipXml.pushTag("PDU");
     int psPort = 1;
     
-    if(numPDUs <= ipXml.getNumTags("IP") * 2){
+    if(numPDUs <= ipXml.getNumTags("IP")){
     
         for(size_t i = 0; i < numPDUs; i ++){
             
@@ -26,12 +26,6 @@ void KinetManager::setup(int numLights){
             ofxKinet k1;
             k1.init(ipXml.getValue("IP", "0", (int)i/2), 6038, psPort);
             powerSupplies.push_back(k1);
-            
-            if(psPort == 1){
-                psPort = 2;
-            } else if(psPort == 2){
-                psPort = 1;
-            }
             
             ofLogNotice("KinetManager::setup") << "new powerSupply. IP: " << powerSupplies[i].getIP()
             << " psPort: " << powerSupplies[i].getPsPort();
