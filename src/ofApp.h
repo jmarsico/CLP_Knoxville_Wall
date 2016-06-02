@@ -54,6 +54,7 @@ public:
     KinetManager kinet;
 
     vector<LightPoint> lights;
+    vector<uint8_t> lightVals;
     ofPixels compPix;
 
 

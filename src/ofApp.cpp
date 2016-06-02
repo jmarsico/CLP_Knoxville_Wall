@@ -9,7 +9,7 @@
 
 void ofApp::setup()
 {
-    ofSetFrameRate(60);
+    ofSetFrameRate(44);
 //    ofSetLogLevel(OF_LOG_VERBOSE);
     
     //set up google analytics
@@ -47,10 +47,13 @@ void ofApp::setup()
         p *= 2.0;
         lp.setup(p);
         lights.push_back(lp);
+        
+        lightVals.push_back(0);
     }
     ofLogNotice("ofApp::setup") << "number of lights from CSV: " << lights.size();
 
-//    kinet.setup(lights.size());
+    
+    kinet.setup(lights.size());
 
     osc.setup();
     
@@ -69,13 +72,17 @@ void ofApp::update(){
     scene.generateFinalComposite();
     compPix = scene.getPixels();
 
+    
     for(size_t i = 0; i < lights.size(); i++){
         ofVec2f loc = lights[i].getLoc();
         int val = compPix.getColor(loc.x, loc.y).getBrightness();
         lights[i].setCurrentVal(val);
+        lightVals[i] = lights[i].getAvgVal();
     }
 
     
+    kinet.update(lightVals);
+    kinet.send();
     ga.update();
 }
 

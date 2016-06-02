@@ -269,7 +269,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 62.0, 262.0, 170.0, 18.0 ],
-					"text" : "/explode 0 0 0"
+					"text" : "/explode 41 33 99"
 				}
 
 			}
@@ -336,7 +336,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 334.0, 262.0, 170.0, 18.0 ],
-					"text" : "/sweep 80 129 98 0"
+					"text" : "/sweep 53 65 70 163"
 				}
 
 			}
@@ -348,8 +348,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 73.5, 376.0, 173.0, 20.0 ],
-					"text" : "udpsend 192.168.1.200 12345"
+					"patching_rect" : [ 73.5, 376.0, 147.0, 20.0 ],
+					"text" : "udpsend 127.0.0.1 12345"
 				}
 
 			}
