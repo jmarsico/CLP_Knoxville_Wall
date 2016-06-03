@@ -72,10 +72,10 @@ void ofApp::update(){
     scene.generateFinalComposite();
     compPix = scene.getPixels();
 
-
     for(size_t i = 0; i < lights.size(); i++){
         ofVec2f loc = lights[i].getLoc();
         int val = compPix.getColor(loc.x, loc.y).getBrightness();
+        lights[i].setAvgSamplingSize(avgSampSize);
         lights[i].setCurrentVal(val);
         lightVals[i] = lights[i].getAvgVal();
     }
@@ -136,6 +136,7 @@ void ofApp::setupGui(){
     systemGui.add(bShowAnim.set("show anim", false));
     systemGui.add(bSendToWall.set("send to lights", false));
     systemGui.add(mouseLoc.set("show mouselocation", false));
+    systemGui.add(avgSampSize.set("smoothing", 1, 1, 20));
     systemGui.setPosition(ofPoint(10,10));
 //
     fluidGui.setup("fluid", "settings.xml");
