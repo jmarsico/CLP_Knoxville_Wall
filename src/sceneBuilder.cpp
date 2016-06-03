@@ -240,7 +240,7 @@ void SceneBuilder::drawAnimation(){
     if(popAnim.brightness > 0) popAnim.draw();
     if(sweepAnim.brightness > 0) sweepAnim.draw();
 
-//    userPM.draw(1.);
+    userPM.draw(1.);
     animationFbo.end();
 
 }
@@ -357,6 +357,7 @@ void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
 
     userPM.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 100.f, 10, 80.), ofRandom(1.0));
     ga->sendEvent("uc", "explode", '0', "");
+    ofLog() << "EXPLODE";
 }
 
 //--------------------------------------------------------------

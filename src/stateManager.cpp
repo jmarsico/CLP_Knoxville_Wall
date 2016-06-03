@@ -22,7 +22,7 @@ StateManager::StateManager(){
     userControlTimer = new ofxSimpleTimer();
     userControlTimer->setTime(20000, 1);
     userControlTimer->setName("userControlTimer");
-    userControlTimer->debugStart();
+//    userControlTimer->debugStart();
     
     sceneTimer = new ofxSimpleTimer();
     sceneTimer->setTime(10000,1);

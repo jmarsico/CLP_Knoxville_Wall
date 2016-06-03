@@ -47,6 +47,7 @@ public:
     ofParameter<bool> bSendToWall;
     ofParameter<bool> mouseLoc;
     ofParameter<int> avgSampSize;
+    ofParameter<bool> bSendToLights;
 
 
     StateManager state;
