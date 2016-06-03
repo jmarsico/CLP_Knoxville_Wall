@@ -28,7 +28,7 @@ void KinetManager::setup(int numLights){
             string host = ipXml.getValue("IP", "0", i);
             ofLog() << "ip as listing in XML: " << host;
 //            k1.init(host.c_str(), 6038, psPort);
-            powerSupplies[i].init(host.c_str(), 6038, psPort);
+            powerSupplies[i].init(host, 6038, psPort);
 //            powerSupplies.push_back(k1);
             
             ofLogNotice("KinetManager::setup") << "new powerSupply. IP: " << powerSupplies[i].getIP()

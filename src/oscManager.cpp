@@ -16,7 +16,7 @@ ofEvent<SweepMsg> OscManager::sweep = ofEvent<SweepMsg>();
 
 void OscManager::setup(){
     receiver.setup(12345);
-    sender.setup("192.168.1.200", 23456);
+    sender.setup("127.0.0.1", 23456);
     
     heartBeat = new ofxSimpleTimer();
     heartBeat->setTime(1000, 10);
