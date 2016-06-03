@@ -80,10 +80,11 @@ void ofApp::update(){
         lightVals[i] = lights[i].getAvgVal();
     }
 
-    if(bSendToWall){
-      kinet.update(lightVals);
-      kinet.send();
+    if(bSendToLights){
+        kinet.update(lightVals);
+        kinet.send();
     }
+
     ga.update();
 }
 
@@ -138,6 +139,7 @@ void ofApp::setupGui(){
     systemGui.add(bSendToWall.set("send to lights", false));
     systemGui.add(mouseLoc.set("show mouselocation", false));
     systemGui.add(avgSampSize.set("smoothing", 1, 1, 20));
+    systemGui.add(bSendToLights.set("lights on/off", true));
     systemGui.setPosition(ofPoint(10,10));
 //
     fluidGui.setup("fluid", "settings.xml");

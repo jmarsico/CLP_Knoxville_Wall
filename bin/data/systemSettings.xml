@@ -4,5 +4,7 @@
 	<send_to_lights>1</send_to_lights>
 <system/>
 	<show_mouselocation>0</show_mouselocation>
-<smoothing>10</smoothing>
+
+<smoothing>14</smoothing>
+
 </system>
