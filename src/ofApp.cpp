@@ -80,9 +80,10 @@ void ofApp::update(){
         lightVals[i] = lights[i].getAvgVal();
     }
 
-
-    kinet.update(lightVals);
-    // kinet.send();
+    if(bSendToWall){
+      kinet.update(lightVals);
+      kinet.send();
+    }
     ga.update();
 }
 

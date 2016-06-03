@@ -1,7 +1,8 @@
 <system>
-	<framerate>60</framerate>
+	<framerate>44</framerate>
 	<show_anim>0</show_anim>
-	<send_to_lights>0</send_to_lights>
+	<send_to_lights>1</send_to_lights>
 <system/>
 	<show_mouselocation>0</show_mouselocation>
+<smoothing>10</smoothing>
 </system>
