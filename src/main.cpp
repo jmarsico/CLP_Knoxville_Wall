@@ -27,16 +27,16 @@
 
 //========================================================================
 int main( ){
-    
+
     ofGLFWWindowSettings windowSettings;
 #ifdef USE_PROGRAMMABLE_GL
     windowSettings.setGLVersion(4, 1);
 #endif
     windowSettings.width = 1280;
     windowSettings.height = 720;
-    windowSettings.windowMode = OF_FULLSCREEN;
-    
+    windowSettings.windowMode = OF_GAME_MODE;
+
     ofCreateWindow(windowSettings);
-    
+
     ofRunApp(new ofApp());
 }

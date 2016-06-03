@@ -11,7 +11,7 @@ void ofApp::setup()
 {
     ofSetFrameRate(44);
 //    ofSetLogLevel(OF_LOG_VERBOSE);
-    
+
     //set up google analytics
     ga.setShouldReportFramerates(true);
     ga.setFramerateReportInterval(60);
@@ -24,10 +24,10 @@ void ofApp::setup()
              "01"				//app installer id
              );
 
-    
-    
-    
-    
+
+
+
+
     scene.setup(&state, &ga, ofVec2f(0,200), ofVec2f(ofGetWidth(),500));
 
     //setup the JSONRPC server
@@ -47,16 +47,16 @@ void ofApp::setup()
         p *= 2.0;
         lp.setup(p);
         lights.push_back(lp);
-        
+
         lightVals.push_back(0);
     }
     ofLogNotice("ofApp::setup") << "number of lights from CSV: " << lights.size();
 
-    
+
     kinet.setup(lights.size());
 
     osc.setup();
-    
+
 
 }
 
@@ -72,7 +72,7 @@ void ofApp::update(){
     scene.generateFinalComposite();
     compPix = scene.getPixels();
 
-    
+
     for(size_t i = 0; i < lights.size(); i++){
         ofVec2f loc = lights[i].getLoc();
         int val = compPix.getColor(loc.x, loc.y).getBrightness();
@@ -80,9 +80,9 @@ void ofApp::update(){
         lightVals[i] = lights[i].getAvgVal();
     }
 
-    
+
     kinet.update(lightVals);
-    kinet.send();
+    // kinet.send();
     ga.update();
 }
 
