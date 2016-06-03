@@ -46,6 +46,7 @@ public:
     ofParameter<bool> bShowAnim;
     ofParameter<bool> bSendToWall;
     ofParameter<bool> mouseLoc;
+    ofParameter<int> avgSampSize;
 
 
     StateManager state;
