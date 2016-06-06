@@ -28,11 +28,14 @@ API development:
     - startLocation y
     - endLocation x
     - endLocation y
+    - speed
+- "dots"
     - size
-- "force"
+    - duration
+<!-- - "force"
     - changes the direction of wind and gravity in the generative scene
     - wind (x force)
-    - gravity (y force)
-- "all"
+    - gravity (y force) -->
+<!-- - "all"
     - (advanced) RESTful way of controlling exact brightness of all pixels
-    - 750 args 0-1
+    - 750 args 0-1 -->
