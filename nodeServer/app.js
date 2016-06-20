@@ -6,6 +6,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var winston = require('winston');
 
+
 //http://localhost:8080/api?explode=2%201&force=0.23%200.1&sweep=0.1%200.2%200.4%200.2%200.3&dots=0.1%200.2
 
 var app = express();
@@ -43,20 +44,20 @@ function send_explode_message(explodeParams) {
             buf = osc.toBuffer({
                 address: "/explode",
                 args: [
-                    parseFloat(params[0]),
-                    parseFloat(params[1]),
+                    parseFloat(explodeParams[0]),
+                    parseFloat(explodeParams[1]),
                     0.5
                 ]
             })
         }
         //if we receive all 3 parameters for explode
-        else if(params.length == 3){
+        else if(explodeParams.length == 3){
             buf = osc.toBuffer({
                 address: "/explode",
                 args: [
-                    parseFloat(params[0]),
-                    parseFloat(params[1]),
-                    parseFloat(params[2])
+                    parseFloat(explodeParams[0]),
+                    parseFloat(explodeParams[1]),
+                    parseFloat(explodeParams[2])
                 ]
             })
         }
@@ -119,10 +120,25 @@ function send_dots_params(dotsParams){
 
 }
 
+//serve the user page
+app.get("/", function(req, res){
+    // res.sendFile();
+});
+
+//serve the admin page
+app.get("/admin", function(req, res){
+    // res.sendFile();
+})
+
 //----------------------------------------------------------GET!!
 app.get('/api', function(req, res){
     //explode
+    var explodeQuery;
+    var sweepParams;
+    var dotsParams;
+
     if(req.query.explode !== 'undefined' && req.query.explode){
+        explodeQuery = req.query.explode;
         var params = req.query.explode.split(' ');
         send_explode_message(params);
     }
@@ -140,7 +156,7 @@ app.get('/api', function(req, res){
     }
 
     res.json({
-        'explode': req.query.explode,
+        'explode': explodeQuery,
         'force': req.query.force,
         'sweep': req.query.sweep,
         'dots': req.query.dots
@@ -180,7 +196,7 @@ app.get('/', function(req,res){
 });
 
 //Lets define a port we want to listen to
-const PORT=8080;
+const PORT=80;
 
 //Lets start our server
 app.listen(PORT, function(){

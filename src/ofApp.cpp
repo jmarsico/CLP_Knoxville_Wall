@@ -54,9 +54,10 @@ void ofApp::setup()
 
 
     kinet.setup(lights.size());
-
     osc.setup();
 
+    logo.load("CLP_logo.png");
+    bShowGui = false;
 
 }
 
@@ -102,10 +103,11 @@ void ofApp::draw(){
 
     if(bShowAnim) scene.draw();
 
-
-    systemGui.draw();
-    animGui.draw();
-    fluidGui.draw();
+    if(bShowGui){
+        systemGui.draw();
+        animGui.draw();
+        fluidGui.draw();
+    }
 
 
     for(size_t i = 0; i < lights.size(); i ++){
@@ -115,6 +117,9 @@ void ofApp::draw(){
     if(mouseLoc){
         ofDrawBitmapStringHighlight(ofToString(mouseX) + "," + ofToString(mouseY), mouseX, mouseY);
     }
+    
+    ofSetColor(255);
+//    logo.draw(20,20, logo.getWidth() * 0.18, logo.getHeight() * 0.18  );
 
  }
 
@@ -180,4 +185,7 @@ void ofApp::exit(){
 
 
 void ofApp::keyReleased(int key){
+    if(key == 'g'){
+        bShowGui = !bShowGui;
+    }
 }
