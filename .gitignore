@@ -66,3 +66,6 @@ Desktop.ini
 
 # Miscellaneous
 .mailmap
+
+# Node
+*.htpasswd
