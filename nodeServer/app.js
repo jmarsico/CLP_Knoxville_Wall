@@ -5,32 +5,8 @@ var udp = require('dgram');
 var express = require('express');
 var bodyParser = require('body-parser');
 var winston = require('winston');
-var basicAuth = require('http-auth');
-//var path = requre('path');
-
-
-
-var auth = function (req, res, next) {
-  function unauthorized(res) {
-    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
-    return res.send(401);
-  };
-
-  var user = basicAuth(req);
-
-  if (!user || !user.name || !user.pass) {
-    return unauthorized(res);
-  };
-
-  if (user.name === 'foo' && user.pass === 'bar') {
-    return next();
-  } else {
-    return unauthorized(res);
-  };
-};
-
-
-
+var auth = require('http-auth');
+var path = require('path');
 
 
 
@@ -40,9 +16,17 @@ var auth = function (req, res, next) {
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static('dist'));
+// app.use('/', express.static('dist/admin.html'));
+app.use(express.static(path.join(__dirname,'dist')));
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/dist');
 
-//var authMiddleware = auth.connect(basic);
+
+var basic = auth.basic({
+    realm: "Admin User.",
+    file: __dirname + "/data/users.htpasswd"
+});
+
 
 var systemStatus = 'running';
 
@@ -150,15 +134,7 @@ function send_dots_params(dotsParams){
 
 }
 
-//serve the user page
-app.get("/", function(req, res){
-    // res.sendFile();
-});
 
-//serve the admin page
-app.get("/admin", function(req, res){
-    // res.sendFile();
-})
 
 //----------------------------------------------------------GET!!
 app.get('/api', function(req, res){
@@ -205,32 +181,22 @@ app.post('/api/explode', function(req,res){
 
 
 
+//
+// app.get('/', function(req,res){
+//   console.log("someone is here");
+//
+//  res.sendFile(__dirname + '/dist/admin.html');
+//
+// });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.get('/', function(req,res){
-  console.log("someone is here");
-
- res.sendFile('/index.html');
-
+//
+app.get('/admin', auth.connect(basic), function(req,res){
+    console.log("auth test");
+    res.sendFile(path.join(__dirname + '/dist/admin.html'));
 });
 
-app.get('/admin', auth, function(req,res){
-//  res.sendFile('/admin.html');
-    res.send(200, 'Authenticated');
-});
-//Lets define a port we want to listen to
+
+// //Lets define a port we want to listen to
 const PORT=80;
 
 //Lets start our server
