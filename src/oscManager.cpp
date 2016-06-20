@@ -12,6 +12,7 @@
 ofEvent<int> OscManager::userCommand = ofEvent<int>();
 ofEvent<ExplosionMsg> OscManager::explosion = ofEvent<ExplosionMsg>();
 ofEvent<SweepMsg> OscManager::sweep = ofEvent<SweepMsg>();
+ofEvent<DotsMsg> OscManager::dots = ofEvent<DotsMsg>();
 
 
 void OscManager::setup(){
@@ -71,7 +72,13 @@ void OscManager::update(){
             
         }
         else if(m.getAddress() == "/dots"){
+            int size = m.getArgAsInt(0);
+            int duration = m.getArgAsInt(1);
+            
             ofNotifyEvent(userCommand, defaultWaitTime);
+            
+            DotsMsg dm(size, duration);
+            ofNotifyEvent(dots, dm);
         }
         else if(m.getAddress() == "/pause"){
             int pauseLength = m.getArgAsInt(0);

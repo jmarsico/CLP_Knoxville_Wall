@@ -73,8 +73,11 @@ void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f 
 
     //set up event handlers
     ofAddListener(OscManager::explosion, this, &SceneBuilder::onExplosionEvent);
-    ofAddListener(StateManager::sceneChange, this, &SceneBuilder::onSceneChange);
     ofAddListener(OscManager::sweep, this, &SceneBuilder::onSweepEvent);
+    ofAddListener(OscManager::dots, this, &SceneBuilder::onDotsEvent);
+    
+    
+    ofAddListener(StateManager::sceneChange, this, &SceneBuilder::onSceneChange);
     ofAddListener(StateManager::userControl, this, &SceneBuilder::onUserControl);
 
 
@@ -364,6 +367,10 @@ void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
 void SceneBuilder::onSweepEvent(SweepMsg &sm){
     userPM.addVehicle(deNormalize(sm.loc), deNormalize(sm.dest), ofRandom(100), ofRandom(100));
     ga->sendEvent("uc", "sweep", '0', "");
+}
+
+void SceneBuilder::onDotsEvent(DotsMsg &dm){
+    
 }
 
 //--------------------------------------------------------------

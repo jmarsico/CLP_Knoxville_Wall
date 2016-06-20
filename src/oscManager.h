@@ -32,6 +32,7 @@ public:
     static ofEvent<int> userCommand;
     static ofEvent<ExplosionMsg> explosion;
     static ofEvent<SweepMsg> sweep;
+    static ofEvent<DotsMsg> dots;
     
     mutable std::mutex mutex;
     

@@ -257,6 +257,7 @@
 		BA5701941CB8168600C75341 /* csvLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csvLoader.h; sourceTree = "<group>"; };
 		BA57019B1CB816F800C75341 /* lightPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lightPoint.cpp; sourceTree = "<group>"; };
 		BA57019C1CB816F800C75341 /* lightPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lightPoint.h; sourceTree = "<group>"; };
+		BA91C4BF1D18443300ECAD2D /* dotsMsg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dotsMsg.h; sourceTree = "<group>"; };
 		BA9E81591CDA74A9001C6F5B /* vehicle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vehicle.cpp; sourceTree = "<group>"; };
 		BA9E815A1CDA74A9001C6F5B /* vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vehicle.h; sourceTree = "<group>"; };
 		BA9E815C1CDA9285001C6F5B /* sweepMsg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sweepMsg.h; sourceTree = "<group>"; };
@@ -737,6 +738,7 @@
 				BADBF2AE1CD3C120009AE778 /* msgTypes.h */,
 				BADBF2B01CD3C183009AE778 /* explosionMsg.h */,
 				BA9E815C1CDA9285001C6F5B /* sweepMsg.h */,
+				BA91C4BF1D18443300ECAD2D /* dotsMsg.h */,
 			);
 			name = data;
 			sourceTree = "<group>";
