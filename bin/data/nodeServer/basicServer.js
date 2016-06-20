@@ -143,9 +143,9 @@ app.get('/api', function(req, res){
     })
 });
 
-app.post('/api/explode'(function(req,res)){
-    send_explode_message(req.body);
-}
+//app.post('/api/explode'(function(req,res)){
+//   send_explode_message(req.body);
+//}
 
 app.get('/admin', function(req,res){
     if(req.query.system !== 'undefined' && req.query.system){
@@ -169,7 +169,7 @@ app.get('/', function(req,res){
 });
 
 //Lets define a port we want to listen to
-const PORT=8080;
+const PORT=80;
 
 //Lets start our server
 app.listen(PORT, function(){

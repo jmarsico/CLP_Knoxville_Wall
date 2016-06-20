@@ -5,13 +5,15 @@ var udp = require('dgram');
 var express = require('express');
 var bodyParser = require('body-parser');
 var winston = require('winston');
+//var path = requre('path');
+
+
 
 //http://localhost:8080/api?explode=2%201&force=0.23%200.1&sweep=0.1%200.2%200.4%200.2%200.3&dots=0.1%200.2
-
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
+app.use(express.static('dist'));
 
 var systemStatus = 'running';
 
@@ -175,12 +177,17 @@ app.get('/admin', function(req,res){
 
 
 app.get('/', function(req,res){
-    res.send('/admin?system \t returns status' + "\r\n"
-    + '/api? \t sends requests');
+  console.log("someone is here");
+
+ res.sendFile('/index.html');
+
 });
 
+app.get('/admin', function(req,res){
+  res.send('Hello! This is where admin page will live');
+});
 //Lets define a port we want to listen to
-const PORT=8080;
+const PORT=80;
 
 //Lets start our server
 app.listen(PORT, function(){
