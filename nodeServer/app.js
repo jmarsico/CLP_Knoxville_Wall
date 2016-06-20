@@ -5,7 +5,29 @@ var udp = require('dgram');
 var express = require('express');
 var bodyParser = require('body-parser');
 var winston = require('winston');
+var basicAuth = require('http-auth');
 //var path = requre('path');
+
+
+
+var auth = function (req, res, next) {
+  function unauthorized(res) {
+    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+    return res.send(401);
+  };
+
+  var user = basicAuth(req);
+
+  if (!user || !user.name || !user.pass) {
+    return unauthorized(res);
+  };
+
+  if (user.name === 'foo' && user.pass === 'bar') {
+    return next();
+  } else {
+    return unauthorized(res);
+  };
+};
 
 
 
@@ -19,6 +41,8 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('dist'));
+
+//var authMiddleware = auth.connect(basic);
 
 var systemStatus = 'running';
 
@@ -180,19 +204,18 @@ app.post('/api/explode', function(req,res){
 });
 
 
-app.get('/admin', function(req,res){
-    if(req.query.system !== 'undefined' && req.query.system){
-        res.json({
-            'status': systemStatus
-        })
-    }
-    else {
-        res.json({
-            'fail': 'incorrect query'
-        })
-    }
 
-});
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -203,8 +226,9 @@ app.get('/', function(req,res){
 
 });
 
-app.get('/admin', function(req,res){
-  res.send('Hello! This is where admin page will live');
+app.get('/admin', auth, function(req,res){
+//  res.sendFile('/admin.html');
+    res.send(200, 'Authenticated');
 });
 //Lets define a port we want to listen to
 const PORT=80;
