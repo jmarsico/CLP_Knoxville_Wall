@@ -11,6 +11,7 @@
 
 #include "explosionMsg.h"
 #include "sweepMsg.h"
+#include "dotsMsg.h"
 
 
 #endif

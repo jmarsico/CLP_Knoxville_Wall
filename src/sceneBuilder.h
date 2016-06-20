@@ -50,6 +50,7 @@ public:
     
     void onExplosionEvent(ExplosionMsg &em);
     void onSweepEvent(SweepMsg &sm);
+    void onDotsEvent(DotsMsg &dm);
     void onSceneChange();
     void onUserControl(bool &uc);
 
@@ -84,7 +85,10 @@ protected:
     //generative animations
     SweepAnimation sweepAnim;
     PopAnimation popAnim;
+    PopAnimation userPopAnim;
     ExplosionAnimation explodeAnim;
+    
+    
     
     //world size variables
     int drawWidth, drawHeight;

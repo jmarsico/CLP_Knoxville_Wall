@@ -63,6 +63,10 @@ public:
     OscManager osc;
     ofxGoogleAnalytics ga;
     
+    ofImage logo;
+    
+    bool bShowGui;
+    
     
 
 private:
