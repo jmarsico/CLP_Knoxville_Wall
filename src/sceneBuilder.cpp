@@ -27,7 +27,7 @@ void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f 
 
     //set up location parameters
     drawWidth = ofGetWidth();
-    drawHeight = 720;
+    drawHeight = 1080;
     topLeft = _topLeft;
     bottomRight = _bottomRight;
 

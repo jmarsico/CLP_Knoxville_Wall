@@ -11,8 +11,8 @@
 
 //----------------------------------------------------------
 ParticleManager::ParticleManager(){
-    topLeft.set(0,200);
-    bottomRight.set(ofGetWidth(),500);
+    topLeft.set(0,280);
+    bottomRight.set(ofGetWidth(),680);
 }
 
 //----------------------------------------------------------
