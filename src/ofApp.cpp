@@ -56,7 +56,7 @@ void ofApp::setup()
     kinet.setup(lights.size());
     osc.setup();
 
-    logo.load("CLP_logo.png");
+    logo.load("textLogo.png");
     bShowGui = false;
 
 }
@@ -73,19 +73,29 @@ void ofApp::update(){
     scene.generateFinalComposite();
     compPix = scene.getPixels();
 
+    
+    //if sending to lights, update from animation
     for(size_t i = 0; i < lights.size(); i++){
         ofVec2f loc = lights[i].getLoc();
         int val = compPix.getColor(loc.x, loc.y).getBrightness();
         lights[i].setAvgSamplingSize(avgSampSize);
         lights[i].setCurrentVal(val);
-        lightVals[i] = lights[i].getAvgVal();
+        
+        //if we are sending to the wall, take light val
+        //if not, send zeros
+        if(bSendToLights){
+            lightVals[i] = lights[i].getAvgVal();
+        } else {
+            lightVals[i] = 0;
+        }
     }
 
-    if(bSendToLights){
-        kinet.update(lightVals);
-        kinet.send();
-    }
+    //update the kinet manager
+    kinet.update(lightVals);
+    //send to the wall
+    kinet.send();
 
+    //update the google analytics
     ga.update();
 }
 
@@ -111,7 +121,7 @@ void ofApp::draw(){
     }
     
     ofSetColor(255);
-    logo.draw(20,20, logo.getWidth() * 0.13, logo.getHeight() * 0.13  );
+    logo.draw(20,20, logo.getWidth() * 0.20, logo.getHeight() * 0.20  );
     
     ofSetColor(50);
     if(bShowAnim) scene.draw();
@@ -190,12 +200,28 @@ void ofApp::setupGui(){
 
 
 //------------------------------------------------------
+void ofApp::turnOffLights(){
+    
+    for(size_t i = 0; i < lightVals.size(); i++){
+        lightVals[i] = 0;
+    }
+    kinet.update(lightVals);
+    kinet.send();
+    
+}
+
+
+//------------------------------------------------------
 void ofApp::exit(){
 
     // Set the logger back to the default to make sure any
     // remaining messages are logged correctly.
     ofLogToConsole();
     ofClear(0);
+    
+    turnOffLights();
+
+    
 }
 
 

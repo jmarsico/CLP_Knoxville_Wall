@@ -29,6 +29,7 @@ public:
     void exit();
     void keyReleased(int key);
 
+    void turnOffLights();
 
     void setupGui();
     void handleEvent(string & name);
@@ -44,7 +45,6 @@ public:
     ofxPanel systemGui;
     ofParameter<int> FPS;
     ofParameter<bool> bShowAnim;
-    ofParameter<bool> bSendToWall;
     ofParameter<bool> mouseLoc;
     ofParameter<int> avgSampSize;
     ofParameter<bool> bSendToLights;
