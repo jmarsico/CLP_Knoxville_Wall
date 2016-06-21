@@ -28,7 +28,7 @@ void ofApp::setup()
 
 
 
-    scene.setup(&state, &ga, ofVec2f(0,200), ofVec2f(ofGetWidth(),500));
+    scene.setup(&state, &ga, ofVec2f(0,290), ofVec2f(ofGetWidth(),620));
 
     //setup the JSONRPC server
     setupGui();
@@ -41,10 +41,10 @@ void ofApp::setup()
     for(size_t i = 0; i < csv.getNumLights(); i++){
         LightPoint lp;
         ofVec2f p = csv.getLightLoc(i);
-        ofVec2f trans(50, 300);
+        ofVec2f trans(18, 220);
         p += trans;
 
-        p *= 2.0;
+        p *= 2.7;
         lp.setup(p);
         lights.push_back(lp);
 
@@ -141,7 +141,6 @@ void ofApp::setupGui(){
     systemGui.setup("system", "systemSettings.xml");
     systemGui.add(FPS.set("framerate", 0, 0, 100));
     systemGui.add(bShowAnim.set("show anim", false));
-    systemGui.add(bSendToWall.set("send to lights", false));
     systemGui.add(mouseLoc.set("show mouselocation", false));
     systemGui.add(avgSampSize.set("smoothing", 1, 1, 20));
     systemGui.add(bSendToLights.set("lights on/off", true));
