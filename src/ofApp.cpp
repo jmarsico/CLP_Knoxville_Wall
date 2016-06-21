@@ -101,25 +101,41 @@ void ofApp::draw(){
     ofSetColor(255);
 
 
-    if(bShowAnim) scene.draw();
+    
 
-    if(bShowGui){
-        systemGui.draw();
-        animGui.draw();
-        fluidGui.draw();
-    }
+
 
 
     for(size_t i = 0; i < lights.size(); i ++){
         lights[i].draw();
     }
+    
+    ofSetColor(255);
+    logo.draw(20,20, logo.getWidth() * 0.13, logo.getHeight() * 0.13  );
+    
+    ofSetColor(50);
+    if(bShowAnim) scene.draw();
+    
+    ofSetColor(255);
+    if(bShowGui){
+        systemGui.draw();
+        animGui.draw();
+        fluidGui.draw();
+        ofShowCursor();
+    } else { ofHideCursor();}
 
     if(mouseLoc){
         ofDrawBitmapStringHighlight(ofToString(mouseX) + "," + ofToString(mouseY), mouseX, mouseY);
     }
     
+    //draw lines showing different sections
+    ofSetColor(200);
+    ofDrawLine(345, 350, 345, 600);
+    ofDrawLine(1547, 350, 1547, 600);
+    
+    
     ofSetColor(255);
-//    logo.draw(20,20, logo.getWidth() * 0.18, logo.getHeight() * 0.18  );
+    
 
  }
 
