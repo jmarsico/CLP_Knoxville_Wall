@@ -1,6 +1,6 @@
 <system>
 	<framerate>44</framerate>
-	<show_anim>0</show_anim>
+	<show_anim>1</show_anim>
 	<send_to_lights>1</send_to_lights>
 <system/>
 	<show_mouselocation>0</show_mouselocation>
