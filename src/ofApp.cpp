@@ -29,8 +29,8 @@ void ofApp::setup()
     
 
     scene.setup(&state, &ga, ofVec2f(0,290), ofVec2f(ofGetWidth(),620));
-    state.setTurnOnTime("15:41");
-    state.setTurnOffTime("15:40");
+    state.setTurnOnTime("23:30");
+    state.setTurnOffTime("7:30");
 
     //setup the JSONRPC server
     setupGui();
