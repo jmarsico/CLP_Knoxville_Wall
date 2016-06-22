@@ -12,7 +12,7 @@
 //----------------------------------------------------------
 ParticleManager::ParticleManager(){
     topLeft.set(0,280);
-    bottomRight.set(ofGetWidth(),680);
+    bottomRight.set(1920,680);
 }
 
 //----------------------------------------------------------

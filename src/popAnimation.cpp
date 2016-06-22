@@ -69,7 +69,7 @@ void PopAnimation::onTimerComplete(string &name){
         float probThresh = 1.0 - spawnProb;
         
         if(prob > probThresh){
-            ofVec2f loc(ofRandom(1,99), ofRandom(1,99));
+            ofVec2f loc(ofRandom(0,100), ofRandom(0,100));
             bool noise;
             float num = ofRandom(1);
             num > 0.6 ? noise = true : noise = false;

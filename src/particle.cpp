@@ -25,7 +25,7 @@ void Particle::setup(ofVec2f _loc, ofVec2f _vel, float _ageSpeed, float _size){
     counterX = ofRandom(10);
     counterY = ofRandom(10);
     
-    maxW = 1300;
+    maxW = 1920;
     maxH = 1080;
 }
 

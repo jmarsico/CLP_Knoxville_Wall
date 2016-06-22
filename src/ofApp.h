@@ -30,11 +30,12 @@ public:
     void keyReleased(int key);
 
     void turnOffLights();
+    void turnOnLights();
 
     void setupGui();
     void handleEvent(string & name);
 
-
+    void onSchedulerEvent(bool &onOff);
 
     int drawWidth, drawHeight;
 

@@ -10,6 +10,7 @@
 
 ofEvent<bool> StateManager::userControl = ofEvent<bool>();
 ofEvent<void> StateManager::sceneChange = ofEvent<void>();
+ofEvent<bool> StateManager::turnOnOff = ofEvent<bool>();
 
 
 //------------------------------------------------------------
@@ -34,6 +35,10 @@ StateManager::StateManager(){
     ofAddListener(ofxSimpleTimer::TIMER_COMPLETE, this, &StateManager::onTimerComplete);
     ofAddListener(OscManager::userCommand, this, &StateManager::onUserInControl);
     
+    
+    currentTime = (ofGetHours() * 60) + ofGetMinutes();
+    lastTime = currentTime;
+    
 }
 
 
@@ -42,6 +47,7 @@ void StateManager::update(){
     
     if(getIsUserInControl() == false) sceneTimer->update();
     userControlTimer->update();
+    checkTime();
 }
 
 
@@ -103,3 +109,50 @@ void StateManager::onTimerComplete(string &name){
         ofLogVerbose("StateManager") << "scenetimer complete;  new time until scene change: " << newTimerLength;
     }
 }
+
+//------------------------------------------------------------
+void StateManager::setTurnOnTime(string _timeStamp){
+    vector<string> timeParts = ofSplitString(_timeStamp, ":");
+    ofLogNotice("StateManager") << "Turn on time: " << _timeStamp;
+    
+    turnOnTime = (ofToInt(timeParts[0]) * 60) + ofToInt(timeParts[1]);
+
+}
+
+
+//------------------------------------------------------------
+void StateManager::setTurnOffTime(string _timeStamp){
+    vector<string> timeParts = ofSplitString(_timeStamp, ":");
+    ofLogNotice("StateManager") << "Turn on time: " << _timeStamp;
+    
+    turnOffTime = (ofToInt(timeParts[0]) * 60) + ofToInt(timeParts[1]);
+    
+}
+
+
+//------------------------------------------------------------
+void StateManager::checkTime(){
+    currentTime = (ofGetHours() * 60) + ofGetMinutes();
+    
+    ofLog() << turnOnTime << " " << turnOffTime << " " << currentTime << " " << lastTime;
+    if(lastTime < turnOnTime && currentTime >= turnOnTime){
+        bool trueBool = true;
+        ofNotifyEvent(turnOnOff, trueBool);
+        ofLogNotice("statemanager") << "TURN ON";
+    }
+    
+    if(lastTime < turnOffTime && currentTime >= turnOffTime){
+        bool falseBool = false;
+        ofNotifyEvent(turnOnOff, falseBool);
+        ofLogNotice("statemanager") << "TURN OFF";
+    }
+    
+    lastTime = currentTime;
+    
+    
+    
+    
+}
+
+
+

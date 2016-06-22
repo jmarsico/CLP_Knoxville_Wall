@@ -26,9 +26,11 @@ void ofApp::setup()
 
 
 
-
+    
 
     scene.setup(&state, &ga, ofVec2f(0,290), ofVec2f(ofGetWidth(),620));
+    state.setTurnOnTime("15:41");
+    state.setTurnOffTime("15:40");
 
     //setup the JSONRPC server
     setupGui();
@@ -52,12 +54,14 @@ void ofApp::setup()
     }
     ofLogNotice("ofApp::setup") << "number of lights from CSV: " << lights.size();
 
-
     kinet.setup(lights.size());
     osc.setup();
 
     logo.load("textLogo.png");
     bShowGui = false;
+    
+    
+    ofAddListener(StateManager::turnOnOff, this, &ofApp::onSchedulerEvent);
 
 }
 
@@ -110,12 +114,6 @@ void ofApp::draw(){
     ofBackground(0);
     ofSetColor(255);
 
-
-    
-
-
-
-
     for(size_t i = 0; i < lights.size(); i ++){
         lights[i].draw();
     }
@@ -142,8 +140,6 @@ void ofApp::draw(){
     ofSetColor(200);
     ofDrawLine(345, 350, 345, 600);
     ofDrawLine(1547, 350, 1547, 600);
-    
-    
     ofSetColor(255);
     
 
@@ -202,12 +198,30 @@ void ofApp::setupGui(){
 //------------------------------------------------------
 void ofApp::turnOffLights(){
     
+    bSendToLights = false;
     for(size_t i = 0; i < lightVals.size(); i++){
         lightVals[i] = 0;
     }
     kinet.update(lightVals);
     kinet.send();
     
+    
+}
+
+//------------------------------------------------------
+void ofApp::turnOnLights(){
+    bSendToLights = true;
+}
+
+//------------------------------------------------------
+void ofApp::onSchedulerEvent(bool &onOff){
+    if(onOff == true){
+        turnOnLights();
+        ofLog() << "TURN ON LIGHTS FROM SCHEDULE";
+    } else if(onOff == false){
+        turnOffLights();
+        ofLog() << "TURN OFF LIGHTS FROM SCHEDULE";
+    }
 }
 
 

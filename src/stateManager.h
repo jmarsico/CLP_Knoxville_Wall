@@ -26,6 +26,14 @@ public:
     void setCurrentScene(int scene);
     
     
+    void setTurnOnTime(string _timestamp);
+    void setTurnOffTime(string _timestamp);
+    void checkTime();
+    int lastTime;
+    int currentTime;
+    int turnOnTime;
+    int turnOffTime;
+    
     
     //event handlers
     void onUserInControl(int &seconds);
@@ -34,6 +42,7 @@ public:
     //events
     static ofEvent<void> sceneChange;
     static ofEvent<bool> userControl;
+    static ofEvent<bool> turnOnOff;
     
     
     int getCurrentScene() { return currentScene; };
