@@ -25,6 +25,8 @@ public:
     void setRunningState(bool onOff);
     void setCurrentScene(int scene);
     
+    
+    
     //event handlers
     void onUserInControl(int &seconds);
     void onTimerComplete(string & name);

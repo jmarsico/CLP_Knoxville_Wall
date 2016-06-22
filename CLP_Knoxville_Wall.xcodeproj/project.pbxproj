@@ -52,8 +52,10 @@
 		BA255EEF1CE2125B00B7D06F /* ofxSimpleHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA255EEA1CE2125B00B7D06F /* ofxSimpleHttp.cpp */; };
 		BA3D3AA41CC8185D0095C0DD /* oscManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA3D3AA21CC8185D0095C0DD /* oscManager.cpp */; };
 		BA3D3AAC1CC820430095C0DD /* ofxSimpleTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA3D3AAA1CC820430095C0DD /* ofxSimpleTimer.cpp */; };
+		BA4778B81D1AC69000752195 /* scheduler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA4778B61D1AC69000752195 /* scheduler.cpp */; };
 		BA5701951CB8168600C75341 /* csvLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA5701931CB8168600C75341 /* csvLoader.cpp */; };
 		BA57019D1CB816F800C75341 /* lightPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA57019B1CB816F800C75341 /* lightPoint.cpp */; };
+		BA8C2AAE1D1AEB1A00A8C9E3 /* userPopAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8C2AAC1D1AEB1A00A8C9E3 /* userPopAnimation.cpp */; };
 		BA9E815B1CDA74A9001C6F5B /* vehicle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA9E81591CDA74A9001C6F5B /* vehicle.cpp */; };
 		BADBF2AB1CD394C2009AE778 /* ofxCsv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADBF2A71CD394C2009AE778 /* ofxCsv.cpp */; };
 		BADBF2AC1CD394C2009AE778 /* ofxCsvRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADBF2A91CD394C2009AE778 /* ofxCsvRow.cpp */; };
@@ -253,10 +255,14 @@
 		BA3D3AA31CC8185D0095C0DD /* oscManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oscManager.h; sourceTree = "<group>"; };
 		BA3D3AAA1CC820430095C0DD /* ofxSimpleTimer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleTimer.cpp; sourceTree = "<group>"; };
 		BA3D3AAB1CC820430095C0DD /* ofxSimpleTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSimpleTimer.h; sourceTree = "<group>"; };
+		BA4778B61D1AC69000752195 /* scheduler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scheduler.cpp; sourceTree = "<group>"; };
+		BA4778B71D1AC69000752195 /* scheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduler.h; sourceTree = "<group>"; };
 		BA5701931CB8168600C75341 /* csvLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = csvLoader.cpp; sourceTree = "<group>"; };
 		BA5701941CB8168600C75341 /* csvLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csvLoader.h; sourceTree = "<group>"; };
 		BA57019B1CB816F800C75341 /* lightPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lightPoint.cpp; sourceTree = "<group>"; };
 		BA57019C1CB816F800C75341 /* lightPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lightPoint.h; sourceTree = "<group>"; };
+		BA8C2AAC1D1AEB1A00A8C9E3 /* userPopAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = userPopAnimation.cpp; sourceTree = "<group>"; };
+		BA8C2AAD1D1AEB1A00A8C9E3 /* userPopAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userPopAnimation.h; sourceTree = "<group>"; };
 		BA91C4BF1D18443300ECAD2D /* dotsMsg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dotsMsg.h; sourceTree = "<group>"; };
 		BA9E81591CDA74A9001C6F5B /* vehicle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vehicle.cpp; sourceTree = "<group>"; };
 		BA9E815A1CDA74A9001C6F5B /* vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vehicle.h; sourceTree = "<group>"; };
@@ -525,6 +531,8 @@
 				BAF1A6771CBD8BBF00D9E9E2 /* explosionAnimation.h */,
 				BA255ED51CE12A9100B7D06F /* settingsGenerator.cpp */,
 				BA255ED61CE12A9100B7D06F /* settingsGenerator.h */,
+				BA8C2AAC1D1AEB1A00A8C9E3 /* userPopAnimation.cpp */,
+				BA8C2AAD1D1AEB1A00A8C9E3 /* userPopAnimation.h */,
 			);
 			name = animations;
 			sourceTree = "<group>";
@@ -728,6 +736,8 @@
 				BA18A9B31CB2B966007E76B8 /* sceneBuilder.h */,
 				BA18A9A41CB2AD22007E76B8 /* stateManager.cpp */,
 				BA18A9A51CB2AD22007E76B8 /* stateManager.h */,
+				BA4778B61D1AC69000752195 /* scheduler.cpp */,
+				BA4778B71D1AC69000752195 /* scheduler.h */,
 			);
 			name = managers;
 			sourceTree = "<group>";
@@ -1010,6 +1020,7 @@
 				BA3D3AAC1CC820430095C0DD /* ofxSimpleTimer.cpp in Sources */,
 				BA22C5B51C8E2F0F004B30A7 /* OscReceivedElements.cpp in Sources */,
 				BA18A9BD1CB2D489007E76B8 /* popAnimation.cpp in Sources */,
+				BA8C2AAE1D1AEB1A00A8C9E3 /* userPopAnimation.cpp in Sources */,
 				BA22C5B11C8E2F0F004B30A7 /* NetworkingUtils.cpp in Sources */,
 				BAF1A66F1CBC481A00D9E9E2 /* ofxXmlSettings.cpp in Sources */,
 				BA255EED1CE2125B00B7D06F /* ofxChecksum.cpp in Sources */,
@@ -1065,6 +1076,7 @@
 				BA18A9A61CB2AD22007E76B8 /* stateManager.cpp in Sources */,
 				BA22C5B31C8E2F0F004B30A7 /* OscOutboundPacketStream.cpp in Sources */,
 				BA22C5AC1C8E2F0F004B30A7 /* ofxOscMessage.cpp in Sources */,
+				BA4778B81D1AC69000752195 /* scheduler.cpp in Sources */,
 				BA18A9881CAC55DA007E76B8 /* ofxBaseGui.cpp in Sources */,
 				BAF1A6711CBC481A00D9E9E2 /* tinyxmlerror.cpp in Sources */,
 			);

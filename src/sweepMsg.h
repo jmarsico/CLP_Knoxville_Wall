@@ -13,13 +13,15 @@
 
 class SweepMsg {
 public:
-    SweepMsg(ofVec2f _loc, ofVec2f _dest){
+    SweepMsg(ofVec2f _loc, ofVec2f _dest, int _speed){
         loc = _loc;
         dest = _dest;
+        speed = _speed;
     }
     
     ofVec2f loc;
     ofVec2f dest;
+    int speed;
 };
 
 #endif

@@ -15,12 +15,14 @@
 #include "stateManager.h"
 #include "sweepAnimation.h"
 #include "popAnimation.h"
+#include "userPopAnimation.h"
 #include "particleManager.h"
 #include "guiElement.h"
 #include "fluidManager.h"
 #include "ofxFastFboReader.h"
 #include "explosionAnimation.h"
 #include "ofxGoogleAnalytics.h"
+
 
 #include "oscManager.h"
 #include "msgTypes.h"
@@ -85,7 +87,7 @@ protected:
     //generative animations
     SweepAnimation sweepAnim;
     PopAnimation popAnim;
-    PopAnimation userPopAnim;
+    UserPopAnimation userPopAnim;
     ExplosionAnimation explodeAnim;
     
     

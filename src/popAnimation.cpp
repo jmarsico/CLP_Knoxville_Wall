@@ -12,15 +12,20 @@
 void PopAnimation::setup(){
     pm.setup();
     
+    
     parameters.setName("Pop Anim");
     parameters.add(spawnProb.set("spawnProb", 0.0, 0.0, 1.0));
     parameters.add(frequency.set("spawn size", 5, 1, 100));
     
     timer = new ofxSimpleTimer();
     timer->setName("popTimer");
-    timer->setTime(1000, 2);
+    timer->setTime(10, 2);
+    
+    
     timer->start();
     
+    size = 10;
+
     ofAddListener(ofxSimpleTimer::TIMER_COMPLETE, this, &PopAnimation::onTimerComplete);
 }
 
@@ -32,12 +37,15 @@ void PopAnimation::update(){
 
 //-----------------------------------------------------
 void PopAnimation::draw(){
+   
     pm.draw(brightness);
+    
 }
 
 //-----------------------------------------------------
 void PopAnimation::pause(){
     timer->pause();
+    
 }
 
 //-----------------------------------------------------
@@ -45,9 +53,11 @@ void PopAnimation::start(){
     timer->start();
 }
 
+
 //-----------------------------------------------------
 void PopAnimation::onTimerComplete(string &name){
     if(name == "popTimer"){
+        
         
         //reset timer based on frequency parameter
         int newTime = int((1.1f - frequency) * ofRandom(10, 150));
@@ -62,9 +72,10 @@ void PopAnimation::onTimerComplete(string &name){
             ofVec2f loc(ofRandom(1,99), ofRandom(1,99));
             bool noise;
             float num = ofRandom(1);
-            num > 0.8 ? noise = true : noise = false;
+            num > 0.6 ? noise = true : noise = false;
             
-            pm.addParticle(pm.deNormalize(loc), 10, noise);
+            pm.addParticle(pm.deNormalize(loc), size, noise);
+         
         }
     }
 }

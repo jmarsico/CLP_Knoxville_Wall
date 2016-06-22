@@ -20,7 +20,7 @@ void OscManager::setup(){
     sender.setup("127.0.0.1", 23456);
     
     heartBeat = new ofxSimpleTimer();
-    heartBeat->setTime(1000, 10);
+    heartBeat->setTime(10000, 1);
     heartBeat->setName("heartbeat");
     heartBeat->start();
     
@@ -62,10 +62,11 @@ void OscManager::update(){
             float startY = m.getArgAsFloat(1);
             float endX = m.getArgAsFloat(2);
             float endY = m.getArgAsFloat(3);
+            float speed = m.getArgAsInt(4);
             
             ofNotifyEvent(userCommand, defaultWaitTime);
             
-            SweepMsg sm(ofVec2f(startX, startY), ofVec2f(endX, endY));
+            SweepMsg sm(ofVec2f(startX, startY), ofVec2f(endX, endY), speed);
             ofNotifyEvent(sweep, sm);
             
             ofLogNotice("OscManager") << "received sweep message";
@@ -84,26 +85,24 @@ void OscManager::update(){
             int pauseLength = m.getArgAsInt(0);
             ofNotifyEvent(userCommand, pauseLength);
         }
-        
-        
     }
-
-    
 }
 
 
 void OscManager::timerComplete(string &name){
     if(name == "heartbeat"){
+        heartBeat->setTime(10000, 2);
         heartBeat->reset();
         heartBeat->start();
+        //send heartbeat
+        ofxOscMessage m;
+        m.setAddress("/heartbeat");
+        m.addIntArg(ofGetFrameRate());
+        sender.sendMessage(m, false);
     }
     
-    //send heartbeat
-    ofxOscMessage m;
-    m.setAddress("/heartbeat");
-    m.addIntArg(1);
-    sender.sendMessage(m, false);
 
     
+
 }
 

@@ -51,6 +51,7 @@ void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f 
 
     sweepAnim.setup();                  //set up sweep
     popAnim.setup();
+    userPopAnim.setup();
     explodeAnim.setup();      //setup and pass reference to particle manager
 
     //parameters & gui
@@ -226,7 +227,10 @@ void SceneBuilder::updateAnimation(){
         if(explodeAnim.brightness > 0) explodeAnim.update();
         if(popAnim.brightness > 0) popAnim.update();
         if(sweepAnim.brightness > 0) sweepAnim.update();
+    
     }
+    
+    userPopAnim.update();
 
 
 }
@@ -242,6 +246,7 @@ void SceneBuilder::drawAnimation(){
     if(explodeAnim.brightness > 0) explodeAnim.draw();
     if(popAnim.brightness > 0) popAnim.draw();
     if(sweepAnim.brightness > 0) sweepAnim.draw();
+    userPopAnim.draw();
 
     userPM.draw(1.);
     animationFbo.end();
@@ -365,12 +370,13 @@ void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
 
 //--------------------------------------------------------------
 void SceneBuilder::onSweepEvent(SweepMsg &sm){
-    userPM.addVehicle(deNormalize(sm.loc), deNormalize(sm.dest), ofRandom(100), ofRandom(100));
+    userPM.addVehicle(deNormalize(sm.loc), deNormalize(sm.dest), ofRandom(100), sm.speed);
     ga->sendEvent("uc", "sweep", '0', "");
 }
 
 void SceneBuilder::onDotsEvent(DotsMsg &dm){
-    
+    userPopAnim.userTimeAdded(ofMap(dm.duration, 0, 100, 100, 6000));
+    userPopAnim.userSetSize(ofMap(dm.size, 0, 100, 8, 40));
 }
 
 //--------------------------------------------------------------
