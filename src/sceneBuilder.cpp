@@ -17,13 +17,13 @@ SceneBuilder::SceneBuilder(){
 
 }
 //--------------------------------------------------------------
-void SceneBuilder::setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f _topLeft, ofVec2f _bottomRight){
+void SceneBuilder::setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottomRight){
 
     //pointer to global state manager
     state = _state;
 
     //pointer to global logger
-    ga = _ga;
+//    ga = _ga;
 
     //set up location parameters
     drawWidth = ofGetWidth();
@@ -364,20 +364,17 @@ void SceneBuilder::drawModeSetName(const int &_value) {
 void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
 
     userPM.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 100.f, 10, 80.), ofRandom(1.0));
-//    ga->sendEvent("uc", "explode", '0', "");
     ofLog() << "EXPLODE";
 }
 
 //--------------------------------------------------------------
 void SceneBuilder::onSweepEvent(SweepMsg &sm){
     userPM.addVehicle(deNormalize(sm.loc), deNormalize(sm.dest), 80, sm.speed);
- //   ga->sendEvent("uc", "sweep", '0', "");
 }
 
 void SceneBuilder::onDotsEvent(DotsMsg &dm){
     userPopAnim.userTimeAdded(ofMap(dm.duration, 0, 100, 100, 6000));
     userPopAnim.userSetSize(ofMap(dm.size, 0, 100, 8, 40));
-    ga->sendEvent("uc", "dots", '0', "");
 }
 
 //--------------------------------------------------------------

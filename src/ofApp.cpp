@@ -11,24 +11,9 @@ void ofApp::setup()
 {
     ofSetFrameRate(44);
 //    ofSetLogLevel(OF_LOG_VERBOSE);
-
-    //set up google analytics
-    ga.setShouldReportFramerates(true);
-    ga.setFramerateReportInterval(60);
-    ga.setEnabled(true);
-    ga.setUserID("ULR_Studio");
-    ga.setup("UA-77526554-1",				//google track ID << REPLACE WITH YOURS!
-             "CLP-Knoxville",	//app name
-             "v1",									//app version
-             "01",						//ap id
-             "01"				//app installer id
-             );
-
-
-
     
 
-    scene.setup(&state, &ga, ofVec2f(0,290), ofVec2f(ofGetWidth(),620));
+    scene.setup(&state, ofVec2f(0,290), ofVec2f(ofGetWidth(),620));
     state.setTurnOnTime("23:30");
     state.setTurnOffTime("7:30");
 
@@ -101,7 +86,6 @@ void ofApp::update(){
     kinet.send();
 
     //update the google analytics
-    ga.update();
 }
 
 void ofApp::handleEvent(string &name){
