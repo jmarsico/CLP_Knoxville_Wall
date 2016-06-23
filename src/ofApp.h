@@ -36,6 +36,7 @@ public:
     void handleEvent(string & name);
 
     void onSchedulerEvent(bool &onOff);
+    void onOscOnOff(bool &onOff);
 
     int drawWidth, drawHeight;
 
