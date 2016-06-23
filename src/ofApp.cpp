@@ -62,6 +62,7 @@ void ofApp::setup()
     
     
     ofAddListener(StateManager::turnOnOff, this, &ofApp::onSchedulerEvent);
+    ofAddListener(OscManager::turnOnOff, this, &ofApp::onOscOnOff);
 
 }
 
@@ -211,6 +212,7 @@ void ofApp::turnOffLights(){
 //------------------------------------------------------
 void ofApp::turnOnLights(){
     bSendToLights = true;
+    
 }
 
 //------------------------------------------------------
@@ -223,6 +225,16 @@ void ofApp::onSchedulerEvent(bool &onOff){
         ofLog() << "TURN OFF LIGHTS FROM SCHEDULE";
     }
 }
+
+//------------------------------------------------------
+void ofApp::onOscOnOff(bool &onOff){
+    if(onOff == true){
+        turnOnLights();
+    } else if(onOff == false){
+        turnOffLights();
+    }
+}
+
 
 
 //------------------------------------------------------

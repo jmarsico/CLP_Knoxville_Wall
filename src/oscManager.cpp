@@ -13,6 +13,7 @@ ofEvent<int> OscManager::userCommand = ofEvent<int>();
 ofEvent<ExplosionMsg> OscManager::explosion = ofEvent<ExplosionMsg>();
 ofEvent<SweepMsg> OscManager::sweep = ofEvent<SweepMsg>();
 ofEvent<DotsMsg> OscManager::dots = ofEvent<DotsMsg>();
+ofEvent<bool> OscManager::turnOnOff = ofEvent<bool>();
 
 
 void OscManager::setup(){
@@ -84,6 +85,14 @@ void OscManager::update(){
         else if(m.getAddress() == "/pause"){
             int pauseLength = m.getArgAsInt(0);
             ofNotifyEvent(userCommand, pauseLength);
+        }
+        else if(m.getAddress() == "/turnOn"){
+            bool trueBool = true;
+            ofNotifyEvent(turnOnOff, trueBool);
+        }
+        else if(m.getAddress() == "/turnOff"){
+            bool falseBool = false;
+            ofNotifyEvent(turnOnOff, falseBool);
         }
     }
 }
