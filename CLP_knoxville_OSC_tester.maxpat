@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ -3.0, 49.0, 1102.0, 602.0 ],
+		"rect" : [ 0.0, 45.0, 1920.0, 1105.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -35,7 +35,8 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 920.0, 81.0, 65.0, 65.0 ],
-					"presentation_rect" : [ 920.0, 77.0, 0.0, 0.0 ]
+					"presentation" : 1,
+					"presentation_rect" : [ 687.0, 246.0, 502.0, 502.0 ]
 				}
 
 			}
@@ -402,8 +403,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 73.5, 376.0, 147.0, 20.0 ],
-					"text" : "udpsend 127.0.0.1 12345"
+					"patching_rect" : [ 73.5, 376.0, 153.0, 20.0 ],
+					"text" : "udpsend 10.30.6.10 12345"
 				}
 
 			}
