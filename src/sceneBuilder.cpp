@@ -364,14 +364,14 @@ void SceneBuilder::drawModeSetName(const int &_value) {
 void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
 
     userPM.explosion(deNormalize(em.loc), ofMap(em.size, 0.f, 100.f, 10, 80.), ofRandom(1.0));
-    ga->sendEvent("uc", "explode", '0', "");
+//    ga->sendEvent("uc", "explode", '0', "");
     ofLog() << "EXPLODE";
 }
 
 //--------------------------------------------------------------
 void SceneBuilder::onSweepEvent(SweepMsg &sm){
     userPM.addVehicle(deNormalize(sm.loc), deNormalize(sm.dest), ofRandom(100), sm.speed);
-    ga->sendEvent("uc", "sweep", '0', "");
+ //   ga->sendEvent("uc", "sweep", '0', "");
 }
 
 void SceneBuilder::onDotsEvent(DotsMsg &dm){

@@ -134,7 +134,6 @@ void StateManager::setTurnOffTime(string _timeStamp){
 void StateManager::checkTime(){
     currentTime = (ofGetHours() * 60) + ofGetMinutes();
     
-    ofLog() << turnOnTime << " " << turnOffTime << " " << currentTime << " " << lastTime;
     if(lastTime < turnOnTime && currentTime >= turnOnTime){
         bool trueBool = true;
         ofNotifyEvent(turnOnOff, trueBool);
