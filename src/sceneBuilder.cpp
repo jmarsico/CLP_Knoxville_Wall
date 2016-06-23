@@ -370,7 +370,7 @@ void SceneBuilder::onExplosionEvent(ExplosionMsg &em){
 
 //--------------------------------------------------------------
 void SceneBuilder::onSweepEvent(SweepMsg &sm){
-    userPM.addVehicle(deNormalize(sm.loc), deNormalize(sm.dest), ofRandom(100), sm.speed);
+    userPM.addVehicle(deNormalize(sm.loc), deNormalize(sm.dest), 80, sm.speed);
  //   ga->sendEvent("uc", "sweep", '0', "");
 }
 

@@ -57,7 +57,7 @@ void SweepAnimation::onTimerComplete(string &name){
         if(prob > probThresh){
             ofVec2f start(ofRandom(100), ofRandom(100));
             ofVec2f end(ofRandom(100), ofRandom(100));
-            pm.addVehicle(pm.deNormalize(start), pm.deNormalize(end), ofRandom(100), ofRandom(100));
+            pm.addVehicle(pm.deNormalize(start), pm.deNormalize(end), ofRandom(20), ofRandom(100));
         }
     }
 }

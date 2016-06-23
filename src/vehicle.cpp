@@ -21,8 +21,8 @@ void Vehicle::setup(ofVec2f startLoc, ofVec2f _destination, float _size, float _
     vel.set(0,0);
     
     
-    maxSpeed = ofMap(_speed, 0, 100, 30, 100);
-    maxForce = 2.0;
+    maxSpeed = ofMap(_speed, 0, 100, 1, 60);
+    maxForce = 5.0;
     
     bTimeToDie = false;
     
@@ -33,7 +33,7 @@ void Vehicle::update(){
    
     seek();
     vel += acc;
-    vel.limit(maxSpeed);
+//    vel.limit(maxSpeed);
     loc += vel;
     acc *= 0;
     
@@ -51,10 +51,9 @@ void Vehicle::applyForce(ofVec2f force){
 void Vehicle::seek(){
     ofVec2f desired = dest - loc;
     desired.normalize();
-    desired *= maxForce;
+    desired *= maxSpeed;
     
     ofVec2f steer = desired - vel;
-    steer.limit(maxForce);
     applyForce(steer);
     
 }
