@@ -377,7 +377,7 @@ void SceneBuilder::onSweepEvent(SweepMsg &sm){
 void SceneBuilder::onDotsEvent(DotsMsg &dm){
     userPopAnim.userTimeAdded(ofMap(dm.duration, 0, 100, 100, 6000));
     userPopAnim.userSetSize(ofMap(dm.size, 0, 100, 8, 40));
-    ga->sendEvent("uc", "dots", '0', "");
+//    ga->sendEvent("uc", "dots", '0', "");
 }
 
 //--------------------------------------------------------------
