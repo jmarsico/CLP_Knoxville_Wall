@@ -29,11 +29,17 @@ void OscManager::setup(){
     
     ofAddListener(ofxSimpleTimer::TIMER_COMPLETE, this, &OscManager::timerComplete);
     
+    pauseTimeRemaining = 0;
+    
 }
 
-void OscManager::update(){
+void OscManager::setPauseTimeRemaining(float _time){
+    pauseTimeRemaining = (int)_time;
+}
+
+void OscManager::update(bool _bSendingToLights){
     heartBeat->update();
-    
+    bSendingToLights = _bSendingToLights;
     
     // check for waiting messages
     while(receiver.hasWaitingMessages()){
@@ -107,6 +113,8 @@ void OscManager::timerComplete(string &name){
         ofxOscMessage m;
         m.setAddress("/heartbeat");
         m.addIntArg(ofGetFrameRate());
+        m.addBoolArg(bSendingToLights);
+        m.addFloatArg(pauseTimeRemaining);
         sender.sendMessage(m, false);
     }
     

@@ -21,8 +21,9 @@ public:
     OscManager(){}
     
     void setup();
-    void update();
+    void update(bool _bSendingToLights);
     void timerComplete(string & name);
+    void setPauseTimeRemaining(float _time);
     
     ofxOscReceiver receiver;
     ofxOscSender   sender;
@@ -38,6 +39,8 @@ public:
     mutable std::mutex mutex;
     
     int defaultWaitTime;
+    bool bSendingToLights;
+    int pauseTimeRemaining;
     
 
 };
