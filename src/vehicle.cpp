@@ -37,7 +37,7 @@ void Vehicle::update(){
     loc += vel;
     acc *= 0;
     
-    if (loc.x > dest.x - 20 && loc.x < dest.x + 20){
+    if (loc.x > dest.x - 40 && loc.x < dest.x + 40){
         bTimeToDie = true;
     }
 }
