@@ -16,7 +16,7 @@
 #include "lightPoint.h"
 #include "kinetManager.h"
 #include "oscManager.h"
-#include "ofxGoogleAnalytics.h"
+//#include "ofxGoogleAnalytics.h"
 
 
 
@@ -63,7 +63,7 @@ public:
 
 
     OscManager osc;
-    ofxGoogleAnalytics ga;
+//    ofxGoogleAnalytics ga;
     
     ofImage logo;
     

@@ -21,7 +21,7 @@
 #include "fluidManager.h"
 #include "ofxFastFboReader.h"
 #include "explosionAnimation.h"
-#include "ofxGoogleAnalytics.h"
+//#include "ofxGoogleAnalytics.h"
 
 
 #include "oscManager.h"
@@ -34,7 +34,7 @@ class SceneBuilder {
 public:
     SceneBuilder();
     ~SceneBuilder();
-    void setup(StateManager *_state, ofxGoogleAnalytics *_ga, ofVec2f _topLeft, ofVec2f _bottomRight);
+    void setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottomRight);
     void updateAnimation();
     void updateGenerativeSettings();
     void drawAnimation();
@@ -67,7 +67,7 @@ public:
 protected:
     
     StateManager *state;
-    ofxGoogleAnalytics *ga;
+//    ofxGoogleAnalytics *ga;
     
     ofParameterGroup animParams;
     ofParameter<bool>bUserInControl;
