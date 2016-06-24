@@ -29,6 +29,9 @@ public:
     void setTurnOnTime(string _timestamp);
     void setTurnOffTime(string _timestamp);
     void checkTime();
+    float getPauseTimeRemaining();
+    
+    
     int lastTime;
     int currentTime;
     int turnOnTime;

@@ -56,9 +56,11 @@ void ofApp::update(){
     FPS = ofGetFrameRate();
 
     ofSetColor(255);
-    osc.update();
+    osc.update(bSendToLights);
     scene.update();
     state.update();
+    
+    osc.setPauseTimeRemaining(state.getPauseTimeRemaining());
 
     scene.generateFinalComposite();
     compPix = scene.getPixels();

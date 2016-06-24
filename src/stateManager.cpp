@@ -50,6 +50,16 @@ void StateManager::update(){
     checkTime();
 }
 
+float StateManager::getPauseTimeRemaining(){
+    if(bUserInControl){
+        return userControlTimer->getTotalTime() - userControlTimer->getCurrentTime();
+    } else {
+        return 0;
+    }
+    
+
+}
+
 
 //------------------------------------------------------------
 void StateManager::onUserInControl(int &seconds){
