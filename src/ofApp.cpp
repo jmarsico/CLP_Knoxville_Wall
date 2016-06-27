@@ -11,11 +11,11 @@ void ofApp::setup()
 {
     ofSetFrameRate(44);
 //    ofSetLogLevel(OF_LOG_VERBOSE);
-    
+
 
     scene.setup(&state, ofVec2f(0,290), ofVec2f(ofGetWidth(),620));
-    state.setTurnOnTime("23:30");
-    state.setTurnOffTime("7:30");
+    state.setTurnOnTime("8:00");
+    state.setTurnOffTime("23:00");
 
     //setup the JSONRPC server
     setupGui();
@@ -44,8 +44,8 @@ void ofApp::setup()
 
     logo.load("textLogo.png");
     bShowGui = false;
-    
-    
+
+
     ofAddListener(StateManager::turnOnOff, this, &ofApp::onSchedulerEvent);
     ofAddListener(OscManager::turnOnOff, this, &ofApp::onOscOnOff);
 
@@ -59,20 +59,20 @@ void ofApp::update(){
     osc.update(bSendToLights);
     scene.update();
     state.update();
-    
+
     osc.setPauseTimeRemaining(state.getPauseTimeRemaining());
 
     scene.generateFinalComposite();
     compPix = scene.getPixels();
 
-    
+
     //if sending to lights, update from animation
     for(size_t i = 0; i < lights.size(); i++){
         ofVec2f loc = lights[i].getLoc();
         int val = compPix.getColor(loc.x, loc.y).getBrightness();
         lights[i].setAvgSamplingSize(avgSampSize);
         lights[i].setCurrentVal(val);
-        
+
         //if we are sending to the wall, take light val
         //if not, send zeros
         if(bSendToLights){
@@ -104,13 +104,13 @@ void ofApp::draw(){
     for(size_t i = 0; i < lights.size(); i ++){
         lights[i].draw();
     }
-    
+
     ofSetColor(255);
     logo.draw(20,20, logo.getWidth() * 0.20, logo.getHeight() * 0.20  );
-    
+
     ofSetColor(50);
     if(bShowAnim) scene.draw();
-    
+
     ofSetColor(255);
     if(bShowGui){
         systemGui.draw();
@@ -122,13 +122,13 @@ void ofApp::draw(){
     if(mouseLoc){
         ofDrawBitmapStringHighlight(ofToString(mouseX) + "," + ofToString(mouseY), mouseX, mouseY);
     }
-    
+
     //draw lines showing different sections
     ofSetColor(200);
     ofDrawLine(345, 350, 345, 600);
     ofDrawLine(1547, 350, 1547, 600);
     ofSetColor(255);
-    
+
 
  }
 
@@ -184,21 +184,21 @@ void ofApp::setupGui(){
 
 //------------------------------------------------------
 void ofApp::turnOffLights(){
-    
+
     bSendToLights = false;
     for(size_t i = 0; i < lightVals.size(); i++){
         lightVals[i] = 0;
     }
     kinet.update(lightVals);
     kinet.send();
-    
-    
+
+
 }
 
 //------------------------------------------------------
 void ofApp::turnOnLights(){
     bSendToLights = true;
-    
+
 }
 
 //------------------------------------------------------
@@ -230,10 +230,10 @@ void ofApp::exit(){
     // remaining messages are logged correctly.
     ofLogToConsole();
     ofClear(0);
-    
+
     turnOffLights();
 
-    
+
 }
 
 
