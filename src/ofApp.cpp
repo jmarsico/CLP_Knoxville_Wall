@@ -43,6 +43,10 @@ void ofApp::setup()
     osc.setup();
 
     logo.load("textLogo.png");
+    teenRoom.load("Teen_Room.png");
+    frontWall.load("Front_Wall.png");
+    entrance.load("Entrance.png");
+    
     bShowGui = false;
 
 
@@ -107,6 +111,10 @@ void ofApp::draw(){
 
     ofSetColor(255);
     logo.draw(20,20, logo.getWidth() * 0.20, logo.getHeight() * 0.20  );
+    teenRoom.draw(90,645, teenRoom.getWidth() * 0.15, teenRoom.getHeight() * 0.15);
+    frontWall.draw(800,645, frontWall.getWidth() * 0.15, frontWall.getHeight() * 0.15);
+    entrance.draw(1657, 645, entrance.getWidth() * 0.15, entrance.getHeight() * 0.15);
+    //100, 748, 1657, 645
 
     ofSetColor(50);
     if(bShowAnim) scene.draw();

@@ -66,6 +66,9 @@ public:
 //    ofxGoogleAnalytics ga;
     
     ofImage logo;
+    ofImage teenRoom;
+    ofImage frontWall;
+    ofImage entrance;
     
     bool bShowGui;
     
