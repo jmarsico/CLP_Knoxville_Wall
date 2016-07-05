@@ -92,6 +92,19 @@ void ofApp::update(){
             lightVals[i] = 0;                                           //if we aren't sending to the wall, set KiNet pixel to zero
         }
     }
+    
+    
+    //
+    if(bTestSequence) {
+        for(size_t i = 0; i < lightVals.size(); i++){
+            if(i == testCurrentLight){
+                lightVals[i] = 255;
+            } else{
+                lightVals[i] = 0;
+            }
+        }
+    }
+    
 
     kinet.update(lightVals);                //update the kinet manager
     kinet.send();                           //send to the wal
@@ -166,6 +179,8 @@ void ofApp::setupGui(){
     systemGui.add(mouseLoc.set("show mouselocation", false));
     systemGui.add(avgSampSize.set("smoothing", 1, 1, 20));
     systemGui.add(bSendToLights.set("lights on/off", true));
+    systemGui.add(bTestSequence.set("test light sequence", false));
+    systemGui.add(testCurrentLight.set("current test light", 0, 0, 749));
     systemGui.setPosition(ofPoint(10,10));
     
     //fluid gui, for controlling everything withing ofxFlowTools
@@ -265,4 +280,12 @@ void ofApp::keyReleased(int key){
     if(key == 'g'){
         bShowGui = !bShowGui;
     }
+    else if(key == 'n'){
+        testCurrentLight ++;
+    }
+    else if(key == 'b'){
+        testCurrentLight --;
+    }
+    
+    
 }

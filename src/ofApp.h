@@ -63,6 +63,7 @@ public:
     ofImage frontWall;
     ofImage entrance;
     
-    
+    ofParameter<bool> bTestSequence;
+    ofParameter<int> testCurrentLight;
 
 };
