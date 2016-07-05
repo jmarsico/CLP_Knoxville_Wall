@@ -1,41 +1,30 @@
 # CLP_Knoxville_Wall
-Animation engine to drive light wall. Receives OSC messages from node.js server, which receives GET requests from end users.
 
-to compile:
-  - clone into of_v_9.3...../apps/myApps/
-  - open xcode project
+This repo contains the animation engine that drives the light wall. The animation engine receives OSC messages from a node.js server, which receives GET requests from end users. Code for the node.js server can be found [HERE](https://github.com/jmarsico/CLP_Request_Server).
 
-requirements:
+
+## Requirements:
+
 - [openframeworks 9.3](http://openframeworks.cc/download/)
-- addons (clone each addon into of_v_9.3...../addons/):
+
+### Addons:
+(clone each addon into of_v0.9.3_osx_release/addons/):
 - [ofxFlowTools](https://github.com/jmarsico/ofxFlowTools)
 - [ofxFastFboReader](https://github.com/satoruhiga/ofxFastFboReader)
-- ofxKinet (proprietary, ask Jake)
 - [ofxSimpleTimer](https://github.com/jmarsico/ofxSimpleTimer.git)
 - [ofxEasing](https://github.com/arturoc/ofxEasing.git)
-- [ofxGoogleAnalytics](https://github.com/armadillu/ofxGoogleAnalytics.git)
 - [ofxSimpleHttp](https://github.com/armadillu/ofxSimpleHttp)
+- ofxKinet (proprietary, requires special permission from Color Kinetics)
 
-API development:
-- "explode"
-    - creates an explosion of "particles"
-    - location x
-    - location y
-    - size
-- "sweep"
-    - draws a mass of light from one point to another
-    - startLocation x
-    - startLocation y
-    - endLocation x
-    - endLocation y
-    - speed
-- "dots"
-    - size
-    - duration
-<!-- - "force"
-    - changes the direction of wind and gravity in the generative scene
-    - wind (x force)
-    - gravity (y force) -->
-<!-- - "all"
-    - (advanced) RESTful way of controlling exact brightness of all pixels
-    - 750 args 0-1 -->
+
+
+### To Compile:
+  - Clone this repo into of_v0.9.3_osx_release/apps/myApps/
+  - Open the xcode project and run
+  - Or if on Linux, move into application directory and make && make run
+
+
+## What Does it Do
+### Generative Components
+### Scene Sampling
+### application

@@ -21,9 +21,6 @@
 #include "fluidManager.h"
 #include "ofxFastFboReader.h"
 #include "explosionAnimation.h"
-//#include "ofxGoogleAnalytics.h"
-
-
 #include "oscManager.h"
 #include "msgTypes.h"
 #include "logger.h"
@@ -32,14 +29,13 @@
 
 class SceneBuilder {
 public:
-    SceneBuilder();
+    SceneBuilder(){};
     ~SceneBuilder();
     void setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottomRight);
     void updateAnimation();
     void updateGenerativeSettings();
     void drawAnimation();
     void update();
-    void drawModeSetName(const int &_value);
     void generateFinalComposite();
     ofPixels getPixels();
     void draw();
@@ -49,6 +45,7 @@ public:
     
     ofParameterGroup getFluidParams() { return fluidParams; };
     ofParameterGroup getAnimationParams() { return animParams; };
+    void drawModeSetName(const int &_value);
     
     void onExplosionEvent(ExplosionMsg &em);
     void onSweepEvent(SweepMsg &sm);
@@ -58,7 +55,6 @@ public:
 
     ofVec2f deNormalize(ofVec2f &inputVector);
     
-    
     ofFbo animationFbo;
     ofFbo compositeFbo;
     
@@ -67,7 +63,7 @@ public:
 protected:
     
     StateManager *state;
-//    ofxGoogleAnalytics *ga;
+    
     
     ofParameterGroup animParams;
     ofParameter<bool>bUserInControl;
@@ -76,9 +72,6 @@ protected:
     ofParameter<float>transitionTime;
     ofParameter<float>particleForceX;
     ofParameter<float>particleForceY;
-    
-    
-    
     ofParameterGroup fluidParams;
     
     //particle managers
@@ -90,8 +83,6 @@ protected:
     UserPopAnimation userPopAnim;
     ExplosionAnimation explodeAnim;
     
-    
-    
     //world size variables
     int drawWidth, drawHeight;
     ofVec2f topLeft;
@@ -101,6 +92,8 @@ protected:
     ofxFastFboReader reader;
     
     
+    
+    //this struct includes all parameters that we want to change over time
     struct generativeSetting {
         //fluid params to be changed generatively
         float fDissipation;
@@ -122,6 +115,7 @@ protected:
         
     };
     
+    //we instantiate two of these struct objects so we can ease between them when transitioning
     generativeSetting oldGenParams;
     generativeSetting newGenParams;
     float initTime;

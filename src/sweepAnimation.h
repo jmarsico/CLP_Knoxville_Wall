@@ -20,8 +20,6 @@ public:
     void draw();
     void pause();
     void start();
-    
-    
     void onTimerComplete(string &name);
     
     

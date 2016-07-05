@@ -8,5 +8,4 @@ ofxKinet
 ofxXmlSettings
 ofxSimpleTimer
 ofxEasing
-ofxGoogleAnalytics
 ofxSimpleHttp

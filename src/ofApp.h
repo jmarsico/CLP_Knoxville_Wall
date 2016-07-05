@@ -16,7 +16,6 @@
 #include "lightPoint.h"
 #include "kinetManager.h"
 #include "oscManager.h"
-//#include "ofxGoogleAnalytics.h"
 
 
 
@@ -33,12 +32,9 @@ public:
     void turnOnLights();
 
     void setupGui();
-    void handleEvent(string & name);
 
     void onSchedulerEvent(bool &onOff);
     void onOscOnOff(bool &onOff);
-
-    int drawWidth, drawHeight;
 
 
     //GUI
@@ -50,37 +46,23 @@ public:
     ofParameter<bool> mouseLoc;
     ofParameter<int> avgSampSize;
     ofParameter<bool> bSendToLights;
-
-
+    bool bShowGui;
+    
     StateManager state;
     SceneBuilder scene;
-    CsvLoader csv;
     KinetManager kinet;
+    OscManager osc;
 
+    CsvLoader csv;
     vector<LightPoint> lights;
     vector<uint8_t> lightVals;
     ofPixels compPix;
-
-
-    OscManager osc;
-//    ofxGoogleAnalytics ga;
     
     ofImage logo;
     ofImage teenRoom;
     ofImage frontWall;
     ofImage entrance;
     
-    bool bShowGui;
     
-    
-
-private:
-
-
-    // We use a mutex to protect any variables that can be
-    // modified by multiple clients.  In our case, userText must be protected.
-    // We mark the mutex as mutable so that it can be used in const functions.
-    mutable std::mutex mutex;
-
 
 };

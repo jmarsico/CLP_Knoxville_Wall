@@ -8,22 +8,12 @@
 
 #include "sceneBuilder.h"
 
-//--------------------------------------------------------------
-SceneBuilder::SceneBuilder(){
 
-
-
-
-
-}
 //--------------------------------------------------------------
 void SceneBuilder::setup(StateManager *_state, ofVec2f _topLeft, ofVec2f _bottomRight){
 
     //pointer to global state manager
     state = _state;
-
-    //pointer to global logger
-//    ga = _ga;
 
     //set up location parameters
     drawWidth = ofGetWidth();
@@ -116,8 +106,10 @@ void SceneBuilder::update(){
 
 }
 
+//--------------------------------------------------------------
 void SceneBuilder::updateGenerativeSettings(){
 
+    //easing between old generative settings and new generative settings.
     float now = ofGetElapsedTimef();
     endTime = initTime + transitionTime;
 
@@ -209,46 +201,37 @@ void SceneBuilder::updateGenerativeSettings(){
                                                                   &ofxeasing::linear::easeIn)
                                              )
                                       );
-
-
-
 }
 
 //--------------------------------------------------------------
 void SceneBuilder::updateAnimation(){
 
+    //update the user particle manager
     userPM.setForces(ofVec2f(particleForceX, particleForceY));
-
     userPM.update();
+    userPopAnim.update();
 
-
-
+    //if the user isn't in control, update the generative animations
     if(state->getIsUserInControl() == false){
         if(explodeAnim.brightness > 0) explodeAnim.update();
         if(popAnim.brightness > 0) popAnim.update();
         if(sweepAnim.brightness > 0) sweepAnim.update();
     
     }
-    
-    userPopAnim.update();
-
-
 }
 
 //--------------------------------------------------------------
 void SceneBuilder::drawAnimation(){
 
-
-
+    //draw into the animation FBO, this will then be sent into the fluid system
     animationFbo.begin();
-    ofClear(0);
-    //draw animations based on scene
-    if(explodeAnim.brightness > 0) explodeAnim.draw();
-    if(popAnim.brightness > 0) popAnim.draw();
-    if(sweepAnim.brightness > 0) sweepAnim.draw();
-    userPopAnim.draw();
-
-    userPM.draw(1.);
+        ofClear(0);
+        //draw animations based on scene
+        if(explodeAnim.brightness > 0) explodeAnim.draw();
+        if(popAnim.brightness > 0) popAnim.draw();
+        if(sweepAnim.brightness > 0) sweepAnim.draw();
+        userPopAnim.draw();
+        userPM.draw(1.);
     animationFbo.end();
 
 }
@@ -256,40 +239,11 @@ void SceneBuilder::drawAnimation(){
 //--------------------------------------------------------------
 void SceneBuilder::onSceneChange(){
 
-    //THIS IS WHERE GENERATIVE changes HAPPEN
-
     ofLogNotice("SceneBuilder") << "scene change";
-
-    //change settings of different animations
-    /*eg:
-    sweepAnimation on/off
-     sweepAnimation velocity = ofRandom(1.f);
-     popAnimation spawnProb = ofRandom(2.3);
-     fluid (random on/off)
-
-     - fluid-particle size
-     - fluid-particle twinkle
-     - fluid-particle birth chance
-     - fluid-particle on/off
-
-
-     - fluid-velocity strength
-     - fluid-optflow strength
-     - fluid-optflow offset
-
-     - fluid.fluidSimulation.setDissipation(0.0);
-
-       - myParticle size
-        - myParicle speed
-
-
-    */
-
     initTime = ofGetElapsedTimef();
 
     //copy current gen params to holder for old
     oldGenParams = newGenParams;
-
 
     //generate new param targets
     float r0, r1, r2;
@@ -300,11 +254,9 @@ void SceneBuilder::onSceneChange(){
     r0 = (r0/sum);
     r1 = r1/sum;
     r2 = r2/sum;
-
     newGenParams.exlBright = r0;
     newGenParams.popBright = r1;
     newGenParams.sweepBright = r2;
-
 
     //generate new fluid param targets
     newGenParams.fDissipation = ofRandom(0.005, 0.008);
@@ -316,15 +268,19 @@ void SceneBuilder::onSceneChange(){
     newGenParams.fGravityY = ofRandom(-0.03, 0.03);
     newGenParams.pSize = ofRandom(1.0, 10.0);
     newGenParams.pTwinkle = ofRandom(0.0, 1.0);
+}
 
 
-
+//--------------------------------------------------------------
+void SceneBuilder::draw(){
+    fluid.draw(drawMode);
 }
 
 
 //--------------------------------------------------------------
 void SceneBuilder::generateFinalComposite(){
 
+    //draw the fluid system into the composite fbo, and pull back to an ofPixels object
     compositeFbo.begin();
     ofClear(0);
     fluid.draw(drawMode);
@@ -339,13 +295,6 @@ ofPixels SceneBuilder::getPixels(){
     return compositePix;
 
 }
-
-
-//--------------------------------------------------------------
-void SceneBuilder::draw(){
-    fluid.draw(drawMode);
-}
-
 
 
 //--------------------------------------------------------------
@@ -391,8 +340,6 @@ void SceneBuilder::onUserControl(bool &uc){
         sweepAnim.start();
         popAnim.start();
     }
-
-
 
 }
 
