@@ -14,7 +14,7 @@ void ofApp::setup()
 
     //set up the scene, pass it reference to the state manager, and the corners of the light arrangement/layout
     scene.setup(&state, ofVec2f(0,290), ofVec2f(ofGetWidth(),620));
-    
+
     //set the turn on and turn-off times of the system
     state.setTurnOnTime("8:00");
     state.setTurnOffTime("23:00");
@@ -44,7 +44,7 @@ void ofApp::setup()
 
     //set up the KiNet connections
     kinet.setup(lights.size());
-    
+
     //initialize the osc manager
     osc.setup();
 
@@ -53,7 +53,7 @@ void ofApp::setup()
     teenRoom.load("Teen_Room.png");
     frontWall.load("Front_Wall.png");
     entrance.load("Entrance.png");
-    
+
     //add listeners for scheduler events and for on/off events from admin webpage
     ofAddListener(StateManager::turnOnOff, this, &ofApp::onSchedulerEvent);
     ofAddListener(OscManager::turnOnOff, this, &ofApp::onOscOnOff);
@@ -64,9 +64,9 @@ void ofApp::setup()
 void ofApp::update(){
     FPS = ofGetFrameRate();                 //update the framerate variable
     ofSetColor(255);                        //set color to white (standard when working with overlaid FBOs)
-    
+
     state.update();                         //update the state manager
-    
+
     //update the osc manager with any pause timing... to be sent to admin webpage
     osc.setPauseTimeRemaining(state.getPauseTimeRemaining());
     osc.update(bSendToLights);              //update the status of the wall for the osc heartbeat
@@ -92,8 +92,8 @@ void ofApp::update(){
             lightVals[i] = 0;                                           //if we aren't sending to the wall, set KiNet pixel to zero
         }
     }
-    
-    
+
+
     //
     if(bTestSequence) {
         for(size_t i = 0; i < lightVals.size(); i++){
@@ -104,7 +104,7 @@ void ofApp::update(){
             }
         }
     }
-    
+
 
     kinet.update(lightVals);                //update the kinet manager
     kinet.send();                           //send to the wal
@@ -143,7 +143,7 @@ void ofApp::draw(){
         ofShowCursor();
     } else { ofHideCursor();}
 
-    
+
     //sometimes we want to visualize the mouse coordinates (useful for when setting up layout)
     if(mouseLoc){
         ofDrawBitmapStringHighlight(ofToString(mouseX) + "," + ofToString(mouseY), mouseX, mouseY);
@@ -179,10 +179,10 @@ void ofApp::setupGui(){
     systemGui.add(mouseLoc.set("show mouselocation", false));
     systemGui.add(avgSampSize.set("smoothing", 1, 1, 20));
     systemGui.add(bSendToLights.set("lights on/off", true));
-    systemGui.add(bTestSequence.set("test light sequence", false));
-    systemGui.add(testCurrentLight.set("current test light", 0, 0, 749));
+    systemGui.add(bTestSequence.set("test light sequence", true));
+    systemGui.add(testCurrentLight.set("current test light", 250, 0, 749));
     systemGui.setPosition(ofPoint(10,10));
-    
+
     //fluid gui, for controlling everything withing ofxFlowTools
     fluidGui.setup("fluid", "settings.xml");
     fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
@@ -214,12 +214,12 @@ void ofApp::setupGui(){
 void ofApp::turnOffLights(){
 
     bSendToLights = false;
-    
+
     //set everything to zero
     for(size_t i = 0; i < lightVals.size(); i++){
         lightVals[i] = 0;
     }
-    
+
     //send the zero-filled buffer to KiNet
     kinet.update(lightVals);
     kinet.send();
@@ -229,7 +229,7 @@ void ofApp::turnOffLights(){
 
 //------------------------------------------------------
 void ofApp::turnOnLights(){
-    
+
     //switch flag so we start updating with animation values
     bSendToLights = true;
 
@@ -286,6 +286,6 @@ void ofApp::keyReleased(int key){
     else if(key == 'b'){
         testCurrentLight --;
     }
-    
-    
+
+
 }
