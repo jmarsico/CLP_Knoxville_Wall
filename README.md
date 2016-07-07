@@ -23,6 +23,8 @@ This repo contains the animation engine that drives the light wall. The animatio
   - Open the xcode project and run
   - Or if on Linux, move into application directory and make && make run
 
+![CLP_Diagram](https://cloud.githubusercontent.com/assets/1325463/16654813/7d2387e0-4425-11e6-8f07-bbb21692773f.png)
+
 
 ## What Does it Do
 ### Generative Components
